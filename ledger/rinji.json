@@ -7,11 +7,11 @@
       "detail": "「広告収入をやめ、静的サイトを選んだ日」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-17",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-17 18:20",
       "article": "articles/001.html",
-      "note": "承認フロー確立前に起票。AIが承認欄を代筆していたため、未承認へ戻した。"
+      "note": "承認フロー確立前に起票。当初AIが承認欄を代筆していたため一度未承認へ戻し、あらためて本人が承認した。"
     },
     {
       "no": "R-0002",
@@ -19,11 +19,11 @@
       "detail": "本文に自社のネットワーク構成に関する記述が含まれていたため、構成が特定できない表現へ改めます。あわせて「書かないもの」を運営方針に追記します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-17",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-17 18:20",
       "article": "articles/001.html",
-      "note": "承認フロー確立前に起票。AIが承認欄を代筆していたため、未承認へ戻した。"
+      "note": "承認フロー確立前に起票。当初AIが承認欄を代筆していたため一度未承認へ戻し、あらためて本人が承認した。"
     },
     {
       "no": "R-0003",
@@ -31,11 +31,11 @@
       "detail": "「『全部見せろ』と言ったら、AIは会社の設定情報まで書いてきた」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-17",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-17 18:20",
       "article": "articles/002.html",
-      "note": "承認フロー確立前に起票。AIが承認欄を代筆していたため、未承認へ戻した。"
+      "note": "承認フロー確立前に起票。当初AIが承認欄を代筆していたため一度未承認へ戻し、あらためて本人が承認した。"
     },
     {
       "no": "R-0004",
@@ -43,11 +43,11 @@
       "detail": "稟議番号が飛んでいるように見えるとの指摘を受け、全件を番号順に表示するページを追加します。欠番がないことを外から確認できるようにします。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-17",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-17 18:20",
       "article": "rinji.html",
-      "note": "承認フロー確立前に起票。AIが承認欄を代筆していたため、未承認へ戻した。"
+      "note": "承認フロー確立前に起票。当初AIが承認欄を代筆していたため一度未承認へ戻し、あらためて本人が承認した。"
     },
     {
       "no": "R-0005",
@@ -55,10 +55,11 @@
       "detail": "承認する手段が存在しないまま、AIが承認欄を記入していた。プルリクエストによる承認フローを整備し、R-0001〜R-0004 を未承認へ戻す。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-17",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
-      "article": "rinji.html"
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-17 18:20",
+      "article": "rinji.html",
+      "note": "承認フロー確立前に起票。当初AIが承認欄を代筆していたため一度未承認へ戻し、あらためて本人が承認した。"
     }
   ]
 }
