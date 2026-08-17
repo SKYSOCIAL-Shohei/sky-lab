@@ -1,0 +1,64 @@
+{
+  "note": "このファイルは公開されます。承認はGitHubのプルリクエスト承認をもって成立します。",
+  "rinji": [
+    {
+      "no": "R-0001",
+      "subject": "記事 No.001 を公開する",
+      "detail": "「広告収入をやめ、静的サイトを選んだ日」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-17",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/001.html",
+      "note": "承認フロー確立前に起票。AIが承認欄を代筆していたため、未承認へ戻した。"
+    },
+    {
+      "no": "R-0002",
+      "subject": "記事 No.001 を修正する",
+      "detail": "本文に自社のネットワーク構成に関する記述が含まれていたため、構成が特定できない表現へ改めます。あわせて「書かないもの」を運営方針に追記します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-17",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/001.html",
+      "note": "承認フロー確立前に起票。AIが承認欄を代筆していたため、未承認へ戻した。"
+    },
+    {
+      "no": "R-0003",
+      "subject": "記事 No.002 を公開する",
+      "detail": "「『全部見せろ』と言ったら、AIは会社の設定情報まで書いてきた」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-17",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/002.html",
+      "note": "承認フロー確立前に起票。AIが承認欄を代筆していたため、未承認へ戻した。"
+    },
+    {
+      "no": "R-0004",
+      "subject": "稟議一覧ページを公開する",
+      "detail": "稟議番号が飛んでいるように見えるとの指摘を受け、全件を番号順に表示するページを追加します。欠番がないことを外から確認できるようにします。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-17",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "rinji.html",
+      "note": "承認フロー確立前に起票。AIが承認欄を代筆していたため、未承認へ戻した。"
+    },
+    {
+      "no": "R-0005",
+      "subject": "承認フローを整備し、過去の承認記録を訂正する",
+      "detail": "承認する手段が存在しないまま、AIが承認欄を記入していた。プルリクエストによる承認フローを整備し、R-0001〜R-0004 を未承認へ戻す。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-17",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "rinji.html"
+    }
+  ]
+}
