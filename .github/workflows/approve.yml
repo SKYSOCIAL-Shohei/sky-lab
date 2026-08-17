@@ -1,0 +1,42 @@
+name: 承認の記録
+
+on:
+  pull_request_review:
+    types: [submitted]
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  record:
+    if: github.event.review.state == 'approved'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 稟議番号を取り出して台帳へ記入
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+          REVIEWER: ${{ github.event.review.user.login }}
+          REVIEWED_AT: ${{ github.event.review.submitted_at }}
+        run: python3 tools/approve.py
+
+      - name: 台帳の更新を反映
+        run: |
+          if git diff --quiet ledger/; then
+            echo "台帳に変更はありません"
+            exit 0
+          fi
+          git config user.name "sky-lab"
+          git config user.email "sky-lab@users.noreply.github.com"
+          git add ledger/
+          git commit -m "承認を記録"
+          git push
