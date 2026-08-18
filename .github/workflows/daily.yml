@@ -1,0 +1,74 @@
+name: 毎朝の起案
+
+on:
+  schedule:
+    - cron: '0 20 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 公開情報を収集
+        run: python3 tools/collect.py
+
+      - name: 記事を起案
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python3 tools/write.py
+
+      - name: 起案の有無を確認
+        id: check
+        run: python3 tools/count_drafts.py
+
+      - name: 記事ページと台帳を作成
+        if: steps.check.outputs.has_draft == 'true'
+        run: python3 tools/publish.py
+
+      - name: 情報漏れの検査
+        if: steps.check.outputs.has_draft == 'true'
+        run: python3 tools/guard.py
+
+      - name: 未承認公開の検査
+        if: steps.check.outputs.has_draft == 'true'
+        run: python3 tools/approved_only.py
+
+      - name: 作業ファイルを片づける
+        if: steps.check.outputs.has_draft == 'true'
+        run: rm -rf work
+
+      - name: 申請の文面を作成
+        if: steps.check.outputs.has_draft == 'true'
+        id: pr
+        run: python3 tools/pr_body.py
+
+      - name: プルリクエストを作成
+        if: steps.check.outputs.has_draft == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_TITLE: ${{ steps.pr.outputs.title }}
+          PR_BODY: ${{ steps.pr.outputs.body }}
+        run: |
+          DATE=$(TZ=Asia/Tokyo date +%Y-%m-%d)
+          BRANCH="draft/${DATE}"
+          git config user.name "sky-lab"
+          git config user.email "sky-lab@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add -A
+          git commit -m "${DATE} の起案"
+          git push -u origin "$BRANCH"
+          gh pr create --title "$PR_TITLE" --body "$PR_BODY" --base main --head "$BRANCH"
+
+      - name: 起案がなかった場合
+        if: steps.check.outputs.has_draft != 'true'
+        run: echo "本日は起案する材料がありませんでした。何も作成していません。"
