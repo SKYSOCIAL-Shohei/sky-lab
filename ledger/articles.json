@@ -9,8 +9,8 @@
       "drafted_by": "Claude",
       "drafted_at": "2026-08-18",
       "rinji": "R-0007",
-      "published_at": null,
-      "status": "pending"
+      "published_at": "2026-08-18",
+      "status": "published"
     },
     {
       "no": "003",
@@ -21,8 +21,8 @@
       "drafted_by": "Claude",
       "drafted_at": "2026-08-18",
       "rinji": "R-0006",
-      "published_at": null,
-      "status": "pending"
+      "published_at": "2026-08-18",
+      "status": "published"
     },
     {
       "no": "002",
