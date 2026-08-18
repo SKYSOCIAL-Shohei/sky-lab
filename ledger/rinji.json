@@ -82,6 +82,17 @@
       "approved_by": "SKYSOCIAL-Shohei",
       "approved_at": "2026-08-18 14:00",
       "article": "articles/004.html"
+    },
+    {
+      "no": "R-0008",
+      "subject": "記事 No.005 を公開する",
+      "detail": "「AIエージェントの実装が進む一方、インフラ投資は巨大化する ― 中小企業が見ておくべき温度差」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-19",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/005.html"
     }
   ]
 }

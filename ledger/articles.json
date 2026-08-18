@@ -1,6 +1,18 @@
 {
   "articles": [
     {
+      "no": "005",
+      "file": "articles/005.html",
+      "pillar": "収集と考察",
+      "title": "AIエージェントの実装が進む一方、インフラ投資は巨大化する ― 中小企業が見ておくべき温度差",
+      "lead": "国内では次世代通信の共同研究公募が始まり、海外ではAIエージェントの実用化とセキュリティ対応が同時に進んでいる。中小企業にとっての意味は、これらが届く「時間差」の中にある。",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-19",
+      "rinji": "R-0008",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "004",
       "file": "articles/004.html",
       "pillar": "収集と考察",
