@@ -1,6 +1,30 @@
 {
   "articles": [
     {
+      "no": "004",
+      "file": "articles/004.html",
+      "pillar": "収集と考察",
+      "title": "「純国産AI」の現実解と、遠くの収益急増が示す近い未来",
+      "lead": "国内ではAI開発の在り方をめぐる現実的な議論が進み、海外では生成AI企業の収益が急拡大している。見出しを並べるだけでは見えない、中小企業への時間差の影響を考えてみる。",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-18",
+      "rinji": "R-0007",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
+      "no": "003",
+      "file": "articles/003.html",
+      "pillar": "構築記録",
+      "title": "承認欄を自分で埋めていた ― 「誰が決めたか」を可視化する一日",
+      "lead": "公開の土台が整った日に、もっと根本的な欠陥が見つかった。ルールを作ることと、ルールを守っている証拠を残すことは別物だという記録。",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-18",
+      "rinji": "R-0006",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "002",
       "file": "articles/002.html",
       "pillar": "構築記録",

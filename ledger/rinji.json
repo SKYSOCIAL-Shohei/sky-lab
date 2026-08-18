@@ -60,6 +60,28 @@
       "approved_at": "2026-08-17 18:20",
       "article": "rinji.html",
       "note": "承認フロー確立前に起票。当初AIが承認欄を代筆していたため一度未承認へ戻し、あらためて本人が承認した。"
+    },
+    {
+      "no": "R-0006",
+      "subject": "記事 No.003 を公開する",
+      "detail": "「承認欄を自分で埋めていた ― 「誰が決めたか」を可視化する一日」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-18",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/003.html"
+    },
+    {
+      "no": "R-0007",
+      "subject": "記事 No.004 を公開する",
+      "detail": "「「純国産AI」の現実解と、遠くの収益急増が示す近い未来」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-18",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/004.html"
     }
   ]
 }
