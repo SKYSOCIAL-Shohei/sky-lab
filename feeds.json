@@ -1,0 +1,69 @@
+{
+  "note": "取得先の設定。公式が配信しているRSSのみを対象とする。スクレイピングは行わない。取得するのは見出し・リンク・日付のみで、本文は取得しない。",
+  "feeds": [
+    {
+      "id": "soumu",
+      "name": "総務省 新着情報",
+      "category": "国内・公的",
+      "url": "https://www.soumu.go.jp/news.rdf",
+      "enabled": true,
+      "max": 4
+    },
+    {
+      "id": "hiroshima-pref",
+      "name": "広島県 新着情報",
+      "category": "国内・公的",
+      "url": "",
+      "enabled": false,
+      "max": 3,
+      "memo": "公式RSS配信ページでフィードURLを確認し、url に記入して enabled を true にする"
+    },
+    {
+      "id": "itmedia-ai",
+      "name": "ITmedia AI＋",
+      "category": "国内・AI",
+      "url": "https://rss.itmedia.co.jp/rss/2.0/aiplus.xml",
+      "enabled": true,
+      "max": 4
+    },
+    {
+      "id": "techcrunch",
+      "name": "TechCrunch",
+      "category": "海外・テック",
+      "url": "https://techcrunch.com/feed/",
+      "enabled": true,
+      "max": 4
+    },
+    {
+      "id": "venturebeat-ai",
+      "name": "VentureBeat AI",
+      "category": "海外・AI",
+      "url": "https://venturebeat.com/category/ai/feed/",
+      "enabled": true,
+      "max": 4
+    },
+    {
+      "id": "google-ai",
+      "name": "Google The Keyword（AI）",
+      "category": "海外・公式発表",
+      "url": "https://blog.google/technology/ai/rss/",
+      "enabled": true,
+      "max": 3
+    }
+  ],
+
+  "keywords_ja": [
+    "AI", "人工知能", "生成AI", "LLM", "エージェント",
+    "DX", "デジタル", "デジタル化", "情報通信", "自動化",
+    "中小企業", "補助金", "支援", "ガイドライン", "事例",
+    "セキュリティ", "データ", "業務改善", "地域", "導入"
+  ],
+  "keywords_en": [
+    "AI", "artificial intelligence", "generative", "LLM", "agent",
+    "automation", "enterprise", "small business", "SMB",
+    "adoption", "case study", "productivity", "model", "OpenAI",
+    "Anthropic", "Google", "Microsoft", "regulation", "governance"
+  ],
+
+  "max_items": 14
+}

@@ -78,6 +78,22 @@ def main() -> int:
 
     json.dump(data, open(LEDGER, "w", encoding="utf-8"),
               ensure_ascii=False, indent=2)
+
+    # 承認された稟議に対応する記事を、公開済みへ切り替える
+    ARTICLES = "ledger/articles.json"
+    if os.path.exists(ARTICLES):
+        arts = json.load(open(ARTICLES, encoding="utf-8"))
+        moved = []
+        for a in arts.get("articles", []):
+            if a.get("rinji") in changed and a.get("status") != "published":
+                a["status"] = "published"
+                a["published_at"] = at.split(" ")[0] if at else None
+                moved.append(a.get("no"))
+        if moved:
+            json.dump(arts, open(ARTICLES, "w", encoding="utf-8"),
+                      ensure_ascii=False, indent=2)
+            print(f"記事を公開済みにしました：No.{', No.'.join(moved)}")
+
     print(f"\n台帳を更新しました：{', '.join(changed)}")
     return 0
 
