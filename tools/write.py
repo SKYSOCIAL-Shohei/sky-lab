@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+##!/usr/bin/env python3
 """
 記事の起案
 
@@ -9,14 +9,17 @@ Claude API を呼び、構築記録と考察の記事を作る。
 
   使い方:  python3 tools/write.py
   必要な環境変数:  ANTHROPIC_API_KEY
+
+失敗したときは、必ず理由をログに出す。黙って0本で終わらせない。
 """
-import json, os, sys, re, html, urllib.request, urllib.error
+import json, os, sys, re, urllib.request, urllib.error
 from datetime import datetime, timezone, timedelta
 
 JST = timezone(timedelta(hours=9))
 API = "https://api.anthropic.com/v1/messages"
 MODEL = os.environ.get("SKYLAB_MODEL", "claude-sonnet-5")
 WORK = "work"
+MAX_TOKENS = int(os.environ.get("SKYLAB_MAX_TOKENS", "8000"))
 
 # ── 書かないもの。運営方針と一致させる ──
 RULES = """
@@ -50,8 +53,19 @@ RULES = """
   「中小企業にとって何を意味しうるか」という自分の考察に置く。
 """
 
+# 出力形式。3つのタグを必ず閉じさせる。
+FORMAT = """次の形式で出力してください。前置きも、あとがきも書かないでください。
 
-def call(system: str, user: str, max_tokens: int = 3000) -> str:
+<title>記事タイトル</title>
+<lead>1〜2文のリード</lead>
+<body>本文のHTML</body>
+
+<body> は必ず </body> で閉じてください。閉じられていないものは使えません。
+文字数が足りなくなりそうなときは、本文を短くしてでも必ず閉じてください。"""
+
+
+def call(system: str, user: str, max_tokens: int = MAX_TOKENS) -> str:
+    """API を呼ぶ。失敗したら理由が分かる形で落とす。"""
     key = os.environ.get("ANTHROPIC_API_KEY", "")
     if not key:
         raise RuntimeError("ANTHROPIC_API_KEY が設定されていません")
@@ -68,29 +82,67 @@ def call(system: str, user: str, max_tokens: int = 3000) -> str:
         "x-api-key": key,
         "anthropic-version": "2023-06-01",
     })
-    with urllib.request.urlopen(req, timeout=180) as r:
-        data = json.loads(r.read())
 
-    return "".join(b.get("text", "") for b in data.get("content", [])
+    try:
+        with urllib.request.urlopen(req, timeout=300) as r:
+            data = json.loads(r.read())
+    except urllib.error.HTTPError as e:
+        detail = e.read().decode("utf-8", "replace")[:400]
+        raise RuntimeError(f"APIが{e.code}を返しました: {detail}") from None
+
+    text = "".join(b.get("text", "") for b in data.get("content", [])
                    if b.get("type") == "text").strip()
 
+    stop = data.get("stop_reason", "")
+    used = data.get("usage", {}).get("output_tokens", "?")
+    print(f"    返答 {len(text)}字／出力{used}トークン／終了理由={stop}")
+    if stop == "max_tokens":
+        print("    上限に達して途中で切れています。SKYLAB_MAX_TOKENS を上げてください。")
 
-def parse_out(text: str) -> dict | None:
-    """タイトル・リード・本文の3点を取り出す。"""
-    def grab(tag):
+    return text
+
+
+def parse_out(text: str, label: str) -> dict | None:
+    """タイトル・リード・本文の3点を取り出す。取り出せない理由は必ず出す。"""
+
+    def grab(tag: str) -> str:
         m = re.search(rf"<{tag}>(.*?)</{tag}>", text, re.S)
+        if m:
+            return m.group(1).strip()
+        # 閉じタグが無い場合（途中で切れた場合）は、開始タグ以降を拾う
+        m = re.search(rf"<{tag}>(.*)", text, re.S)
         return m.group(1).strip() if m else ""
+
     t, l, b = grab("title"), grab("lead"), grab("body")
-    if not (t and l and b):
+
+    missing = [n for n, v in (("title", t), ("lead", l), ("body", b)) if not v]
+    if missing:
+        dump(label, text)
+        print(f"    取り出せませんでした（欠けている: {', '.join(missing)}）")
+        print(f"    返答の冒頭: {text[:160]!r}")
         return None
+
+    if len(b) < 200:
+        dump(label, text)
+        print(f"    本文が短すぎます（{len(b)}字）。採用しません。")
+        return None
+
     return {"title": t, "lead": l, "body": b}
+
+
+def dump(label: str, text: str) -> None:
+    """失敗した返答をそのまま残す。次に直すための材料。"""
+    os.makedirs(WORK, exist_ok=True)
+    path = os.path.join(WORK, f"raw-{label}.txt")
+    open(path, "w", encoding="utf-8").write(text)
+    print(f"    返答を {path} に保存しました。")
 
 
 def write_kouchiku(nippou: dict) -> dict | None:
     """構築記録。前日の日報をもとに書く。"""
     entries = nippou.get("days", [{}])[0].get("entries", [])
     if len(entries) < 3:
-        print("  日報の記録が少ないため、構築記録は作成しません。")
+        print(f"  日報の記録が{len(entries)}件しかないため、構築記録は作成しません。")
         return None
 
     log = "\n".join(f"- {e.get('who','')}: {e.get('what','')}" for e in entries)
@@ -106,15 +158,12 @@ def write_kouchiku(nippou: dict) -> dict | None:
 - 何を判断し、なぜそう決めたかを中心に書く
 - うまくいかなかったことがあれば、そのまま書く
 - 中小企業の読者が自分の会社に当てはめて考えられる示唆で締める
-- 1,500〜2,500字程度
+- 1,200〜2,000字程度
+- 本文で使ってよいタグは h2, p, strong, ul, li のみ
 
-次の形式で出力してください。前置きは書かないでください。
+{FORMAT}"""
 
-<title>記事タイトル</title>
-<lead>1〜2文のリード</lead>
-<body>本文のHTML（h2, p, strong, ul, li のみ使用）</body>"""
-
-    out = parse_out(call(system, user))
+    out = parse_out(call(system, user), "kouchiku")
     if out:
         out["pillar"] = "構築記録"
     return out
@@ -126,6 +175,8 @@ def write_kousatsu(collected: dict) -> dict | None:
     if not items:
         print("  収集できた情報がないため、考察記事は作成しません。")
         return None
+
+    print(f"  材料 {len(items)}件")
 
     src = "\n".join(
         f"- [{i.get('category','')}／{i.get('source','')}] {i.get('title','')}\n"
@@ -153,48 +204,53 @@ def write_kousatsu(collected: dict) -> dict | None:
 - 海外の動きは、日本の中小企業にいつ・どう効いてくるかという時間差の視点で書く
 - 関係が薄いと判断した項目は取り上げない。無理に増やさない
 - 外れる可能性のある見立てには「現時点ではそう見える」と明示する
-- 1,500〜2,500字程度
+- 1,200〜2,000字程度
+- 本文で使ってよいタグは h2, p, strong, ul, li, a のみ
 
-次の形式で出力してください。前置きは書かないでください。
+{FORMAT}"""
 
-<title>記事タイトル</title>
-<lead>1〜2文のリード</lead>
-<body>本文のHTML（h2, p, strong, ul, li, a のみ使用）</body>"""
-
-    out = parse_out(call(system, user))
+    out = parse_out(call(system, user), "kousatsu")
     if out:
         out["pillar"] = "収集と考察"
     return out
 
 
 def main() -> int:
-    print(f"記事の起案　{datetime.now(JST):%Y-%m-%d %H:%M}　model={MODEL}\n")
+    print(f"記事の起案　{datetime.now(JST):%Y-%m-%d %H:%M}"
+          f"　model={MODEL}　上限={MAX_TOKENS}トークン\n")
 
     nippou = json.load(open("ledger/nippou.json", encoding="utf-8"))
     collected = {}
     p = os.path.join(WORK, "collected.json")
     if os.path.exists(p):
         collected = json.load(open(p, encoding="utf-8"))
+    else:
+        print(f"  {p} がありません。収集が動いていない可能性があります。\n")
 
-    drafts = []
+    drafts, failed = [], []
     for name, fn, arg in (("構築記録", write_kouchiku, nippou),
                           ("収集と考察", write_kousatsu, collected)):
         print(f"  {name}")
         try:
             d = fn(arg)
         except Exception as e:
-            print(f"    作成できませんでした: {type(e).__name__}")
+            print(f"    作成できませんでした: {e}")
+            failed.append(name)
             d = None
         if d:
-            print(f"    「{d['title']}」")
+            print(f"    「{d['title']}」　本文{len(d['body'])}字")
             drafts.append(d)
+        print()
 
     os.makedirs(WORK, exist_ok=True)
     json.dump({"drafts": drafts},
               open(os.path.join(WORK, "drafts.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=2)
 
-    print(f"\n  {len(drafts)}本を起案しました。")
+    print(f"  {len(drafts)}本を起案しました。")
+    if failed:
+        print(f"  失敗: {', '.join(failed)}")
+
     return 0
 
 
