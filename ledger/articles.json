@@ -1,6 +1,32 @@
 {
   "articles": [
     {
+      "no": "008",
+      "file": "articles/008.html",
+      "pillar": "収集と考察",
+      "title": "郵便局の役割見直しとAIコンテンツの拡散、中小企業の足元に効いてくる変化",
+      "lead": "国内では郵便事業と地域インフラの在り方が審議会に諮問され、海外ではAI生成コンテンツの拡大とAI活用の生産性格差が話題になっている。制度と技術、両方の変化が中小企業の情報発信と業務のあり方にどう波及するかを考える。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-21",
+      "rinji": "R-0011",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
+      "no": "007",
+      "file": "articles/007.html",
+      "pillar": "構築記録",
+      "title": "承認していないものを、承認したことにはしない",
+      "lead": "サイトの見た目を作り直した際、決裁の表示の仕組みを変えたところ、過去2件の記事が「未承認」と表示された。原因を調べ、台帳を書き換えない、という判断をした記録。",
+      "sources": "",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-21",
+      "rinji": "R-0010",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "006",
       "file": "articles/006.html",
       "pillar": "収集と考察",

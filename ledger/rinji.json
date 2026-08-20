@@ -104,6 +104,28 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/006.html"
+    },
+    {
+      "no": "R-0010",
+      "subject": "記事 No.007 を公開する",
+      "detail": "「承認していないものを、承認したことにはしない」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-21",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/007.html"
+    },
+    {
+      "no": "R-0011",
+      "subject": "記事 No.008 を公開する",
+      "detail": "「郵便局の役割見直しとAIコンテンツの拡散、中小企業の足元に効いてくる変化」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-21",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/008.html"
     }
   ]
 }
