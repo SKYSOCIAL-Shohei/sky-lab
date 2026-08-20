@@ -4,33 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>稟議一覧 — SKY SOCIAL LAB</title>
-<meta name="description" content="AIが起案し人間が承認した記録の全件。記事の公開だけでなく、修正や差し戻しも含めて番号順に残しています。">
+<meta name="description" content="AIが起案し人間が承認した記録の全件。承認待ちのものも、差し戻したものも、番号順にすべて残しています。">
 <link rel="stylesheet" href="style.css">
-<style>
-.rin{border-top:1px solid var(--rule);padding:20px 0}
-.rin:last-child{border-bottom:1px solid var(--rule)}
-.rhd{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.rno{font-family:var(--mono);font-size:12px;color:var(--ink-3);letter-spacing:.04em}
-.badge{font-size:11px;padding:2px 8px;border-radius:2px;letter-spacing:.04em;border:1px solid}
-.badge.ok{color:#2F6B3C;border-color:#BFD6C4;background:#F0F6F1}
-.badge.wait{color:#9A5B12;border-color:#E5D2B3;background:#FBF4E8}
-.badge.ng{color:#8C2F27;border-color:#E3C4C1;background:#FAF0EF}
-.rsub{font-family:var(--mincho);font-size:18px;margin-top:8px;line-height:1.6}
-.rdet{font-size:14px;color:var(--ink-2);margin-top:5px}
-.rmeta{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:10px;letter-spacing:.03em;line-height:1.9}
-.rlink{font-size:13px;margin-top:8px}
-.summary{display:flex;gap:0;border:1px solid var(--rule);margin:26px 0 8px}
-.sc{flex:1;padding:13px;text-align:center;border-right:1px solid var(--rule)}
-.sc:last-child{border-right:0}
-.sc .n{font-family:var(--mono);font-size:21px}
-.sc .l{font-size:11px;color:var(--ink-3);margin-top:1px}
-</style>
 </head>
 <body>
 
 <header><div class="hd">
   <a href="./" class="logo">SKY SOCIAL LAB</a>
-  <nav class="nav"><a href="./">記録</a><a href="rinji.html">稟議</a><a href="about.html">このサイトについて</a></nav>
+  <nav class="nav"><a href="./">記録</a><a href="rinji.html" aria-current="page">稟議</a><a href="about.html">このサイトについて</a></nav>
 </div></header>
 
 <div class="wrap">
@@ -38,19 +19,33 @@
   <div class="a-head">
     <h1>稟議一覧</h1>
     <p class="lead">AIが起案し、人間が承認した記録の全件です。記事の公開だけでなく、修正や差し戻しも番号順に残しています。欠番はありません。</p>
-    <div class="note" style="margin-top:20px">
-      <b>2026-08-17 訂正：</b>本サイト立ち上げ当日、承認する手段が整っていないにもかかわらず、AIが承認欄に承認者名と日付を記入していました。実際には誰も承認していません。該当する R-0001〜R-0004 はすべて未承認へ戻しています。現在は、承認者をGitHubが記録する方式へ移行中です。
+    <div class="note">
+      <b>2026-08-17 訂正：</b>本サイト立ち上げ当日、承認する手段が整っていないにもかかわらず、AIが承認欄に承認者名と日付を記入していました。実際には誰も承認していません。該当する R-0001〜R-0004 はすべて未承認へ戻しています。現在は、承認者をGitHubが記録する方式へ移行しました。
     </div>
   </div>
 
   <div class="summary">
     <div class="sc"><div class="n" id="c-all">—</div><div class="l">起票</div></div>
+    <div class="sc wait"><div class="n" id="c-wait">—</div><div class="l">承認待ち</div></div>
     <div class="sc"><div class="n" id="c-ok">—</div><div class="l">承認済</div></div>
-    <div class="sc"><div class="n" id="c-wait">—</div><div class="l">承認待ち</div></div>
     <div class="sc"><div class="n" id="c-ng">—</div><div class="l">差し戻し</div></div>
   </div>
 
-  <div id="list"><p style="padding:26px 0;color:var(--ink-3);font-size:14px">読み込んでいます…</p></div>
+  <section class="gsect">
+    <h2>承認待ち</h2>
+    <p class="gnote">人間がまだ判断していないものです。公開されている記事に対応する稟議がここに残っている場合、それは承認前に公開されたことを意味します。</p>
+    <div id="wait"><p class="empty">読み込んでいます…</p></div>
+  </section>
+
+  <details class="gsect" id="okwrap">
+    <summary>承認済</summary>
+    <div id="ok"></div>
+  </details>
+
+  <details class="gsect" id="ngwrap">
+    <summary>差し戻し・取り下げ</summary>
+    <div id="ng"></div>
+  </details>
 
   <p class="disclosure">
     この一覧は台帳 <code>ledger/rinji.json</code> をそのまま表示しています。台帳は誰でも参照できます。<br>
@@ -69,34 +64,48 @@
 const BADGE={approved:["ok","承認済"],pending:["wait","承認待ち"],rejected:["ng","差し戻し"],withdrawn:["ng","取り下げ"]};
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
+const row=r=>{
+  const [cls,label]=BADGE[r.status]||["wait",esc(r.status)];
+  const stamp=r.status==="approved"
+    ? `承認　${esc(r.approved_by)}　${esc(r.approved_at)}`
+    : "承認　—";
+  const link=r.article
+    ? `<div class="rlink"><a href="${esc(r.article)}">対象の記事を見る</a></div>` : "";
+  return `<div class="rin ${r.status==="pending"?"pending":""}">
+    <div class="rhd"><span class="rno">${esc(r.no)}</span><span class="badge ${cls}">${label}</span></div>
+    <div class="rsub">${esc(r.subject)}</div>
+    <div class="rdet">${esc(r.detail)}</div>
+    <div class="rmeta">起案　${esc(r.proposed_by)}　${esc(r.proposed_at)}<br>${stamp}</div>
+    ${link}
+  </div>`;
+};
+
+const put=(id,rows,empty)=>{
+  document.getElementById(id).innerHTML =
+    rows.length ? rows.map(row).join("") : `<p class="empty">${empty}</p>`;
+};
+
 fetch("ledger/rinji.json").then(r=>r.json()).then(d=>{
-  const rows=(d.rinji||[]).slice().sort((a,b)=>String(b.no).localeCompare(String(a.no)));
-  const n={approved:0,pending:0,rejected:0,withdrawn:0};
-  rows.forEach(r=>{ if(n[r.status]!==undefined) n[r.status]++; });
+  const all=(d.rinji||[]).slice().sort((a,b)=>String(b.no).localeCompare(String(a.no)));
+  const of=s=>all.filter(r=>r.status===s);
+  const wait=of("pending"), ok=of("approved");
+  const ng=all.filter(r=>r.status==="rejected"||r.status==="withdrawn");
 
-  document.getElementById("c-all").textContent=rows.length;
-  document.getElementById("c-ok").textContent=n.approved;
-  document.getElementById("c-wait").textContent=n.pending;
-  document.getElementById("c-ng").textContent=n.rejected+n.withdrawn;
+  document.getElementById("c-all").textContent=all.length;
+  document.getElementById("c-wait").textContent=wait.length;
+  document.getElementById("c-ok").textContent=ok.length;
+  document.getElementById("c-ng").textContent=ng.length;
 
-  document.getElementById("list").innerHTML=rows.map(r=>{
-    const [cls,label]=BADGE[r.status]||["wait",esc(r.status)];
-    const stamp=r.status==="approved"
-      ? `承認　${esc(r.approved_by)}　${esc(r.approved_at)}`
-      : `承認　—`;
-    const link=r.article
-      ? `<div class="rlink"><a href="${esc(r.article)}">対象の記事を見る</a></div>` : "";
-    return `<div class="rin">
-      <div class="rhd"><span class="rno">${esc(r.no)}</span><span class="badge ${cls}">${label}</span></div>
-      <div class="rsub">${esc(r.subject)}</div>
-      <div class="rdet">${esc(r.detail)}</div>
-      <div class="rmeta">起案　${esc(r.proposed_by)}　${esc(r.proposed_at)}<br>${stamp}</div>
-      ${link}
-    </div>`;
-  }).join("");
+  put("wait",wait,"承認待ちはありません。");
+  put("ok",ok,"まだありません。");
+  put("ng",ng,"ありません。");
+
+  document.querySelector("#okwrap summary").textContent=`承認済　${ok.length}件`;
+  document.querySelector("#ngwrap summary").textContent=`差し戻し・取り下げ　${ng.length}件`;
+  if(wait.length===0) document.getElementById("okwrap").open=true;
 }).catch(()=>{
-  document.getElementById("list").innerHTML=
-    '<p style="padding:26px 0;color:var(--ink-3);font-size:14px">台帳を読み込めませんでした。時間をおいて再度お試しください。</p>';
+  document.getElementById("wait").innerHTML=
+    '<p class="empty">台帳を読み込めませんでした。時間をおいて再度お試しください。</p>';
 });
 </script>
 </body>
