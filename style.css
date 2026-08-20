@@ -8,6 +8,8 @@
   --rule-2:#CFCBC1;
   --stamp:#C0392F;
   --indigo:#2C4A6E;
+  --umber:#6E5330;
+  --accent:var(--indigo);
   --mincho:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif;
   --gothic:"Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,"Noto Sans JP",system-ui,sans-serif;
   --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
@@ -18,73 +20,188 @@ body{
   background:var(--paper);color:var(--ink);
   font-family:var(--gothic);font-size:16px;line-height:1.9;
   font-feature-settings:"palt";
+  -webkit-font-smoothing:antialiased;
 }
-a{color:var(--indigo);text-decoration:none;border-bottom:1px solid rgba(44,74,110,.3)}
+a{color:var(--indigo);text-decoration:none;border-bottom:1px solid rgba(44,74,110,.28)}
 a:hover{border-bottom-color:var(--indigo)}
-.wrap{max-width:720px;margin:0 auto;padding:0 22px}
+:focus-visible{outline:2px solid var(--indigo);outline-offset:3px}
+.wrap{max-width:730px;margin:0 auto;padding:0 22px}
+
+/* 構築記録＝藍（内の話）／収集と考察＝焦茶（外の話） */
+body.p-build{--accent:var(--indigo)}
+body.p-news{--accent:var(--umber)}
 
 /* ── header ── */
-header{border-bottom:1px solid var(--rule);background:var(--paper)}
-.hd{max-width:720px;margin:0 auto;padding:20px 22px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+header{border-bottom:1px solid var(--rule);background:var(--paper);position:sticky;top:0;z-index:20}
+.hd{max-width:730px;margin:0 auto;padding:16px 22px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
 .logo{font-family:var(--mincho);font-size:19px;letter-spacing:.14em;color:var(--ink);border:0}
 .logo:hover{border:0}
-.nav{display:flex;gap:18px;font-size:13px}
-.nav a{color:var(--ink-2);border:0}
+.nav{display:flex;gap:20px;font-size:13.5px}
+.nav a{color:var(--ink-2);border:0;padding:2px 0}
 .nav a:hover{color:var(--ink);border:0}
+.nav a[aria-current]{color:var(--ink);border-bottom:1px solid var(--ink)}
 
 /* ── hero ── */
-.hero{padding:56px 0 40px;border-bottom:1px solid var(--rule)}
-.hero h1{font-family:var(--mincho);font-size:30px;font-weight:400;line-height:1.6;letter-spacing:.04em}
+.hero{padding:50px 0 0}
+.hero h1{font-family:var(--mincho);font-size:31px;font-weight:400;line-height:1.62;letter-spacing:.04em}
 .hero p{margin-top:18px;color:var(--ink-2);font-size:15px}
-.hero .meta{margin-top:26px;font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.06em}
 
-/* ── ledger list ── */
-.sect-label{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ink-3);padding:36px 0 14px}
-.entry{display:block;border:0;border-top:1px solid var(--rule);padding:22px 0;color:inherit}
+/* 起案→承認→公開。実際の順序なので番号に意味がある */
+.flow{display:flex;margin:30px 0 0;border:1px solid var(--rule);background:var(--paper-2)}
+.flow div{flex:1;padding:13px 12px;border-right:1px solid var(--rule);text-align:center}
+.flow div:last-child{border-right:0}
+.flow .n{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);display:block}
+.flow .t{font-family:var(--mincho);font-size:16px;letter-spacing:.06em;display:block;margin-top:2px}
+.flow .w{font-size:11.5px;color:var(--ink-3);display:block;line-height:1.6}
+.flow .me{color:var(--stamp)}
+
+.stats{display:flex;gap:26px;flex-wrap:wrap;margin-top:22px;font-family:var(--mono);font-size:11.5px;color:var(--ink-3);letter-spacing:.05em}
+.stats b{color:var(--ink);font-weight:400;font-size:13px}
+.stats .w b{color:var(--stamp)}
+
+/* ── ゾーンの見出し ── */
+.zhead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding:46px 0 6px;border-bottom:1px solid var(--rule-2)}
+.zhead h2{font-family:var(--mincho);font-size:19px;font-weight:400;letter-spacing:.09em}
+.zhead .z{font-size:12.5px;color:var(--ink-3)}
+.zhead .c{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.05em}
+
+/* ── 一覧の共通部品 ── */
+.pillar{font-size:11px;padding:2px 9px;border:1px solid;border-radius:2px;letter-spacing:.06em;white-space:nowrap;color:var(--accent);border-color:var(--accent)}
+.p-build .pillar,body.p-build .pillar{color:var(--indigo);border-color:rgba(44,74,110,.4)}
+.p-news .pillar,body.p-news .pillar{color:var(--umber);border-color:rgba(110,83,48,.4)}
+.eno{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);letter-spacing:.04em}
+.erow{display:flex;gap:11px;align-items:center;flex-wrap:wrap}
+.edate{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:11px;letter-spacing:.04em}
+
+.entry{display:block;border:0;border-top:1px solid var(--rule);padding:22px 0 22px 18px;color:inherit;position:relative}
+.entry::before{content:"";position:absolute;left:0;top:22px;bottom:22px;width:2px;background:var(--indigo);opacity:.85}
+.entry.p-news::before{background:var(--umber)}
 .entry:hover{border:0;border-top:1px solid var(--rule)}
 .entry:hover .etitle{color:var(--indigo)}
-.entry:last-of-type{border-bottom:1px solid var(--rule)}
-.erow{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
-.eno{font-family:var(--mono);font-size:12px;color:var(--ink-3);letter-spacing:.04em}
-.pillar{font-size:11px;padding:2px 8px;border:1px solid var(--rule-2);border-radius:2px;color:var(--ink-2);letter-spacing:.04em}
-.etitle{font-family:var(--mincho);font-size:19px;font-weight:400;line-height:1.6;margin-top:7px;transition:color .15s}
-.elead{font-size:14px;color:var(--ink-2);margin-top:6px}
-.edate{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:9px;letter-spacing:.04em}
+.entry.p-news:hover .etitle{color:var(--umber)}
+.etitle{font-family:var(--mincho);font-size:20px;font-weight:400;line-height:1.62;margin-top:9px;transition:color .15s;letter-spacing:.02em}
+.elead{font-size:14px;color:var(--ink-2);margin-top:7px;line-height:1.85}
 
-/* ── article ── */
-article{padding:52px 0 0}
-.a-head{border-bottom:1px solid var(--rule);padding-bottom:28px}
-.a-head h1{font-family:var(--mincho);font-size:29px;font-weight:400;line-height:1.62;letter-spacing:.03em;margin-top:12px}
-.a-head .lead{margin-top:16px;color:var(--ink-2);font-size:15px}
-.a-body{padding:34px 0 8px}
-.a-body h2{font-family:var(--mincho);font-size:21px;font-weight:400;letter-spacing:.03em;margin:46px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
-.a-body h3{font-size:16px;font-weight:500;margin:32px 0 10px}
-.a-body p{margin:17px 0}
-.a-body ul,.a-body ol{margin:17px 0 17px 1.3em}
-.a-body li{margin:7px 0}
-.a-body strong{font-weight:500;background:linear-gradient(transparent 62%,rgba(192,57,47,.13) 62%)}
-.a-body blockquote{margin:24px 0;padding:2px 0 2px 18px;border-left:2px solid var(--rule-2);color:var(--ink-2)}
-.a-body table{width:100%;border-collapse:collapse;margin:22px 0;font-size:14px}
+/* 主役。最新の構築記録 */
+.lead-art{border-top:0;padding-top:26px}
+.lead-art::before{top:26px}
+.lead-art .etitle{font-size:27px;line-height:1.5;margin-top:12px}
+.lead-art .elead{font-size:15px;margin-top:12px}
+
+/* 過去の構築記録は2列に畳む */
+.sub{display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+.sub .entry{padding:20px 0 20px 16px}
+.sub .entry::before{top:20px;bottom:20px}
+.sub .etitle{font-size:17px;line-height:1.6}
+.sub .elead{display:none}
+
+/* 収集と考察はダイジェストとして畳む */
+.dig{display:block;border:0;border-top:1px solid var(--rule);padding:16px 0 16px 16px;color:inherit;position:relative}
+.dig::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;background:var(--umber);opacity:.85}
+.dig:hover{border:0;border-top:1px solid var(--rule)}
+.dig:hover .t{color:var(--umber)}
+.dig:last-of-type{border-bottom:1px solid var(--rule)}
+.dig .d{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.05em}
+.dig .t{font-family:var(--mincho);font-size:17px;line-height:1.6;margin-top:3px;transition:color .15s}
+.dig .s{font-size:12px;color:var(--ink-3);margin-top:5px;line-height:1.7}
+
+/* ── 記事 ── */
+article{padding:44px 0 0}
+.a-head{border-bottom:1px solid var(--rule);padding-bottom:26px}
+.a-head h1{font-family:var(--mincho);font-size:29px;font-weight:400;line-height:1.6;letter-spacing:.03em;margin-top:13px}
+.a-head .lead{margin-top:16px;color:var(--ink-2);font-size:15px;line-height:1.9}
+.a-body{padding:30px 0 8px;font-size:16.5px;line-height:2.05}
+.a-body>p:first-child{font-size:17px}
+.a-body h2{font-family:var(--mincho);font-size:21px;font-weight:400;letter-spacing:.03em;line-height:1.6;margin:52px 0 16px;padding-left:14px;border-left:3px solid var(--accent)}
+.a-body h3{font-size:16.5px;font-weight:600;margin:34px 0 10px}
+.a-body p{margin:19px 0}
+.a-body ul,.a-body ol{margin:19px 0 19px 1.35em}
+.a-body li{margin:9px 0}
+.a-body strong{font-weight:600;background:linear-gradient(transparent 62%,rgba(192,57,47,.14) 62%)}
+.a-body blockquote{margin:26px 0;padding:4px 0 4px 20px;border-left:2px solid var(--rule-2);color:var(--ink-2)}
+.a-body table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px}
 .a-body th,.a-body td{border:1px solid var(--rule);padding:9px 11px;text-align:left}
-.a-body th{background:var(--paper-2);font-weight:500}
+.a-body th{background:var(--paper-2);font-weight:600}
 .a-body code{font-family:var(--mono);font-size:13px;background:var(--paper-2);padding:1px 5px;border-radius:2px}
-.note{background:var(--paper-2);border:1px solid var(--rule);padding:16px 18px;margin:26px 0;font-size:14px;color:var(--ink-2)}
-.note b{color:var(--ink);font-weight:500}
+/* 出典リンクは本文の流れを切らないよう小さく落とす */
+.a-body a[href^="http"]{font-size:13px;color:var(--ink-2);border-bottom:1px dotted var(--rule-2);white-space:nowrap}
+.a-body a[href^="http"]::before{content:"出典 ";font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--ink-3)}
+.a-body a[href^="http"]:hover{color:var(--accent);border-bottom-color:var(--accent)}
 
-/* ── approval stamp ── */
-.stampbox{display:flex;gap:20px;align-items:center;flex-wrap:wrap;border:1px solid var(--rule);background:var(--paper-2);padding:20px 22px;margin:44px 0 0}
-.stamp{width:70px;height:70px;flex-shrink:0}
-.stampinfo{flex:1;min-width:200px;font-family:var(--mono);font-size:11.5px;line-height:2;color:var(--ink-2);letter-spacing:.03em}
+.note{background:var(--paper-2);border:1px solid var(--rule);border-left:3px solid var(--rule-2);padding:16px 18px;margin:26px 0;font-size:14px;color:var(--ink-2);line-height:1.85}
+.note b{color:var(--ink);font-weight:600}
+
+/* ── 決裁欄。このサイトの中心 ── */
+.stampbox{display:flex;gap:22px;align-items:center;flex-wrap:wrap;border:1px solid var(--rule);background:var(--paper-2);padding:20px 22px;margin:52px 0 0}
+.stamp{width:72px;height:72px;flex-shrink:0}
+.stampinfo{flex:1;min-width:210px;font-family:var(--mono);font-size:11.5px;line-height:2.05;color:var(--ink-2);letter-spacing:.03em}
 .stampinfo em{font-style:normal;color:var(--ink)}
-.disclosure{font-size:13px;color:var(--ink-2);border-top:1px solid var(--rule);margin-top:24px;padding-top:20px}
+.stampinfo .pend{color:var(--ink-3)}
+.disclosure{font-size:13px;color:var(--ink-2);border-top:1px solid var(--rule);margin-top:24px;padding-top:20px;line-height:1.85}
 
-footer{border-top:1px solid var(--rule);margin-top:64px;padding:26px 0 44px}
-.ft{max-width:720px;margin:0 auto;padding:0 22px;font-size:12px;color:var(--ink-3);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+/* ── 稟議一覧 ── */
+.summary{display:flex;border:1px solid var(--rule);margin:26px 0 0}
+.sc{flex:1;padding:14px 8px;text-align:center;border-right:1px solid var(--rule)}
+.sc:last-child{border-right:0}
+.sc .n{font-family:var(--mono);font-size:22px;line-height:1.3}
+.sc .l{font-size:11px;color:var(--ink-3);margin-top:1px}
+.sc.wait{background:var(--paper-2)}
+.sc.wait .n{color:var(--stamp)}
+
+.gsect{padding:38px 0 0}
+.gsect>h2{font-family:var(--mincho);font-size:18px;font-weight:400;letter-spacing:.06em;padding-bottom:10px;border-bottom:1px solid var(--rule-2)}
+.gsect>.gnote{font-size:13px;color:var(--ink-3);margin-top:10px}
+details.gsect>summary{font-family:var(--mincho);font-size:18px;font-weight:400;letter-spacing:.06em;padding-bottom:10px;border-bottom:1px solid var(--rule-2);cursor:pointer;list-style:none}
+details.gsect>summary::-webkit-details-marker{display:none}
+details.gsect>summary::after{content:"＋ 表示";font-family:var(--gothic);font-size:12px;color:var(--ink-3);margin-left:10px}
+details.gsect[open]>summary::after{content:"− 隠す"}
+
+.rin{border-bottom:1px solid var(--rule);padding:20px 0 20px 16px}
+.rin.pending{border-left:2px solid var(--stamp)}
+.rhd{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.rno{font-family:var(--mono);font-size:12px;color:var(--ink-3);letter-spacing:.04em}
+.badge{font-size:11px;padding:2px 9px;border-radius:2px;letter-spacing:.05em;border:1px solid}
+.badge.ok{color:#2F6B3C;border-color:#BFD6C4;background:#F0F6F1}
+.badge.wait{color:#9A5B12;border-color:#E5D2B3;background:#FBF4E8}
+.badge.ng{color:#8C2F27;border-color:#E3C4C1;background:#FAF0EF}
+.rsub{font-family:var(--mincho);font-size:18px;margin-top:9px;line-height:1.6}
+.rdet{font-size:14px;color:var(--ink-2);margin-top:5px}
+.rmeta{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:11px;letter-spacing:.03em;line-height:1.95}
+.rlink{font-size:13px;margin-top:8px}
+.empty{padding:22px 0;color:var(--ink-3);font-size:14px}
+
+footer{border-top:1px solid var(--rule);margin-top:66px;padding:26px 0 46px}
+.ft{max-width:730px;margin:0 auto;padding:0 22px;font-size:12px;color:var(--ink-3);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .ft a{color:var(--ink-3)}
 
-@media(max-width:560px){
-  .hero h1{font-size:24px}
-  .a-head h1{font-size:23px}
-  .a-body h2{font-size:19px}
-  .hero{padding:40px 0 30px}
+@media(max-width:640px){
+  .sub{grid-template-columns:1fr;gap:0}
 }
+@media(max-width:560px){
+  body{font-size:16px;line-height:1.95}
+  .wrap{padding:0 20px}
+  .hd{padding:14px 20px}
+  .logo{font-size:17px}
+  .nav{gap:16px;font-size:13px}
+  .hero{padding:38px 0 0}
+  .hero h1{font-size:24px;line-height:1.66}
+  .flow{flex-direction:column}
+  .flow div{border-right:0;border-bottom:1px solid var(--rule);display:flex;align-items:baseline;gap:10px;text-align:left;padding:11px 14px}
+  .flow div:last-child{border-bottom:0}
+  .flow .t{margin-top:0}
+  .flow .w{margin-left:auto}
+  .stats{gap:18px;font-size:11px}
+  .zhead{padding-top:38px}
+  .lead-art .etitle{font-size:22px}
+  .etitle{font-size:18px}
+  .dig .t{font-size:16px}
+  .a-head h1{font-size:23px}
+  .a-body{font-size:16px;line-height:2.0}
+  .a-body>p:first-child{font-size:16px}
+  .a-body h2{font-size:19px;margin:42px 0 14px;padding-left:12px}
+  .stampbox{padding:18px;gap:16px}
+  .stamp{width:62px;height:62px}
+  .sc .n{font-size:19px}
+  .ft{padding:0 20px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
