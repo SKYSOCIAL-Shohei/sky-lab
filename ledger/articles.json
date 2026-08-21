@@ -1,6 +1,32 @@
 {
   "articles": [
     {
+      "no": "008",
+      "file": "articles/008.html",
+      "pillar": "収集と考察",
+      "title": "郵便局の役割見直しと生成AI導入事例、中小企業が今見ておきたい視点",
+      "lead": "本日の見出しからは、国内の郵便事業をめぐる制度議論と、生成AI活用の具体例、そして海外発の検索流入対策という三つの動きが目についた。いずれも中小企業にとって、すぐにではなくとも数年単位で効いてくる可能性がある。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-21",
+      "rinji": "R-0011",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
+      "no": "007",
+      "file": "articles/007.html",
+      "pillar": "構築記録",
+      "title": "「未承認」と表示されて気づいたこと ― 決裁の可視化がもたらした訂正",
+      "lead": "サイトの決裁欄の表示方法を変えたところ、過去の記事の一部が「未承認」と表示されることが分かった。原因を調べ、記録を書き換えずに訂正で対応した経緯を残す。",
+      "sources": "",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-21",
+      "rinji": "R-0010",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "006",
       "file": "articles/006.html",
       "pillar": "収集と考察",
