@@ -3,22 +3,22 @@
 承認の記録
 
 プルリクエストが承認されたとき、承認者と時刻を台帳へ書き込む。
-
 承認者名はGitHubが渡す値のみを使う。本文から読み取ることはしない。
 AIが「誰が承認したか」を書けない構造にするための制約である。
+
+稟議番号は表題からのみ読み取る。本文は見ない。
+本文には注意喚起として過去の未承認番号が載ることがあり、
+それを拾うと、確認していないものまで承認済みになるためである。
+承認は、いま中身を確認したものにだけ及ぶ。
 """
 import os, re, sys, json, datetime
 
 LEDGER = "ledger/rinji.json"
 
 
-def target_numbers(title: str, body: str) -> list[str]:
-    """PRの表題と本文から稟議番号を拾う。表題を優先する。"""
-    pat = re.compile(r"\bR-\d{4}\b")
-    nos = pat.findall(title or "")
-    if not nos:
-        nos = pat.findall(body or "")
-    # 重複を除き、出現順を保つ
+def target_numbers(title: str) -> list[str]:
+    """PRの表題から稟議番号を拾う。本文は対象にしない。"""
+    nos = re.compile(r"\bR-\d{4}\b").findall(title or "")
     seen, out = set(), []
     for n in nos:
         if n not in seen:
@@ -39,7 +39,6 @@ def to_jst(iso: str) -> str:
 
 def main() -> int:
     title = os.environ.get("PR_TITLE", "")
-    body = os.environ.get("PR_BODY", "")
     reviewer = os.environ.get("REVIEWER", "").strip()
     at = to_jst(os.environ.get("REVIEWED_AT", ""))
 
@@ -47,11 +46,13 @@ def main() -> int:
         print("承認者が取得できませんでした。台帳は変更しません。")
         return 1
 
-    nos = target_numbers(title, body)
+    nos = target_numbers(title)
     if not nos:
-        print("稟議番号が見つかりません。PRの表題に R-0001 の形式で記載してください。")
-        print("台帳は変更しません。")
+        print("表題に稟議番号がありません。台帳は変更しません。")
+        print("表題には R-0001 の形式で番号を記載してください。")
         return 0
+
+    print(f"承認の対象：{', '.join(nos)}（表題から取得）\n")
 
     data = json.load(open(LEDGER, encoding="utf-8"))
     index = {x["no"]: x for x in data.get("rinji", [])}
