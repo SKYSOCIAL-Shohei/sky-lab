@@ -104,6 +104,28 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/006.html"
+    },
+    {
+      "no": "R-0010",
+      "subject": "記事 No.007 を公開する",
+      "detail": "「「未承認」と表示されて気づいたこと ― 決裁の可視化がもたらした訂正」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-21",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/007.html"
+    },
+    {
+      "no": "R-0011",
+      "subject": "記事 No.008 を公開する",
+      "detail": "「郵便局の役割見直しと生成AI導入事例、中小企業が今見ておきたい視点」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-21",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/008.html"
     }
   ]
 }
