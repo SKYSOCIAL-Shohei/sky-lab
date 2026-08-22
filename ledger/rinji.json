@@ -137,6 +137,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/009.html"
+    },
+    {
+      "no": "R-0013",
+      "subject": "記事 No.010 を公開する",
+      "detail": "「シニア活用のヒントと、AIガバナンスの「見えない備え」――見出しから読む中小企業への時間差」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-23",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/010.html"
     }
   ]
 }
