@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "009",
+      "file": "articles/009.html",
+      "pillar": "収集と考察",
+      "title": "「使いこなす」の中身が変わる ― AI活用の苦労と、通信コストの地味な行方",
+      "lead": "本日は見出しレベルの情報だが、AI活用の実態、海外AIサービスの流入、通信インフラのコスト構造という三つの角度から、中小企業が近い将来に向き合うことになりそうな論点を拾っておく。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか13件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-22",
+      "rinji": "R-0012",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "008",
       "file": "articles/008.html",
       "pillar": "収集と考察",

@@ -126,6 +126,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/008.html"
+    },
+    {
+      "no": "R-0012",
+      "subject": "記事 No.009 を公開する",
+      "detail": "「「使いこなす」の中身が変わる ― AI活用の苦労と、通信コストの地味な行方」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-22",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/009.html"
     }
   ]
 }
