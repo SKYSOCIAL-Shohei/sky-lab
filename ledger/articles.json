@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "010",
+      "file": "articles/010.html",
+      "pillar": "収集と考察",
+      "title": "シニア活用のヒントと、AIガバナンスの「見えない備え」――見出しから読む中小企業への時間差",
+      "lead": "本日の見出しからは、AI活用の現場での工夫と、その裏側にあるリスク管理の課題が見えてくる。いずれも本文は未読のため、断定を避けながら中小企業への示唆を考えたい。",
+      "sources": "この日見た情報源　ITmedia AI＋・TechCrunch ほか8件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-23",
+      "rinji": "R-0013",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "009",
       "file": "articles/009.html",
       "pillar": "収集と考察",
