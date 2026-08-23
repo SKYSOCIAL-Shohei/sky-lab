@@ -148,6 +148,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/010.html"
+    },
+    {
+      "no": "R-0014",
+      "subject": "記事 No.011 を公開する",
+      "detail": "「値下げの恩恵と、見えない部分のリスク——AIコスト最適化と信頼性の間で」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-24",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/011.html"
     }
   ]
 }

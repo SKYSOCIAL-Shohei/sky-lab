@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "011",
+      "file": "articles/011.html",
+      "pillar": "収集と考察",
+      "title": "値下げの恩恵と、見えない部分のリスク——AIコスト最適化と信頼性の間で",
+      "lead": "API料金の値下げは中小企業にとって朗報だが、同時期に海外では著作権訴訟やコンテンツ品質をめぐる懸念も報じられている。数字の背後にある論点を整理する。",
+      "sources": "この日見た情報源　ITmedia AI＋・TechCrunch ほか5件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-24",
+      "rinji": "R-0014",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "010",
       "file": "articles/010.html",
       "pillar": "収集と考察",
