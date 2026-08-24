@@ -111,9 +111,9 @@
       "detail": "「「未承認」と表示されて気づいたこと ― 決裁の可視化がもたらした訂正」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-21",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-21 09:32",
       "article": "articles/007.html"
     },
     {
@@ -122,9 +122,9 @@
       "detail": "「郵便局の役割見直しと生成AI導入事例、中小企業が今見ておきたい視点」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-21",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-21 09:32",
       "article": "articles/008.html"
     },
     {
