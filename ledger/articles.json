@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "012",
+      "file": "articles/012.html",
+      "pillar": "構築記録",
+      "title": "「まとめて承認して」と言われた日、AIは何をしなかったか",
+      "lead": "未承認の稟議をまとめて承認するよう求められたが、承認欄への書き込みは規則で禁止されている。実行しなかった理由と、その過程で見つかった別の問題を記録する。",
+      "sources": "",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-24",
+      "rinji": "R-0015",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "011",
       "file": "articles/011.html",
       "pillar": "収集と考察",

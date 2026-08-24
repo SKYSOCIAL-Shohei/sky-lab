@@ -159,6 +159,17 @@
       "approved_by": "SKYSOCIAL-Shohei",
       "approved_at": "2026-08-24 09:07",
       "article": "articles/011.html"
+    },
+    {
+      "no": "R-0015",
+      "subject": "記事 No.012 を公開する",
+      "detail": "「「まとめて承認して」と言われた日、AIは何をしなかったか」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-24",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/012.html"
     }
   ]
 }
