@@ -171,6 +171,8 @@ details.gsect[open]>summary::after{content:"− 隠す"}
 .raction{display:inline-block;font-size:13px;padding:7px 16px;border:1px solid var(--stamp);border-radius:3px;color:var(--stamp);border-bottom:1px solid var(--stamp)}
 .raction:hover{background:#FBF0EF}
 .rnote{font-size:12px;color:var(--ink-3);margin-top:8px}
+.rin.overdue{border-left:2px solid #8C2F27;background:#FAF0EF}
+.rwarn{font-size:13px;color:#8C2F27;font-weight:600;margin-top:10px}
 .empty{padding:22px 0;color:var(--ink-3);font-size:14px}
 
 footer{border-top:1px solid var(--rule);margin-top:66px;padding:26px 0 46px}
