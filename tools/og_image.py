@@ -17,8 +17,15 @@ Playwrightで実際に描画してスクリーンショットし、1200x630のPN
   使い方:  python3 tools/og_image.py 012 構築記録 R-0015
   出力:    articles/og/012.png
 """
-import os, sys
+import hashlib, os, sys
 from playwright.sync_api import sync_playwright
+
+
+def file_hash(path: str) -> str:
+    """画像URLに付けるキャッシュ対策用の短いハッシュ値。
+    ファイル名は変えず中身だけ更新するため、これを?v=に付けて
+    ブラウザ・CDN双方に「内容が変わった」ことを伝える。"""
+    return hashlib.md5(open(path, "rb").read()).hexdigest()[:8]
 
 # (メイン色, 濃色, テック線色) の3色セット
 PILLAR_PALETTE = {
