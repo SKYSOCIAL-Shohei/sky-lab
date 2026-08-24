@@ -1,6 +1,32 @@
 {
   "articles": [
     {
+      "no": "014",
+      "file": "articles/014.html",
+      "pillar": "収集と考察",
+      "title": "AIエージェントの「導入障壁」と「見えない懸念」――国内外の見出しから考える中小企業の備え",
+      "lead": "AIエージェントの活用が広がる一方で、コストの壁や品質評価、プライバシーといった論点が国内外で同時に浮上している。見出しの段階ではあるが、中小企業が導入を検討する際に意識しておきたい視点を整理する。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか12件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-25",
+      "rinji": "R-0017",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
+      "no": "013",
+      "file": "articles/013.html",
+      "pillar": "構築記録",
+      "title": "承認は誰が押すのか ― 稟議の棚卸しと、見出し画像を4度描き直した一日",
+      "lead": "未承認のまま残っていた稟議を人間がまとめて承認しようとしたところ、Claudeがそれを断った。その理由と、サイトの見た目を大きく作り直した一日の記録。",
+      "sources": "",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-25",
+      "rinji": "R-0016",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "012",
       "file": "articles/012.html",
       "pillar": "構築記録",
