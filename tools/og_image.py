@@ -2,15 +2,15 @@
 """
 記事の見出し画像
 
-写真ではなく、記事のテーマを回路図（システムのパイプライン）として
-象徴的に表す。起案から公開までの一本の配線の途中に「HUMAN」ゲートが
-あり、そこがまだ閉じていない（スイッチが開いたまま）ことで、
-承認がまだAIの手を離れて人間に委ねられている状態を表現する。
-タイトルの文字は入れない（タイトルは記事ページ側で別途表示される）。
+写真ではなく、絵画的な抽象アートで記事のテーマを表す。
+密集した粒子の群れ（システム側の処理）が、左から右へ向かうにつれ
+散り、薄れていき、その先に小さな朱の光がひとつだけ灯っている
+（まだ渡されていない、決裁という一点）。図解ではなく、雰囲気で
+「AIの領域から、人間だけに委ねられた一点がある」ことを表す。
 
-pillar（構築記録／収集と考察）によって色調だけを切り替える。
-すべての記事で同じ回路図を使うのは意図的で、記録が同じ様式で
-淡々と積み重なっていくこと自体を表している。
+タイトルの文字は入れない。pillar（構築記録／収集と考察）で
+色調（藍／焦茶）だけを切り替える。粒子の配置は固定シードの疑似乱数
+なので、同じ記事番号なら常に同じ絵になる。
 
 Playwrightで実際に描画してスクリーンショットし、1200x630のPNGにする。
 
@@ -20,84 +20,75 @@ Playwrightで実際に描画してスクリーンショットし、1200x630のPN
 import os, sys
 from playwright.sync_api import sync_playwright
 
-# (背景, グリッド線, 配線, ラベル文字) の4色セット
-PILLAR_PALETTE = {
-    "構築記録":   ("#12213A", "#3A5A82", "#6E8CB8", "#8CA3C4"),
-    "収集と考察": ("#2B2114", "#7A6242", "#B89A6E", "#C4B08C"),
+PILLAR_COLOR = {
+    "構築記録": "#2C4A6E",
+    "収集と考察": "#6E5330",
 }
 
 TPL = """<!doctype html>
 <html><head><meta charset="utf-8"><style>
   *{{margin:0;padding:0}}
-  html,body{{width:1200px;height:630px;overflow:hidden;background:{bg}}}
+  html,body{{width:1200px;height:630px;overflow:hidden;background:#FBFAF7}}
 </style></head>
 <body>
 <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
-      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="{grid}" stroke-width="1" opacity="0.35"/>
-    </pattern>
-    <radialGradient id="glow" cx="50%" cy="50%" r="60%">
-      <stop offset="0%" stop-color="{wire}" stop-opacity="0.35"/>
-      <stop offset="100%" stop-color="{bg}" stop-opacity="0"/>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="soft2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+    <radialGradient id="core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="{color}" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="{color}" stop-opacity="0"/>
     </radialGradient>
+    <linearGradient id="wash" x1="0" y1="0" x2="1" y2="0.3">
+      <stop offset="0%" stop-color="{color}" stop-opacity="0.55"/>
+      <stop offset="55%" stop-color="{color}" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="{color}" stop-opacity="0"/>
+    </linearGradient>
   </defs>
 
-  <rect width="1200" height="630" fill="{bg}"/>
-  <rect width="1200" height="630" fill="url(#grid)"/>
-  <circle cx="600" cy="315" r="360" fill="url(#glow)"/>
+  <rect width="1200" height="630" fill="#FBFAF7"/>
+  <rect width="1200" height="630" fill="url(#wash)"/>
+  <ellipse cx="120" cy="300" rx="420" ry="360" fill="url(#core)" filter="url(#soft)"/>
 
-  <!-- 回路トレース：起案 → 承認(未通過) → 公開、という一本のパイプライン -->
-  <g fill="none" stroke="{wire}" stroke-width="2" opacity="0.55">
-    <path d="M 120 315 H 420"/>
-    <path d="M 420 315 V 220 H 560"/>
-    <path d="M 420 315 V 410 H 560"/>
-    <path d="M 780 220 H 920 V 315 H 1080"/>
-    <path d="M 780 410 H 920 V 315"/>
-  </g>
+  <!-- 粒子の群れ。密から疎へ、藍/焦茶から透明へ流れる -->
+  <g id="particles"></g>
 
-  <!-- ノード：起案（点灯） -->
-  <circle cx="120" cy="315" r="9" fill="{wire}"/>
-  <circle cx="120" cy="315" r="16" fill="none" stroke="{wire}" stroke-width="1.5" opacity="0.5"/>
-  <circle cx="420" cy="315" r="6" fill="{wire}"/>
+  <!-- 朱。まだ渡されていない、決裁という一点 -->
+  <circle cx="760" cy="260" r="46" fill="#C0392F" opacity="0.16" filter="url(#soft)"/>
+  <circle cx="760" cy="260" r="14" fill="#C0392F" opacity="0.55" filter="url(#soft2)"/>
+  <circle cx="760" cy="260" r="4" fill="#C0392F" opacity="0.9"/>
 
-  <!-- ゲート：承認（開いた回路＝まだ閉じていない＝未承認）。朱で強調 -->
-  <g>
-    <rect x="560" y="196" width="220" height="48" rx="8" fill="{bg}" stroke="#C0392F" stroke-width="2"/>
-    <line x1="560" y1="220" x2="600" y2="220" stroke="#C0392F" stroke-width="2"/>
-    <line x1="740" y1="220" x2="780" y2="220" stroke="#C0392F" stroke-width="2"/>
-    <text x="670" y="226" font-family="ui-monospace,monospace" font-size="15" letter-spacing="2" fill="#C0392F" text-anchor="middle">HUMAN</text>
-    <circle cx="620" cy="220" r="4" fill="#C0392F"/>
-    <circle cx="720" cy="220" r="4" fill="#C0392F"/>
-    <line x1="620" y1="220" x2="712" y2="205" stroke="#C0392F" stroke-width="2" stroke-linecap="round"/>
-  </g>
+  <!-- 筆で引いたような、水平を少し外れた一本の線 -->
+  <path d="M 40 460 C 300 430, 650 500, 1160 380" fill="none" stroke="#1A1D24" stroke-width="1.2" opacity="0.18"/>
 
-  <!-- 下側の回路（同じく承認待ち） -->
-  <g>
-    <rect x="560" y="386" width="220" height="48" rx="8" fill="{bg}" stroke="#C0392F" stroke-width="2" opacity="0.55"/>
-    <line x1="560" y1="410" x2="600" y2="410" stroke="#C0392F" stroke-width="2" opacity="0.55"/>
-    <line x1="740" y1="410" x2="780" y2="410" stroke="#C0392F" stroke-width="2" opacity="0.55"/>
-  </g>
+  <text x="70" y="580" font-family="ui-monospace,monospace" font-size="12" letter-spacing="4" fill="#828A9A" opacity="0.6">{pillar}</text>
+  <text x="1130" y="580" font-family="ui-monospace,monospace" font-size="12" letter-spacing="4" fill="#828A9A" text-anchor="end" opacity="0.6">R-{rno}</text>
 
-  <!-- 終端ノード（公開）。回路が閉じていないので消灯 -->
-  <circle cx="1080" cy="315" r="9" fill="none" stroke="{wire}" stroke-width="2"/>
-
-  <!-- HUDふうの計測線・座標ラベル -->
-  <g font-family="ui-monospace,monospace" fill="{label}" opacity="0.6">
-    <text x="70" y="80" font-size="13" letter-spacing="3">PIPELINE // DRAFT -&gt; REVIEW -&gt; PUBLISH</text>
-    <text x="70" y="100" font-size="13" letter-spacing="3" opacity="0.7">STATUS: AWAITING HUMAN APPROVAL</text>
-  </g>
-
-  <text x="1130" y="580" font-family="ui-monospace,monospace" font-size="13" letter-spacing="3" fill="{label}" text-anchor="end">SKY SOCIAL LAB · R-{rno}</text>
-  <text x="70" y="580" font-family="ui-monospace,monospace" font-size="13" letter-spacing="3" fill="{label}" opacity="0.8">{pillar}</text>
-
-  <!-- 外枠。基板のシルクスクリーンふうの角マーク -->
-  <g stroke="{grid}" stroke-width="1.5" opacity="0.5">
-    <path d="M 40 40 H 70 M 40 40 V 70"/>
-    <path d="M 1160 40 H 1130 M 1160 40 V 70"/>
-    <path d="M 40 590 H 70 M 40 590 V 560"/>
-    <path d="M 1160 590 H 1130 M 1160 590 V 560"/>
-  </g>
+  <script>
+    const ns = "http://www.w3.org/2000/svg";
+    const g = document.getElementById("particles");
+    let seed = {seed};
+    function rnd() {{ seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }}
+    for (let i = 0; i < 260; i++) {{
+      const t = rnd();
+      const x = 60 + t * t * 1050 + (rnd() - 0.5) * 60;
+      const spread = 60 + t * 320;
+      const y = 315 + (rnd() - 0.5) * spread;
+      const r = (1 - t) * 5 + 0.6 + rnd() * 1.5;
+      const op = Math.max(0.04, (1 - t) * 0.55 - rnd() * 0.15);
+      const c = document.createElementNS(ns, "circle");
+      c.setAttribute("cx", x.toFixed(1));
+      c.setAttribute("cy", y.toFixed(1));
+      c.setAttribute("r", r.toFixed(2));
+      c.setAttribute("fill", "{color}");
+      c.setAttribute("opacity", op.toFixed(3));
+      g.appendChild(c);
+    }}
+  </script>
 </svg>
 </body></html>
 """
@@ -105,9 +96,10 @@ TPL = """<!doctype html>
 
 def make(no: str, title: str, pillar: str, rinji: str = "", out_dir: str = "articles/og") -> str:
     """title は互換のため受け取るが、画像には焼き込まない（純粋にビジュアルのみ）。"""
-    bg, grid, wire, label = PILLAR_PALETTE.get(pillar, PILLAR_PALETTE["構築記録"])
+    color = PILLAR_COLOR.get(pillar, PILLAR_COLOR["構築記録"])
     rno = (rinji or no).replace("R-", "").zfill(4)
-    html = TPL.format(bg=bg, grid=grid, wire=wire, label=label, pillar=pillar, rno=rno)
+    seed = int(rno) * 97 + 42  # 記事ごとに粒子の配置を変える固定シード
+    html = TPL.format(color=color, pillar=pillar, rno=rno, seed=seed)
 
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, f"{no}.png")
@@ -116,6 +108,7 @@ def make(no: str, title: str, pillar: str, rinji: str = "", out_dir: str = "arti
         browser = p.chromium.launch()
         page = browser.new_page(viewport={"width": 1200, "height": 630})
         page.set_content(html)
+        page.wait_for_timeout(150)
         page.screenshot(path=out_path)
         browser.close()
 
