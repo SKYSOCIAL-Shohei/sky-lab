@@ -1,0 +1,51 @@
+name: 事後承認PRを作成
+
+# 限定的事後承認（AGENTS.md）の対象は「収集と考察」に限る。
+# 既にマージ済みの記事はGitHub上でApprove/Request changesを出せないため、
+# 承認専用の小さなPRを新しく作って、そちらでレビューしてもらう。
+# このPRはbot（github-actions）名義で作成されるため、
+# 人間が自分自身のPRを承認できない、という制限にかからない。
+
+on:
+  workflow_dispatch:
+    inputs:
+      rinji_numbers:
+        description: "対象の稟議番号（スペース区切り。例: R-0012 R-0013）"
+        required: true
+      reason:
+        description: "日報に残す短い理由"
+        required: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  create:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 対象が「収集と考察」であることを確認し、日報に記録
+        run: python3 tools/posthoc_approve.py ${{ github.event.inputs.rinji_numbers }} -- "${{ github.event.inputs.reason }}"
+
+      - name: 承認専用PRを作成
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NOS: ${{ github.event.inputs.rinji_numbers }}
+        run: |
+          git config user.name "sky-lab"
+          git config user.email "sky-lab@users.noreply.github.com"
+          BRANCH="posthoc-approve/${GITHUB_RUN_ID}"
+          git checkout -b "$BRANCH"
+          git add ledger/nippou.json
+          git commit -m "${NOS} の事後承認PRを起票"
+          git push -u origin "$BRANCH"
+          gh pr create \
+            --title "${NOS} 事後承認" \
+            --body "限定的事後承認（収集と考察限定）の対象として、既に公開済みの内容を確認のうえ承認してください。このPR自体の差分は日報への記録のみです。承認するとタイトルの稟議番号が台帳に反映されます。" \
+            --base main --head "$BRANCH"

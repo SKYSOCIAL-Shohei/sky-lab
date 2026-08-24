@@ -6,7 +6,7 @@ on:
 
 permissions:
   contents: write
-  pull-requests: read
+  pull-requests: write
 
 jobs:
   record:
@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.event.pull_request.merged && 'main' || github.event.pull_request.head.ref }}
 
       - uses: actions/setup-python@v5
         with:
@@ -29,7 +29,8 @@ jobs:
           REVIEWED_AT: ${{ github.event.review.submitted_at }}
         run: python3 tools/approve.py
 
-      - name: 台帳の更新を反映
+      - name: 台帳の更新をPRのブランチへ反映（未マージの場合）
+        if: github.event.pull_request.merged == false
         run: |
           if git diff --quiet ledger/; then
             echo "台帳に変更はありません"
@@ -40,3 +41,25 @@ jobs:
           git add ledger/
           git commit -m "承認を記録"
           git push
+
+      - name: 台帳の更新を新しいPRとしてmainへ反映（マージ済みの場合）
+        if: github.event.pull_request.merged == true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SOURCE_PR: ${{ github.event.pull_request.number }}
+        run: |
+          if git diff --quiet ledger/; then
+            echo "台帳に変更はありません"
+            exit 0
+          fi
+          git config user.name "sky-lab"
+          git config user.email "sky-lab@users.noreply.github.com"
+          BRANCH="record-approval/${SOURCE_PR}-${GITHUB_RUN_ID}"
+          git checkout -b "$BRANCH"
+          git add ledger/
+          git commit -m "承認を記録（元PR #${SOURCE_PR}、マージ後の承認のため新規PRで反映）"
+          git push -u origin "$BRANCH"
+          gh pr create \
+            --title "承認記録の反映：元PR #${SOURCE_PR}" \
+            --body "PR #${SOURCE_PR} は既にマージ済みのため、そのブランチへの書き込みではmainに届きません。この承認記録を新しいPRとして届けます。承認者・時刻ともGitHubのレビュー操作から取得した値で、新しい判断は含まれません。" \
+            --base main --head "$BRANCH"
