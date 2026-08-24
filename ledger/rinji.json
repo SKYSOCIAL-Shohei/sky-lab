@@ -155,9 +155,9 @@
       "detail": "「値下げの恩恵と、見えない部分のリスク——AIコスト最適化と信頼性の間で」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-24",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-24 09:07",
       "article": "articles/011.html"
     }
   ]
