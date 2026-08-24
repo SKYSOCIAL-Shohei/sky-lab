@@ -101,7 +101,7 @@ LEAD = """  <a class="entry p-build lead-art" href="{file}">
 """
 
 SUB = """    <a class="entry p-build" href="{file}">
-      <div class="card-thumb"></div>
+      <img class="card-thumb" src="articles/og/{no}.png?v={ver}" alt="" width="1200" height="630">
       <div class="ebody">
         <div class="erow"><span class="eno">No.{no}</span></div>
         <div class="etitle">{title}</div>
@@ -111,7 +111,7 @@ SUB = """    <a class="entry p-build" href="{file}">
 """
 
 DIG = """  <a class="dig" href="{file}">
-    <div class="card-thumb"></div>
+    <img class="card-thumb" src="articles/og/{no}.png?v={ver}" alt="" width="1200" height="630">
     <div class="dbody">
       <span class="d">{date}</span>
       <div class="t">{title}</div>
@@ -234,30 +234,35 @@ def build_index(arts) -> None:
     def date_of(a):
         return e(a.get("published_at") or a.get("drafted_at") or "")
 
+    def og_ver(no):
+        og_path = f"articles/og/{no}.png"
+        return og_image.file_hash(og_path) if os.path.exists(og_path) else "0"
+
     builds = [a for a in rows if a.get("pillar") == BUILD]
     news = [a for a in rows if a.get("pillar") == NEWS]
 
     parts = []
     if builds:
         h = builds[0]
-        og_path = f"articles/og/{h.get('no', '')}.png"
-        ver = og_image.file_hash(og_path) if os.path.exists(og_path) else "0"
         parts.append(LEAD.format(file=e(h.get("file", "")), no=e(str(h.get("no", ""))),
                                  title=e(h.get("title", "")), lead=e(h.get("lead", "")),
-                                 date=date_of(h), rinji=e(h.get("rinji", "")), ver=ver))
+                                 date=date_of(h), rinji=e(h.get("rinji", "")),
+                                 ver=og_ver(h.get("no", ""))))
         if builds[1:]:
             parts.append('  <div class="sub">\n')
             for a in builds[1:]:
                 parts.append(SUB.format(file=e(a.get("file", "")),
                                         no=e(str(a.get("no", ""))),
-                                        title=e(a.get("title", "")), date=date_of(a)))
+                                        title=e(a.get("title", "")), date=date_of(a),
+                                        ver=og_ver(a.get("no", ""))))
             parts.append("  </div>\n")
     else:
         parts.append('  <p class="empty">まだありません。</p>\n')
 
     dig = "".join(
-        DIG.format(file=e(a.get("file", "")), date=date_of(a),
-                   title=e(a.get("title", "")), sources=e(a.get("sources", "")))
+        DIG.format(file=e(a.get("file", "")), no=e(str(a.get("no", ""))), date=date_of(a),
+                   title=e(a.get("title", "")), sources=e(a.get("sources", "")),
+                   ver=og_ver(a.get("no", "")))
         for a in news) or '  <p class="empty">まだありません。</p>\n'
 
     open("index.html", "w", encoding="utf-8").write(INDEX.format(
