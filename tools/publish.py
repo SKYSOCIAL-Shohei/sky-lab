@@ -17,6 +17,7 @@ work/drafts.json を読み、記事HTMLを作り、
 """
 import json, os, sys, re, html
 from datetime import datetime, timezone, timedelta
+import og_image
 
 JST = timezone(timedelta(hours=9))
 WORK = "work/drafts.json"
@@ -29,6 +30,8 @@ NAV = ('<nav class="nav"><a href="{r}"{c1}>記録</a>'
        '<a href="{r}rinji.html"{c2}>稟議</a>'
        '<a href="{r}about.html"{c3}>このサイトについて</a></nav>')
 
+SITE = "https://lab.sky-social.com"
+
 TPL = """<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -36,6 +39,13 @@ TPL = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title} — SKY SOCIAL LAB</title>
 <meta name="description" content="{desc}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SKY SOCIAL LAB">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:image" content="{site}/articles/og/{no}.png">
+<meta property="og:url" content="{site}/articles/{no}.html">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body class="{pcls}">
@@ -281,12 +291,13 @@ def main() -> int:
 
         page = TPL.format(
             title=html.escape(title), desc=html.escape(d["lead"]),
-            no=no, pillar=html.escape(pillar),
+            no=no, pillar=html.escape(pillar), site=SITE,
             pcls=PILLAR_CLASS.get(pillar, ""), nav=nav("../", ""),
             lead=html.escape(d["lead"]), body=d["body"], rinji=rno)
 
         os.makedirs("articles", exist_ok=True)
         open(f"articles/{no}.html", "w", encoding="utf-8").write(page)
+        og_image.make(no, title, pillar)
 
         arts["articles"].insert(0, {
             "no": no, "file": f"articles/{no}.html", "pillar": pillar,
