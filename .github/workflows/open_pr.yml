@@ -1,0 +1,44 @@
+name: PRをbot名義で作成
+
+# チャット作業などで人間の個人アカウント権限を使ってブランチをpushすると、
+# その人自身がPRの作者になり、「自分のPRは承認できない」というGitHubの
+# 制限に必ず引っかかる。
+#
+# 既にpush済みのブランチを指定してこのworkflowを実行すると、
+# github-actions（bot）名義でPRが作られるため、人間は普通にレビュー・
+# 承認できるようになる。中身の変更はこのworkflow自身では一切行わない。
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "対象のブランチ名（既にpush済みであること）"
+        required: true
+      title:
+        description: "PRの表題"
+        required: true
+      body:
+        description: "PRの本文"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  open:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: PRを作成
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --title "${{ github.event.inputs.title }}" \
+            --body "${{ github.event.inputs.body }}" \
+            --base main --head "${{ github.event.inputs.branch }}"
