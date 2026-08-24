@@ -80,8 +80,8 @@ header{border-bottom:1px solid var(--rule);background:var(--paper);position:stic
 .edate{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:11px;letter-spacing:.04em}
 
 /* カード見出し画像。抽象グラフィック＋斜線の質感。写真は使わない */
-.card-thumb{position:relative;border-radius:14px;overflow:hidden;background:linear-gradient(155deg, var(--accent) 0%, var(--accent-dk) 100%)}
-.card-thumb::after{content:"";position:absolute;inset:0;opacity:.5;background:repeating-linear-gradient(115deg, rgba(255,255,255,.09) 0px, rgba(255,255,255,.09) 1px, transparent 1px, transparent 14px)}
+.card-thumb{position:relative;display:block;width:100%;border-radius:14px;overflow:hidden;object-fit:cover;object-position:center 55%;background:linear-gradient(155deg, var(--accent) 0%, var(--accent-dk) 100%)}
+div.card-thumb::after{content:"";position:absolute;inset:0;opacity:.5;background:repeating-linear-gradient(115deg, rgba(255,255,255,.09) 0px, rgba(255,255,255,.09) 1px, transparent 1px, transparent 14px)}
 
 .entry{display:block;border:1px solid var(--rule);border-radius:16px;overflow:hidden;padding:0;color:inherit;background:var(--paper)}
 .entry:hover{border-color:var(--rule-2)}
@@ -93,7 +93,7 @@ header{border-bottom:1px solid var(--rule);background:var(--paper);position:stic
 .elead{font-size:14px;color:var(--ink-2);margin-top:7px;line-height:1.85}
 
 /* 主役。最新の構築記録 */
-.lead-art .card-thumb{height:190px}
+.lead-art .card-thumb{height:230px}
 .lead-art .ebody{padding:20px 22px 24px}
 .lead-art .etitle{font-size:25px;line-height:1.5;margin-top:11px}
 .lead-art .elead{font-size:15px;margin-top:12px}
@@ -118,13 +118,12 @@ article{padding:34px 0 0}
 .a-head{border-bottom:1px solid var(--rule);padding:0 0 26px}
 .a-head h1{font-family:var(--mincho);font-size:29px;font-weight:400;line-height:1.6;letter-spacing:.03em;margin-top:13px}
 
-/* 見出し帯。写真は使わず、抽象グラフィック＋タイトルで構成する。
-   ここには決裁の状態を一切書かない（AIが公開時点で書けるのは
-   タイトルと種別だけ。承認済みかどうかは下部の決裁欄が台帳から動的に描く）*/
-.hband{position:relative;border-radius:20px;overflow:hidden;padding:26px 26px 24px;background:linear-gradient(155deg, var(--accent) 0%, var(--accent-dk) 100%);margin-bottom:22px}
-.hband::after{content:"";position:absolute;inset:0;opacity:.5;background:repeating-linear-gradient(115deg, rgba(255,255,255,.08) 0px, rgba(255,255,255,.08) 1px, transparent 1px, transparent 16px)}
-.hband .pillar{position:relative;color:#fff;background:rgba(255,255,255,.24)}
-.hband h1{position:relative;font-size:27px;line-height:1.55;color:#fff;margin-top:14px}
+/* 見出し画像。写真は使わず、記事のテーマを象徴する抽象アート
+   （tools/og_image.py で生成、OGP画像と同じもの）。
+   タイトルや決裁の状態は画像に焼き込まない。純粋にビジュアルのみ */
+img.hband{display:block;width:100%;height:auto;border-radius:20px;margin-bottom:22px}
+.a-head .erow{margin-top:2px}
+.a-head h1{margin-top:12px}
 .a-head .lead{margin-top:16px;color:var(--ink-2);font-size:15px;line-height:1.9}
 .a-body{padding:30px 0 8px;font-size:16.5px;line-height:2.05}
 .a-body>p:first-child{font-size:17px}
