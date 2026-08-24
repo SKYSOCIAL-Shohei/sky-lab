@@ -43,7 +43,7 @@ TPL = """<!DOCTYPE html>
 <meta property="og:site_name" content="SKY SOCIAL LAB">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="{site}/articles/og/{no}.png">
+<meta property="og:image" content="{site}/articles/og/{no}.png?v={ver}">
 <meta property="og:url" content="{site}/articles/{no}.html">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../style.css">
@@ -58,7 +58,7 @@ TPL = """<!DOCTYPE html>
 <div class="wrap">
 <article>
   <div class="a-head">
-    <img class="hband" src="og/{no}.png" alt="" width="1200" height="630">
+    <img class="hband" src="og/{no}.png?v={ver}" alt="" width="1200" height="630">
     <div class="erow">
       <span class="eno">No.{no}</span>
       <span class="pillar">{pillar}</span>
@@ -90,7 +90,7 @@ TPL = """<!DOCTYPE html>
 """
 
 LEAD = """  <a class="entry p-build lead-art" href="{file}">
-    <img class="card-thumb" src="articles/og/{no}.png" alt="" width="1200" height="630">
+    <img class="card-thumb" src="articles/og/{no}.png?v={ver}" alt="" width="1200" height="630">
     <div class="ebody">
       <div class="erow"><span class="eno">No.{no}</span><span class="pillar">構築記録</span></div>
       <div class="etitle">{title}</div>
@@ -240,9 +240,11 @@ def build_index(arts) -> None:
     parts = []
     if builds:
         h = builds[0]
+        og_path = f"articles/og/{h.get('no', '')}.png"
+        ver = og_image.file_hash(og_path) if os.path.exists(og_path) else "0"
         parts.append(LEAD.format(file=e(h.get("file", "")), no=e(str(h.get("no", ""))),
                                  title=e(h.get("title", "")), lead=e(h.get("lead", "")),
-                                 date=date_of(h), rinji=e(h.get("rinji", ""))))
+                                 date=date_of(h), rinji=e(h.get("rinji", "")), ver=ver))
         if builds[1:]:
             parts.append('  <div class="sub">\n')
             for a in builds[1:]:
@@ -288,15 +290,17 @@ def main() -> int:
         rno = next_rinji(rin["rinji"])
         title, pillar = d["title"], d["pillar"]
 
+        og_path = og_image.make(no, title, pillar, rno)
+        ver = og_image.file_hash(og_path)
+
         page = TPL.format(
             title=html.escape(title), desc=html.escape(d["lead"]),
-            no=no, pillar=html.escape(pillar), site=SITE,
+            no=no, pillar=html.escape(pillar), site=SITE, ver=ver,
             pcls=PILLAR_CLASS.get(pillar, ""), nav=nav("../", ""),
             lead=html.escape(d["lead"]), body=d["body"], rinji=rno)
 
         os.makedirs("articles", exist_ok=True)
         open(f"articles/{no}.html", "w", encoding="utf-8").write(page)
-        og_image.make(no, title, pillar, rno)
 
         arts["articles"].insert(0, {
             "no": no, "file": f"articles/{no}.html", "pillar": pillar,
