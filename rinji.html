@@ -37,7 +37,7 @@
 
   <section class="gsect">
     <h2>承認待ち</h2>
-    <p class="gnote">人間がまだ判断していないものです。公開されている記事に対応する稟議がここに残っている場合、それは承認前に公開されたことを意味します。</p>
+    <p class="gnote">人間がまだ判断していないものです。公開されている記事に対応する稟議がここに残っている場合、それは承認前に公開されたことを意味します。「GitHubで確認する」から、その提案のプルリクエストへ直接移動できます。承認そのものは、そのプルリクエストをレビューして承認する操作でのみ成立します。このページから承認することはできません。</p>
     <div id="wait"><p class="empty">読み込んでいます…</p></div>
   </section>
 
@@ -68,6 +68,11 @@
 const BADGE={approved:["ok","承認済"],pending:["wait","承認待ち"],rejected:["ng","差し戻し"],withdrawn:["ng","取り下げ"]};
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
+const REPO="SKYSOCIAL-Shohei/sky-lab";
+// R-0008・R-0009 は意図的に未承認のまま確定している（AGENTS.md 2-4）。
+// 対応するプルリクエストはすでに閉じており、行動を促すリンクは出さない。
+const PERMANENTLY_UNAPPROVED=new Set(["R-0008","R-0009"]);
+
 const row=r=>{
   const [cls,label]=BADGE[r.status]||["wait",esc(r.status)];
   const stamp=r.status==="approved"
@@ -75,12 +80,23 @@ const row=r=>{
     : "承認　—";
   const link=r.article
     ? `<div class="rlink"><a href="${esc(r.article)}">対象の記事を見る</a></div>` : "";
+  let action="";
+  if(r.status==="pending"){
+    if(PERMANENTLY_UNAPPROVED.has(r.no)){
+      action=`<div class="rnote">意図的に未承認のまま記録しています（上部の2026-08-20訂正を参照）。</div>`;
+    }else{
+      const q=encodeURIComponent(`is:pr ${r.no}`);
+      const href=`https://github.com/${REPO}/pulls?q=${q}`;
+      action=`<div class="rlink"><a class="raction" href="${href}" target="_blank" rel="noopener">GitHubで確認する →</a></div>`;
+    }
+  }
   return `<div class="rin ${r.status==="pending"?"pending":""}">
     <div class="rhd"><span class="rno">${esc(r.no)}</span><span class="badge ${cls}">${label}</span></div>
     <div class="rsub">${esc(r.subject)}</div>
     <div class="rdet">${esc(r.detail)}</div>
     <div class="rmeta">起案　${esc(r.proposed_by)}　${esc(r.proposed_at)}<br>${stamp}</div>
     ${link}
+    ${action}
   </div>`;
 };
 

@@ -168,6 +168,9 @@ details.gsect[open]>summary::after{content:"− 隠す"}
 .rdet{font-size:14px;color:var(--ink-2);margin-top:5px}
 .rmeta{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:11px;letter-spacing:.03em;line-height:1.95}
 .rlink{font-size:13px;margin-top:8px}
+.raction{display:inline-block;font-size:13px;padding:7px 16px;border:1px solid var(--stamp);border-radius:3px;color:var(--stamp);border-bottom:1px solid var(--stamp)}
+.raction:hover{background:#FBF0EF}
+.rnote{font-size:12px;color:var(--ink-3);margin-top:8px}
 .empty{padding:22px 0;color:var(--ink-3);font-size:14px}
 
 footer{border-top:1px solid var(--rule);margin-top:66px;padding:26px 0 46px}
