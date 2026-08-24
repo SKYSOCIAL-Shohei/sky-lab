@@ -1,54 +1,75 @@
 #!/usr/bin/env python3
 """
-OGP画像の生成
+記事の見出し画像（The Withheld Seal）
 
-記事の見出し帯（hband）と同じ意匠で、SNSシェア用のカード画像を作る。
-写真は使わず、抽象グラフィック（グラデーション＋斜線の質感）とタイトルのみ。
-Playwrightでブラウザに実際に描画させ、1200x630のPNGとして保存する。
+写真ではなく、抽象アートで記事のテーマを象徴的に表す。
+「境界線」と「まだ押されていない印（決裁の輪）」で、
+AIが持たない決裁の権限を表現する。タイトルの文字は入れない
+（タイトルは記事ページ側で別途テキストとして表示される）。
 
-  使い方:  python3 tools/og_image.py 012 "記事タイトル" 構築記録
+pillar（構築記録／収集と考察）によって色調だけを切り替える。
+すべての記事で同じ構図を使うのは手抜きではなく意図で、
+「同じ様式の記録が積み重なっていく」こと自体が主題である。
+
+Playwrightで実際に描画してスクリーンショットし、1200x630のPNGにする。
+
+  使い方:  python3 tools/og_image.py 012 構築記録
   出力:    articles/og/012.png
 """
-import sys, os
+import os, sys
 from playwright.sync_api import sync_playwright
 
 PILLAR_COLOR = {
-    "構築記録": ("#2C4A6E", "#203a56"),
-    "収集と考察": ("#6E5330", "#4d3a22"),
+    "構築記録": "#2C4A6E",
+    "収集と考察": "#6E5330",
 }
 
 TPL = """<!doctype html>
 <html><head><meta charset="utf-8"><style>
-  *{{box-sizing:border-box}}
-  html,body{{margin:0;width:1200px;height:630px;overflow:hidden}}
-  body{{
-    font-family:"Hiragino Kaku Gothic ProN","Hiragino Mincho ProN",sans-serif;
-    background:linear-gradient(155deg, {c1} 0%, {c2} 100%);
-    position:relative;padding:64px 68px;color:#fff;
-  }}
-  body::after{{
-    content:"";position:absolute;inset:0;opacity:.5;
-    background:repeating-linear-gradient(115deg, rgba(255,255,255,.08) 0px, rgba(255,255,255,.08) 1px, transparent 1px, transparent 22px);
-  }}
-  .logo{{position:relative;font-size:20px;letter-spacing:.16em;opacity:.85}}
-  .pillar{{position:relative;display:inline-block;margin-top:210px;font-size:17px;font-weight:600;
-    padding:7px 18px;border-radius:100px;background:rgba(255,255,255,.24);letter-spacing:.04em}}
-  h1{{position:relative;font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-weight:400;
-    font-size:46px;line-height:1.5;letter-spacing:.02em;margin:22px 0 0;max-width:1000px}}
-  .no{{position:relative;margin-top:24px;font-size:16px;opacity:.7;font-family:ui-monospace,monospace;letter-spacing:.06em}}
+  *{{margin:0;padding:0}}
+  html,body{{width:1200px;height:630px;overflow:hidden;background:#FBFAF7}}
 </style></head>
 <body>
-  <div class="logo">SKY SOCIAL LAB</div>
-  <div class="pillar">{pillar}</div>
-  <h1>{title}</h1>
-  <div class="no">No.{no}</div>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="ringLeft"><rect x="0" y="0" width="430" height="630"/></clipPath>
+    <clipPath id="ringRight"><rect x="430" y="0" width="770" height="630"/></clipPath>
+    <pattern id="hair" width="18" height="18" patternTransform="rotate(-25)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="18" stroke="#FBFAF7" stroke-width="1" opacity="0.09"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="630" fill="#FBFAF7"/>
+
+  <!-- 種別の色の領域（システム側） -->
+  <rect x="0" y="0" width="430" height="630" fill="{color}"/>
+  <rect x="0" y="0" width="430" height="630" fill="url(#hair)"/>
+
+  <!-- 境界線 -->
+  <line x1="430" y1="0" x2="430" y2="630" stroke="#1A1D24" stroke-width="1" opacity="0.12"/>
+
+  <!-- 印環（決裁の輪）。中心を境界線上、やや下寄りに置く -->
+  <circle cx="430" cy="356" r="136" fill="none" stroke="#EDE9E0" stroke-width="2" clip-path="url(#ringLeft)" opacity="0.92"/>
+  <circle cx="430" cy="356" r="136" fill="none" stroke="{color}" stroke-width="2" clip-path="url(#ringRight)" opacity="0.92"/>
+  <circle cx="430" cy="356" r="118" fill="none" stroke="#EDE9E0" stroke-width="1" clip-path="url(#ringLeft)" opacity="0.45"/>
+  <circle cx="430" cy="356" r="118" fill="none" stroke="{color}" stroke-width="1" clip-path="url(#ringRight)" opacity="0.45"/>
+
+  <!-- 朱。まだ押されていない、という含意で輪の一部の弧だけに -->
+  <path d="M 452 221 A 136 136 0 0 1 508 249" fill="none" stroke="#C0392F" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+
+  <!-- 登録記号のような、控えめな参照テキスト -->
+  <text x="1130" y="580" font-family="ui-monospace,monospace" font-size="13" letter-spacing="3" fill="#828A9A" text-anchor="end">SKY SOCIAL LAB · R-{rno}</text>
+  <text x="70" y="580" font-family="ui-monospace,monospace" font-size="13" letter-spacing="3" fill="#EDE9E0" opacity="0.55">{pillar}</text>
+</svg>
 </body></html>
 """
 
 
-def make(no: str, title: str, pillar: str, out_dir: str = "articles/og") -> str:
-    c1, c2 = PILLAR_COLOR.get(pillar, PILLAR_COLOR["構築記録"])
-    html = TPL.format(c1=c1, c2=c2, pillar=pillar, title=title, no=no)
+def make(no: str, title: str, pillar: str, rinji: str = "", out_dir: str = "articles/og") -> str:
+    """title は互換のため受け取るが、画像には焼き込まない（純粋にビジュアルのみ）。"""
+    color = PILLAR_COLOR.get(pillar, PILLAR_COLOR["構築記録"])
+    rno = (rinji or no).replace("R-", "").zfill(4)
+    html = TPL.format(color=color, pillar=pillar, rno=rno)
 
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, f"{no}.png")
@@ -64,8 +85,10 @@ def make(no: str, title: str, pillar: str, out_dir: str = "articles/og") -> str:
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("使い方: python3 tools/og_image.py <記事番号> <タイトル> <pillar>")
+    if len(sys.argv) not in (3, 4):
+        print("使い方: python3 tools/og_image.py <記事番号> <pillar> [稟議番号]")
         sys.exit(1)
-    p = make(sys.argv[1], sys.argv[2], sys.argv[3])
+    no, pillar = sys.argv[1], sys.argv[2]
+    rinji = sys.argv[3] if len(sys.argv) == 4 else ""
+    p = make(no, "", pillar, rinji)
     print(f"  作成: {p}")

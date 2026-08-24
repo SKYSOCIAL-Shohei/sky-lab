@@ -58,13 +58,12 @@ TPL = """<!DOCTYPE html>
 <div class="wrap">
 <article>
   <div class="a-head">
-    <div class="hband">
-      <div class="erow">
-        <span class="eno">No.{no}</span>
-        <span class="pillar">{pillar}</span>
-      </div>
-      <h1>{title}</h1>
+    <img class="hband" src="og/{no}.png" alt="" width="1200" height="630">
+    <div class="erow">
+      <span class="eno">No.{no}</span>
+      <span class="pillar">{pillar}</span>
     </div>
+    <h1>{title}</h1>
     <p class="lead">{lead}</p>
   </div>
 
@@ -91,7 +90,7 @@ TPL = """<!DOCTYPE html>
 """
 
 LEAD = """  <a class="entry p-build lead-art" href="{file}">
-    <div class="card-thumb"></div>
+    <img class="card-thumb" src="articles/og/{no}.png" alt="" width="1200" height="630">
     <div class="ebody">
       <div class="erow"><span class="eno">No.{no}</span><span class="pillar">構築記録</span></div>
       <div class="etitle">{title}</div>
@@ -297,7 +296,7 @@ def main() -> int:
 
         os.makedirs("articles", exist_ok=True)
         open(f"articles/{no}.html", "w", encoding="utf-8").write(page)
-        og_image.make(no, title, pillar)
+        og_image.make(no, title, pillar, rno)
 
         arts["articles"].insert(0, {
             "no": no, "file": f"articles/{no}.html", "pillar": pillar,
