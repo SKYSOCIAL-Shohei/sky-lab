@@ -166,9 +166,9 @@
       "detail": "「「まとめて承認して」と言われた日、AIは何をしなかったか」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-24",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-24 17:33",
       "article": "articles/012.html"
     }
   ]
