@@ -8,8 +8,11 @@
   --rule-2:#CFCBC1;
   --stamp:#C0392F;
   --indigo:#2C4A6E;
+  --indigo-dk:#203a56;
   --umber:#6E5330;
+  --umber-dk:#4d3a22;
   --accent:var(--indigo);
+  --accent-dk:var(--indigo-dk);
   --mincho:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif;
   --gothic:"Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,"Noto Sans JP",system-ui,sans-serif;
   --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
@@ -28,8 +31,8 @@ a:hover{border-bottom-color:var(--indigo)}
 .wrap{max-width:730px;margin:0 auto;padding:0 22px}
 
 /* 構築記録＝藍（内の話）／収集と考察＝焦茶（外の話） */
-body.p-build{--accent:var(--indigo)}
-body.p-news{--accent:var(--umber)}
+body.p-build{--accent:var(--indigo);--accent-dk:var(--indigo-dk)}
+body.p-news{--accent:var(--umber);--accent-dk:var(--umber-dk)}
 
 /* ── header ── */
 header{border-bottom:1px solid var(--rule);background:var(--paper);position:sticky;top:0;z-index:20}
@@ -66,49 +69,62 @@ header{border-bottom:1px solid var(--rule);background:var(--paper);position:stic
 .zhead .c{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.05em}
 
 /* ── 一覧の共通部品 ── */
-.pillar{font-size:11px;padding:2px 9px;border:1px solid;border-radius:2px;letter-spacing:.06em;white-space:nowrap;color:var(--accent);border-color:var(--accent)}
-.p-build .pillar,body.p-build .pillar{color:var(--indigo);border-color:rgba(44,74,110,.4)}
-.p-news .pillar,body.p-news .pillar{color:var(--umber);border-color:rgba(110,83,48,.4)}
+.pillar{font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:100px;letter-spacing:.03em;white-space:nowrap;color:var(--accent);background:color-mix(in srgb, var(--accent) 10%, transparent)}
+.p-build .pillar,body.p-build .pillar{color:var(--indigo);background:rgba(44,74,110,.09)}
+.p-news .pillar,body.p-news .pillar{color:var(--umber);background:rgba(110,83,48,.09)}
+/* 一覧では個々のカードが自分の種別色を持つ（ページ全体のbody.p-build/p-newsとは別スコープ） */
+.entry.p-build{--accent:var(--indigo);--accent-dk:var(--indigo-dk)}
+.entry.p-news,.dig{--accent:var(--umber);--accent-dk:var(--umber-dk)}
 .eno{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);letter-spacing:.04em}
 .erow{display:flex;gap:11px;align-items:center;flex-wrap:wrap}
 .edate{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:11px;letter-spacing:.04em}
 
-.entry{display:block;border:0;border-top:1px solid var(--rule);padding:22px 0 22px 18px;color:inherit;position:relative}
-.entry::before{content:"";position:absolute;left:0;top:22px;bottom:22px;width:2px;background:var(--indigo);opacity:.85}
-.entry.p-news::before{background:var(--umber)}
-.entry:hover{border:0;border-top:1px solid var(--rule)}
+/* カード見出し画像。抽象グラフィック＋斜線の質感。写真は使わない */
+.card-thumb{position:relative;border-radius:14px;overflow:hidden;background:linear-gradient(155deg, var(--accent) 0%, var(--accent-dk) 100%)}
+.card-thumb::after{content:"";position:absolute;inset:0;opacity:.5;background:repeating-linear-gradient(115deg, rgba(255,255,255,.09) 0px, rgba(255,255,255,.09) 1px, transparent 1px, transparent 14px)}
+
+.entry{display:block;border:1px solid var(--rule);border-radius:16px;overflow:hidden;padding:0;color:inherit;background:var(--paper)}
+.entry:hover{border-color:var(--rule-2)}
 .entry:hover .etitle{color:var(--indigo)}
 .entry.p-news:hover .etitle{color:var(--umber)}
-.etitle{font-family:var(--mincho);font-size:20px;font-weight:400;line-height:1.62;margin-top:9px;transition:color .15s;letter-spacing:.02em}
+.entry .card-thumb{height:96px}
+.entry .ebody{padding:16px 18px 18px}
+.etitle{font-family:var(--mincho);font-size:18px;font-weight:400;line-height:1.6;margin-top:8px;transition:color .15s;letter-spacing:.02em}
 .elead{font-size:14px;color:var(--ink-2);margin-top:7px;line-height:1.85}
 
 /* 主役。最新の構築記録 */
-.lead-art{border-top:0;padding-top:26px}
-.lead-art::before{top:26px}
-.lead-art .etitle{font-size:27px;line-height:1.5;margin-top:12px}
+.lead-art .card-thumb{height:190px}
+.lead-art .ebody{padding:20px 22px 24px}
+.lead-art .etitle{font-size:25px;line-height:1.5;margin-top:11px}
 .lead-art .elead{font-size:15px;margin-top:12px}
 
 /* 過去の構築記録は2列に畳む */
-.sub{display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
-.sub .entry{padding:20px 0 20px 16px}
-.sub .entry::before{top:20px;bottom:20px}
-.sub .etitle{font-size:17px;line-height:1.6}
+.sub{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.sub .etitle{font-size:16px;line-height:1.6}
 .sub .elead{display:none}
 
-/* 収集と考察はダイジェストとして畳む */
-.dig{display:block;border:0;border-top:1px solid var(--rule);padding:16px 0 16px 16px;color:inherit;position:relative}
-.dig::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;background:var(--umber);opacity:.85}
-.dig:hover{border:0;border-top:1px solid var(--rule)}
+/* 収集と考察はダイジェストとして畳む。横並びの小さいカード */
+.dig{display:flex;gap:14px;align-items:center;border:1px solid var(--rule);border-radius:14px;padding:12px 16px;color:inherit;background:var(--paper)}
+.dig:hover{border-color:var(--rule-2)}
 .dig:hover .t{color:var(--umber)}
-.dig:last-of-type{border-bottom:1px solid var(--rule)}
+.dig .card-thumb{width:44px;height:44px;flex-shrink:0;border-radius:10px}
+.dig .dbody{flex:1;min-width:0}
 .dig .d{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.05em}
-.dig .t{font-family:var(--mincho);font-size:17px;line-height:1.6;margin-top:3px;transition:color .15s}
+.dig .t{font-family:var(--mincho);font-size:15.5px;line-height:1.6;margin-top:3px;transition:color .15s}
 .dig .s{font-size:12px;color:var(--ink-3);margin-top:5px;line-height:1.7}
 
 /* ── 記事 ── */
-article{padding:44px 0 0}
-.a-head{border-bottom:1px solid var(--rule);padding-bottom:26px}
+article{padding:34px 0 0}
+.a-head{border-bottom:1px solid var(--rule);padding:0 0 26px}
 .a-head h1{font-family:var(--mincho);font-size:29px;font-weight:400;line-height:1.6;letter-spacing:.03em;margin-top:13px}
+
+/* 見出し帯。写真は使わず、抽象グラフィック＋タイトルで構成する。
+   ここには決裁の状態を一切書かない（AIが公開時点で書けるのは
+   タイトルと種別だけ。承認済みかどうかは下部の決裁欄が台帳から動的に描く）*/
+.hband{position:relative;border-radius:20px;overflow:hidden;padding:26px 26px 24px;background:linear-gradient(155deg, var(--accent) 0%, var(--accent-dk) 100%);margin-bottom:22px}
+.hband::after{content:"";position:absolute;inset:0;opacity:.5;background:repeating-linear-gradient(115deg, rgba(255,255,255,.08) 0px, rgba(255,255,255,.08) 1px, transparent 1px, transparent 16px)}
+.hband .pillar{position:relative;color:#fff;background:rgba(255,255,255,.24)}
+.hband h1{position:relative;font-size:27px;line-height:1.55;color:#fff;margin-top:14px}
 .a-head .lead{margin-top:16px;color:var(--ink-2);font-size:15px;line-height:1.9}
 .a-body{padding:30px 0 8px;font-size:16.5px;line-height:2.05}
 .a-body>p:first-child{font-size:17px}
@@ -118,7 +134,8 @@ article{padding:44px 0 0}
 .a-body ul,.a-body ol{margin:19px 0 19px 1.35em}
 .a-body li{margin:9px 0}
 .a-body strong{font-weight:600;background:linear-gradient(transparent 62%,rgba(192,57,47,.14) 62%)}
-.a-body blockquote{margin:26px 0;padding:4px 0 4px 20px;border-left:2px solid var(--rule-2);color:var(--ink-2)}
+.a-body blockquote{margin:30px 0;padding:22px 26px;border-left:3px solid var(--stamp);background:var(--paper-2);border-radius:0 14px 14px 0;color:var(--ink-2)}
+.a-body blockquote p{font-family:var(--mincho);font-size:19px;line-height:1.7;color:var(--ink);margin:0}
 .a-body table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px}
 .a-body th,.a-body td{border:1px solid var(--rule);padding:9px 11px;text-align:left}
 .a-body th{background:var(--paper-2);font-weight:600}
@@ -132,7 +149,7 @@ article{padding:44px 0 0}
 .note b{color:var(--ink);font-weight:600}
 
 /* ── 決裁欄。このサイトの中心 ── */
-.stampbox{display:flex;gap:22px;align-items:center;flex-wrap:wrap;border:1px solid var(--rule);background:var(--paper-2);padding:20px 22px;margin:52px 0 0}
+.stampbox{display:flex;gap:22px;align-items:center;flex-wrap:wrap;border:1px solid var(--rule);border-radius:16px;background:var(--paper-2);padding:20px 22px;margin:52px 0 0}
 .stamp{width:72px;height:72px;flex-shrink:0}
 .stampinfo{flex:1;min-width:210px;font-family:var(--mono);font-size:11.5px;line-height:2.05;color:var(--ink-2);letter-spacing:.03em}
 .stampinfo em{font-style:normal;color:var(--ink)}
@@ -180,7 +197,7 @@ footer{border-top:1px solid var(--rule);margin-top:66px;padding:26px 0 46px}
 .ft a{color:var(--ink-3)}
 
 @media(max-width:640px){
-  .sub{grid-template-columns:1fr;gap:0}
+  .sub{grid-template-columns:1fr;gap:12px}
 }
 @media(max-width:560px){
   body{font-size:16px;line-height:1.95}
@@ -201,6 +218,8 @@ footer{border-top:1px solid var(--rule);margin-top:66px;padding:26px 0 46px}
   .etitle{font-size:18px}
   .dig .t{font-size:16px}
   .a-head h1{font-size:23px}
+  .hband{padding:20px 20px 18px;border-radius:16px}
+  .hband h1{font-size:21px}
   .a-body{font-size:16px;line-height:2.0}
   .a-body>p:first-child{font-size:16px}
   .a-body h2{font-size:19px;margin:42px 0 14px;padding-left:12px}
