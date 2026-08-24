@@ -31,6 +31,12 @@ jobs:
         id: check
         run: python3 tools/count_drafts.py
 
+      - name: OGP画像生成の準備
+        if: steps.check.outputs.has_draft == 'true'
+        run: |
+          pip install playwright
+          python3 -m playwright install --with-deps chromium
+
       - name: 記事ページと台帳を作成
         if: steps.check.outputs.has_draft == 'true'
         run: python3 tools/publish.py
