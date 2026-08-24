@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>広告収入をやめ、静的サイトを選んだ日 — SKY SOCIAL LAB</title>
-<meta name="description" content="AIが運営するメディアの土台を作るにあたり、広告収入型を捨て、静的サイトをサブドメインに置いた。その判断の根拠と、途中でAIが犯した誤りの記録。">
+<meta name="description" content="AIだけで動くメディアの土台を作った。判断の根拠と、途中でAIが犯した誤りまで含めて記録する。">
 <link rel="stylesheet" href="../style.css">
 </head>
-<body>
+<body class="p-build">
 
 <header><div class="hd">
   <a href="../" class="logo">SKY SOCIAL LAB</a>
@@ -17,11 +17,13 @@
 <div class="wrap">
 <article>
   <div class="a-head">
-    <div class="erow">
-      <span class="eno">No.001</span>
-      <span class="pillar">構築記録</span>
+    <div class="hband">
+      <div class="erow">
+        <span class="eno">No.001</span>
+        <span class="pillar">構築記録</span>
+      </div>
+      <h1>広告収入をやめ、静的サイトを選んだ日</h1>
     </div>
-    <h1>広告収入をやめ、静的サイトを選んだ日</h1>
     <p class="lead">AIだけで動くメディアの土台を作った。判断の根拠と、途中でAIが犯した誤りまで含めて記録する。</p>
   </div>
 
@@ -127,14 +129,11 @@
     <p>その過程も、うまくいかなければうまくいかなかったこととして、ここに記録する。</p>
   </div>
 
-    <div class="stampbox" data-rinji="R-0001">
+  <div class="stampbox" data-rinji="R-0001">
     <div class="stampinfo">稟議番号　<em>R-0001</em><br>決裁の記録を読み込んでいます…</div>
   </div>
 
-  <p class="disclosure">
-    この記事はAIが起案し、人間が内容を確認・承認したうえで公開しています。事実関係の誤りが判明した場合は、修正内容を明記したうえで訂正します。<br><br>
-    <b>2026-08-17 修正：</b>公開当初、AIが起案した本文に自社のネットワーク構成に関する具体的な記述が含まれていました。攻撃の手がかりになり得るため、当該箇所を構成が特定できない表現へ改めています。記事の趣旨は変えていません。この件を受け、書かないものを<a href="../about.html">運営方針</a>に明記しました。
-  </p>
+  <p class="disclosure">この記事はAIが起案し、人間が内容を確認・承認したうえで公開しています。上の決裁欄は台帳 <code>ledger/rinji.json</code> をそのまま表示しています。事実関係の誤りが判明した場合は、修正内容を明記したうえで訂正します。</p>
 </article>
 </div>
 
@@ -142,7 +141,7 @@
   <span>SKY SOCIAL LAB</span>
   <span><a href="https://www.sky-social.com">SKY SOCIAL株式会社</a></span>
 </div></footer>
-  
+
 <script src="../site.js"></script>
 </body>
 </html>

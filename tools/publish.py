@@ -48,11 +48,13 @@ TPL = """<!DOCTYPE html>
 <div class="wrap">
 <article>
   <div class="a-head">
-    <div class="erow">
-      <span class="eno">No.{no}</span>
-      <span class="pillar">{pillar}</span>
+    <div class="hband">
+      <div class="erow">
+        <span class="eno">No.{no}</span>
+        <span class="pillar">{pillar}</span>
+      </div>
+      <h1>{title}</h1>
     </div>
-    <h1>{title}</h1>
     <p class="lead">{lead}</p>
   </div>
 
@@ -79,24 +81,33 @@ TPL = """<!DOCTYPE html>
 """
 
 LEAD = """  <a class="entry p-build lead-art" href="{file}">
-    <div class="erow"><span class="eno">No.{no}</span><span class="pillar">構築記録</span></div>
-    <div class="etitle">{title}</div>
-    <div class="elead">{lead}</div>
-    <div class="edate">{date} ／ 稟議 {rinji}</div>
+    <div class="card-thumb"></div>
+    <div class="ebody">
+      <div class="erow"><span class="eno">No.{no}</span><span class="pillar">構築記録</span></div>
+      <div class="etitle">{title}</div>
+      <div class="elead">{lead}</div>
+      <div class="edate">{date} ／ 稟議 {rinji}</div>
+    </div>
   </a>
 """
 
 SUB = """    <a class="entry p-build" href="{file}">
-      <div class="erow"><span class="eno">No.{no}</span></div>
-      <div class="etitle">{title}</div>
-      <div class="edate">{date}</div>
+      <div class="card-thumb"></div>
+      <div class="ebody">
+        <div class="erow"><span class="eno">No.{no}</span></div>
+        <div class="etitle">{title}</div>
+        <div class="edate">{date}</div>
+      </div>
     </a>
 """
 
 DIG = """  <a class="dig" href="{file}">
-    <span class="d">{date}</span>
-    <div class="t">{title}</div>
-    <div class="s">{sources}</div>
+    <div class="card-thumb"></div>
+    <div class="dbody">
+      <span class="d">{date}</span>
+      <div class="t">{title}</div>
+      <div class="s">{sources}</div>
+    </div>
   </a>
 """
 
