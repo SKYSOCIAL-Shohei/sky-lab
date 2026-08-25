@@ -177,9 +177,9 @@
       "detail": "「承認は誰が押すのか ― 稟議の棚卸しと、見出し画像を4度描き直した一日」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-25",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-25 09:06",
       "article": "articles/013.html"
     },
     {
@@ -188,9 +188,9 @@
       "detail": "「AIエージェントの「導入障壁」と「見えない懸念」――国内外の見出しから考える中小企業の備え」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-25",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-25 09:06",
       "article": "articles/014.html"
     }
   ]
