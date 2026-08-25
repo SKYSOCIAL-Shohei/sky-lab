@@ -55,23 +55,29 @@ TPL = """<!DOCTYPE html>
   {nav}
 </div></header>
 
+<div class="fbhero">
+  <img src="og/{no}.jpg?v={ver}" alt="" width="1200" height="630">
+  <div class="fbin">
+    <div class="erow">
+      <span class="pillar">{pillar}</span>
+      <span class="eno">No.{no}</span>
+      <span class="rt">読了 約{read_min}分</span>
+    </div>
+    <h1>{title}</h1>
+  </div>
+  <p class="credit">Photo: <a href="{credit_url}">{credit_name}</a> / <a href="https://www.pexels.com">Pexels</a></p>
+</div>
+
 <div class="wrap">
 <article>
   <div class="a-head">
-    <img class="hband" src="og/{no}.jpg?v={ver}" alt="" width="1200" height="630">
-    <p class="photo-credit">Photo: <a href="{credit_url}">{credit_name}</a> / <a href="https://www.pexels.com">Pexels</a></p>
-    <div class="erow">
-      <span class="eno">No.{no}</span>
-      <span class="pillar">{pillar}</span>
-    </div>
-    <h1>{title}</h1>
     <p class="lead">{lead}</p>
   </div>
-
+{brief_panel}
   <div class="a-body">
 {body}
   </div>
-
+{related}
   <div class="stampbox" data-rinji="{rinji}">
     <div class="stampinfo">稟議番号　<em>{rinji}</em><br>決裁の記録を読み込んでいます…</div>
   </div>
@@ -183,6 +189,76 @@ INDEX = """<!DOCTYPE html>
 """
 
 
+def og_ver(no) -> str:
+    og_path = f"articles/og/{no}.jpg"
+    return photo_image.file_hash(og_path) if os.path.exists(og_path) else "0"
+
+
+def reading_minutes(body_html: str) -> int:
+    """日本語の読了目安。1分500字として概算する。"""
+    chars = len(re.sub(r"<[^>]+>", "", body_html))
+    return max(1, round(chars / 500))
+
+
+def add_heading_ids(body_html: str):
+    """本文中のh2にidを振り、目次データ [(id, 見出しテキスト), ...] を返す。"""
+    toc = []
+
+    def repl(m):
+        hid = f"h{len(toc) + 1}"
+        text = re.sub(r"<[^>]+>", "", m.group(1)).strip()
+        toc.append((hid, text))
+        return f'<h2 id="{hid}">{m.group(1)}</h2>'
+
+    return re.sub(r"<h2>(.*?)</h2>", repl, body_html, flags=re.S), toc
+
+
+def render_brief_panel(points_raw: str, toc: list) -> str:
+    """要点＋目次パネル。どちらも無ければ何も出さない。"""
+    items = re.findall(r"<li>(.*?)</li>", points_raw or "", re.S)
+    zones = []
+    if items:
+        lis = "\n".join(f"        <li>{i.strip()}</li>" for i in items)
+        zones.append(f'''    <div class="zone">
+      <div class="lbl">この記事のポイント</div>
+      <ul class="points">
+{lis}
+      </ul>
+    </div>''')
+    if toc:
+        lis = "\n".join(f'        <li><a href="#{hid}">{html.escape(text)}</a></li>'
+                        for hid, text in toc)
+        zones.append(f'''    <div class="zone">
+      <div class="lbl">目次</div>
+      <ol class="toc">
+{lis}
+      </ol>
+    </div>''')
+    if not zones:
+        return ""
+    return '  <div class="brief-panel">\n' + "\n".join(zones) + "\n  </div>\n"
+
+
+def render_related(articles: list, current_no: str, pillar: str) -> str:
+    """記事末尾の関連記事。同じ種別の新しいものから最大3本。無ければ何も出さない。"""
+    same = [a for a in articles
+            if a.get("pillar") == pillar and str(a.get("no", "")) != str(current_no)]
+    same = sorted(same, key=lambda a: str(a.get("no", "")), reverse=True)[:3]
+    if not same:
+        return ""
+    cards = []
+    for a in same:
+        no = str(a.get("no", ""))
+        cards.append(f'''      <a class="rcard" href="{no}.html">
+        <img src="og/{no}.jpg?v={og_ver(no)}" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.{no}</div><div class="rt">{html.escape(a.get("title",""))}</div></div>
+      </a>''')
+    return ('  <div class="related">\n'
+            '    <div class="lbl">関連記事</div>\n'
+            '    <div class="related-grid">\n' + "\n".join(cards) + "\n"
+            '    </div>\n  </div>\n')
+
+
 def load(p, default):
     return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else default
 
@@ -234,10 +310,6 @@ def build_index(arts) -> None:
 
     def date_of(a):
         return e(a.get("published_at") or a.get("drafted_at") or "")
-
-    def og_ver(no):
-        og_path = f"articles/og/{no}.jpg"
-        return photo_image.file_hash(og_path) if os.path.exists(og_path) else "0"
 
     builds = [a for a in rows if a.get("pillar") == BUILD]
     news = [a for a in rows if a.get("pillar") == NEWS]
@@ -302,12 +374,17 @@ def main() -> int:
         og_path, credit_name, credit_url = photo
         ver = photo_image.file_hash(og_path)
 
+        body_with_ids, toc = add_heading_ids(d["body"])
+
         page = TPL.format(
             title=html.escape(title), desc=html.escape(d["lead"]),
             no=no, pillar=html.escape(pillar), site=SITE, ver=ver,
             credit_name=html.escape(credit_name), credit_url=html.escape(credit_url),
             pcls=PILLAR_CLASS.get(pillar, ""), nav=nav("../", ""),
-            lead=html.escape(d["lead"]), body=d["body"], rinji=rno)
+            lead=html.escape(d["lead"]), body=body_with_ids, rinji=rno,
+            read_min=reading_minutes(d["body"]),
+            brief_panel=render_brief_panel(d.get("points", ""), toc),
+            related=render_related(arts["articles"], no, pillar))
 
         os.makedirs("articles", exist_ok=True)
         open(f"articles/{no}.html", "w", encoding="utf-8").write(page)

@@ -114,29 +114,50 @@ div.card-thumb::after{content:"";position:absolute;inset:0;opacity:.5;background
 .dig .s{font-size:12px;color:var(--ink-3);margin-top:5px;line-height:1.7}
 
 /* ── 記事 ── */
-article{padding:34px 0 0}
-.a-head{border-bottom:1px solid var(--rule);padding:0 0 26px}
-.a-head h1{font-family:var(--mincho);font-size:29px;font-weight:400;line-height:1.6;letter-spacing:.03em;margin-top:13px}
+article{padding:0}
 
-/* 見出し画像。写真は使わず、記事のテーマを象徴する抽象アート
-   （tools/og_image.py で生成、OGP画像と同じもの）。
-   タイトルや決裁の状態は画像に焼き込まない。純粋にビジュアルのみ */
-img.hband{display:block;width:100%;height:auto;border-radius:20px;margin-bottom:8px;object-fit:cover}
-.photo-credit{font-size:11px;color:var(--ink-3);text-align:right;margin-bottom:14px}
-.photo-credit a{color:var(--ink-3);border-bottom:1px dotted var(--rule-2)}
-.a-head .erow{margin-top:2px}
-.a-head h1{margin-top:12px}
-.a-head .lead{margin-top:16px;color:var(--ink-2);font-size:15px;line-height:1.9}
+/* フルブリードの見出し写真。タイトルはスクリムの上に重ねる、雑誌の特集扉の扱い */
+.fbhero{position:relative;width:100%;height:min(56vw,460px);min-height:280px;overflow:hidden}
+.fbhero img{width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block}
+.fbhero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(15,17,22,.86) 0%, rgba(15,17,22,.52) 34%, rgba(15,17,22,.06) 66%, transparent 100%)}
+.fbhero .fbin{position:absolute;left:0;right:0;bottom:0;max-width:730px;margin:0 auto;padding:0 22px 24px;color:#F3F1EA}
+.fbhero .erow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fbhero .pillar{font-size:10.5px;font-weight:600;padding:4px 11px;border-radius:100px;letter-spacing:.05em;color:#fff;background:var(--accent);white-space:nowrap}
+.fbhero .eno{font-family:var(--mono);font-size:11.5px;color:#d7dae2;letter-spacing:.04em}
+.fbhero .rt{font-family:var(--mono);font-size:11.5px;color:#d7dae2;letter-spacing:.03em;margin-left:auto}
+.fbhero h1{font-family:var(--mincho);font-weight:500;font-size:30px;line-height:1.5;letter-spacing:.02em;margin-top:13px;text-wrap:balance;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.fbhero .credit{position:absolute;right:16px;bottom:9px;font-size:10.5px;color:rgba(255,255,255,.62)}
+.fbhero .credit a{color:rgba(255,255,255,.72);border-bottom:1px dotted rgba(255,255,255,.3)}
+
+.a-head{padding:22px 0 0}
+.a-head .lead{color:var(--ink-2);font-size:15px;line-height:1.9}
+
+/* 要点＋目次パネル。write.pyが出す<points>と、本文のh2から機械的に組み立てる */
+.brief-panel{margin-top:26px;border:1px solid var(--rule);border-radius:16px;overflow:hidden;background:var(--paper-2)}
+.brief-panel .zone{padding:19px 22px}
+.brief-panel .zone+.zone{border-top:1px solid var(--rule)}
+.brief-panel .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase}
+.brief-panel ul.points{list-style:none;margin-top:11px;display:flex;flex-direction:column;gap:9px}
+.brief-panel ul.points li{display:flex;gap:10px;font-size:14.5px;line-height:1.75;color:var(--ink-2)}
+.brief-panel ul.points li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:9px}
+.brief-panel ol.toc{list-style:none;margin-top:11px;display:flex;flex-direction:column;gap:2px;counter-reset:toc}
+.brief-panel ol.toc li{counter-increment:toc}
+.brief-panel ol.toc a{display:flex;gap:12px;align-items:baseline;padding:7px 0;color:var(--ink);border:0;font-size:14.5px}
+.brief-panel ol.toc a:hover{color:var(--accent)}
+.brief-panel ol.toc a::before{content:counter(toc,decimal-leading-zero);font-family:var(--mono);font-size:11.5px;color:var(--ink-3);flex-shrink:0}
+
 .a-body{padding:30px 0 8px;font-size:16.5px;line-height:2.05}
-.a-body>p:first-child{font-size:17px}
+.a-body>p:first-of-type{font-size:17px}
+/* ドロップキャップ。本文冒頭の一文字だけに使う、一箇所限定の強調 */
+.a-body>p:first-of-type::first-letter{font-family:var(--mincho);font-weight:500;font-size:3.6em;line-height:.82;float:left;padding:.04em .09em 0 0;color:var(--accent)}
 .a-body h2{font-family:var(--mincho);font-size:21px;font-weight:400;letter-spacing:.03em;line-height:1.6;margin:52px 0 16px;padding-left:14px;border-left:3px solid var(--accent)}
 .a-body h3{font-size:16.5px;font-weight:600;margin:34px 0 10px}
 .a-body p{margin:19px 0}
 .a-body ul,.a-body ol{margin:19px 0 19px 1.35em}
 .a-body li{margin:9px 0}
 .a-body strong{font-weight:600;background:linear-gradient(transparent 62%,rgba(192,57,47,.14) 62%)}
-.a-body blockquote{margin:30px 0;padding:22px 26px;border-left:3px solid var(--stamp);background:var(--paper-2);border-radius:0 14px 14px 0;color:var(--ink-2)}
-.a-body blockquote p{font-family:var(--mincho);font-size:19px;line-height:1.7;color:var(--ink);margin:0}
+.a-body blockquote{margin:34px 0;padding:8px 0 8px 26px;border-left:3px solid var(--stamp);color:var(--ink-2)}
+.a-body blockquote p{font-family:var(--mincho);font-size:21px;line-height:1.7;color:var(--ink);margin:0;letter-spacing:.02em}
 .a-body table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px}
 .a-body th,.a-body td{border:1px solid var(--rule);padding:9px 11px;text-align:left}
 .a-body th{background:var(--paper-2);font-weight:600}
@@ -193,6 +214,19 @@ details.gsect[open]>summary::after{content:"− 隠す"}
 .rwarn{font-size:13px;color:#8C2F27;font-weight:600;margin-top:10px}
 .empty{padding:22px 0;color:var(--ink-3);font-size:14px}
 
+/* ── 記事末尾の関連記事 ── */
+.related{margin:58px 0 0;padding-top:30px;border-top:1px solid var(--rule-2)}
+.related .lbl{font-family:var(--mincho);font-size:16px;letter-spacing:.08em;color:var(--ink)}
+.related-grid{margin-top:16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.rcard{display:block;color:inherit;border:1px solid var(--rule);border-radius:12px;overflow:hidden;background:var(--paper)}
+.rcard:hover{border-color:var(--rule-2)}
+.rcard:hover .rt{color:var(--indigo)}
+body.p-news .rcard:hover .rt{color:var(--umber)}
+.rcard img{width:100%;height:88px;object-fit:cover;display:block}
+.rcard .rb{padding:11px 13px 13px}
+.rcard .rno{font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
+.rcard .rt{font-family:var(--mincho);font-size:14px;line-height:1.6;margin-top:5px;transition:color .15s}
+
 footer{border-top:1px solid var(--rule);margin-top:66px;padding:26px 0 46px}
 .ft{max-width:730px;margin:0 auto;padding:0 22px;font-size:12px;color:var(--ink-3);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .ft a{color:var(--ink-3)}
@@ -218,12 +252,14 @@ footer{border-top:1px solid var(--rule);margin-top:66px;padding:26px 0 46px}
   .lead-art .etitle{font-size:22px}
   .etitle{font-size:18px}
   .dig .t{font-size:16px}
-  .a-head h1{font-size:23px}
-  .hband{padding:20px 20px 18px;border-radius:16px}
-  .hband h1{font-size:21px}
+  .fbhero h1{font-size:23px}
+  .fbhero .rt{display:none}
+  .brief-panel .zone{padding:16px 18px}
   .a-body{font-size:16px;line-height:2.0}
-  .a-body>p:first-child{font-size:16px}
+  .a-body>p:first-of-type{font-size:16px}
   .a-body h2{font-size:19px;margin:42px 0 14px;padding-left:12px}
+  .a-body blockquote p{font-size:18px}
+  .related-grid{grid-template-columns:1fr}
   .stampbox{padding:18px;gap:16px}
   .stamp{width:62px;height:62px}
   .sc .n{font-size:19px}
