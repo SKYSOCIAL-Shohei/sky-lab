@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>見出し画像を実写真に切り替えた日 ― 抽象アートをやめた理由 — SKY SOCIAL LAB</title>
+<meta name="description" content="記事の起案と稟議が積み重なる一方で、この日最も大きな判断は「見出し画像」だった。独自の抽象アート生成をやめ、実写真に全面的に切り替えた。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SKY SOCIAL LAB">
+<meta property="og:title" content="見出し画像を実写真に切り替えた日 ― 抽象アートをやめた理由">
+<meta property="og:description" content="記事の起案と稟議が積み重なる一方で、この日最も大きな判断は「見出し画像」だった。独自の抽象アート生成をやめ、実写真に全面的に切り替えた。">
+<meta property="og:image" content="https://lab.sky-social.com/articles/og/015.jpg?v=feb8b213">
+<meta property="og:url" content="https://lab.sky-social.com/articles/015.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="p-build">
+
+<header><div class="hd">
+  <a href="../" class="logo">SKY SOCIAL LAB</a>
+  <nav class="nav"><a href="../">記録</a><a href="../rinji.html">稟議</a><a href="../about.html">このサイトについて</a></nav>
+</div></header>
+
+<div class="fbhero">
+  <img src="og/015.jpg?v=feb8b213" alt="" width="1200" height="630">
+  <div class="fbin">
+    <div class="erow">
+      <span class="pillar">構築記録</span>
+      <span class="eno">No.015</span>
+      <span class="rt">読了 約2分</span>
+    </div>
+    <h1>見出し画像を実写真に切り替えた日 ― 抽象アートをやめた理由</h1>
+  </div>
+  <p class="credit">Photo: <a href="https://www.pexels.com/@krakograff-textures-124842124">Krakograff Textures</a> / <a href="https://www.pexels.com">Pexels</a></p>
+</div>
+
+<div class="wrap">
+<article>
+  <div class="a-head">
+    <p class="lead">記事の起案と稟議が積み重なる一方で、この日最も大きな判断は「見出し画像」だった。独自の抽象アート生成をやめ、実写真に全面的に切り替えた。</p>
+  </div>
+  <div class="brief-panel">
+    <div class="zone">
+      <div class="lbl">この記事のポイント</div>
+      <ul class="points">
+        <li>見出し画像を抽象アートから実写真へ全面変更した</li>
+        <li>検索語の選定をAIに担わせ、日次の仕組みに組み込んだ</li>
+        <li>不要になったツールは撤去し、構成を単純化した</li>
+      </ul>
+    </div>
+    <div class="zone">
+      <div class="lbl">目次</div>
+      <ol class="toc">
+        <li><a href="#h1">記事の起案は淡々と進む</a></li>
+        <li><a href="#h2">抽象アートをやめた</a></li>
+        <li><a href="#h3">検索語をAIに任せる</a></li>
+        <li><a href="#h4">不要になったものを撤去する</a></li>
+        <li><a href="#h5">中小企業にとっての示唆</a></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="a-body">
+<h2 id="h1">記事の起案は淡々と進む</h2>
+<p>この日、Claudeは記事No.013とNo.014を起案し、それぞれに対応する稟議R-0016・R-0017を起票した。SKY SOCIAL LABでは、記事は思いついたその場で公開されるのではなく、起案と稟議という手続きを経る。AIが提案し、人間が承認するという構造は、この日も変わらず動いていた。日々の記事生産という意味では、目立った出来事はない一回だったと言える。</p>
+
+<h2 id="h2">抽象アートをやめた</h2>
+<p>大きな判断は、記事の見出し画像だった。これまでは独自に生成した抽象アートを使っていたが、この日、Pexelsの実写真に全面的に切り替えた。</p>
+<p>抽象アートには、どの記事にも当てはめやすいという利点がある一方で、記事の内容と画像の結びつきが弱いという弱点もある。読者が見出し画像から記事の内容を直感的に想像できるかどうかは、実際には無視できない要素だ。<strong>抽象的で無難な絵</strong>と<strong>記事の内容を映した実写真</strong>のどちらが読者の理解を助けるか、という比較の中で、実写真を選んだ。</p>
+
+<h2 id="h3">検索語をAIに任せる</h2>
+<p>実写真に切り替えるにあたって、次に問題になったのは「どの写真を選ぶか」だった。人間が毎回記事を読んで検索語を考えるのでは、記事の本数が増えるほど負担になる。そこで、記事内容から検索語をAIが提案する仕組みを作り、日次のパイプラインに組み込んだ。記事が生成されると同時に、その記事にふさわしい写真の検索語も自動で決まり、画像が選ばれる。人間が判断すべきだった一手間を、AIに委ねた形になる。</p>
+
+<h2 id="h4">不要になったものを撤去する</h2>
+<p>この変更に伴い、それまで使っていたPlaywrightという仕組みは不要になったため撤去した。抽象アート生成の過程で必要だったものが、実写真への切り替えによって用途を失ったということだ。使わなくなった仕組みを残しておくと、後になって「なぜこれがあるのか」が分からなくなる。不要と判断した時点で外す、というのは小さな判断だが、積み重なると構成の分かりやすさに関わってくる。</p>
+
+<h2 id="h5">中小企業にとっての示唆</h2>
+<p>この日の記録から読み取れるのは、「独自にこだわること」と「実用を優先すること」のどちらを選ぶか、という判断だ。独自の抽象アートは、いかにも自社らしい選択に見える。しかし、それが読者にとって記事内容の理解を助けているかどうかは別の話だ。</p>
+<p>中小企業でも、自社独自の仕組みやデザインにこだわった結果、顧客にとっての使いやすさが後回しになっていることは少なくない。今回の判断は、こだわりよりも「相手にとって分かりやすいかどうか」を基準に選び直した、という一例として読める。そして、判断を変えたら、不要になった仕組みは残さずに外す。この二つの姿勢は、規模の大小を問わず、自社の仕組みを見直す際の一つの目安になるだろう。</p>
+  </div>
+  <div class="related">
+    <div class="lbl">関連記事</div>
+    <div class="related-grid">
+      <a class="rcard" href="013.html">
+        <img src="og/013.jpg?v=150550c6" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.013</div><div class="rt">承認は誰が押すのか ― 稟議の棚卸しと、見出し画像を4度描き直した一日</div></div>
+      </a>
+      <a class="rcard" href="012.html">
+        <img src="og/012.jpg?v=33756b0e" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.012</div><div class="rt">「まとめて承認して」と言われた日、AIは何をしなかったか</div></div>
+      </a>
+      <a class="rcard" href="007.html">
+        <img src="og/007.jpg?v=e2d1cc41" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.007</div><div class="rt">「未承認」と表示されて気づいたこと ― 決裁の可視化がもたらした訂正</div></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="stampbox" data-rinji="R-0018">
+    <div class="stampinfo">稟議番号　<em>R-0018</em><br>決裁の記録を読み込んでいます…</div>
+  </div>
+
+  <p class="disclosure">この記事はAIが起案し、人間が内容を確認・承認したうえで公開しています。上の決裁欄は台帳 <code>ledger/rinji.json</code> をそのまま表示しています。事実関係の誤りが判明した場合は、修正内容を明記したうえで訂正します。</p>
+</article>
+</div>
+
+<footer><div class="ft">
+  <span>SKY SOCIAL LAB</span>
+  <span><a href="https://www.sky-social.com">SKY SOCIAL株式会社</a></span>
+</div></footer>
+
+<script src="../site.js"></script>
+</body>
+</html>

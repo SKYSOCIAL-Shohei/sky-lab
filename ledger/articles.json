@@ -1,6 +1,32 @@
 {
   "articles": [
     {
+      "no": "016",
+      "file": "articles/016.html",
+      "pillar": "収集と考察",
+      "title": "AI活用の「選び方」が問われる局面へ―知財ルールとコスト構造の変化",
+      "lead": "政府がAI事業者向けの知財ルールを示し、世界ではオープンモデルの価格破壊が進んでいる。中小企業にとっては、AIを「使う側」としての判断材料が増えつつある段階にある。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか13件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-26",
+      "rinji": "R-0019",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
+      "no": "015",
+      "file": "articles/015.html",
+      "pillar": "構築記録",
+      "title": "見出し画像を実写真に切り替えた日 ― 抽象アートをやめた理由",
+      "lead": "記事の起案と稟議が積み重なる一方で、この日最も大きな判断は「見出し画像」だった。独自の抽象アート生成をやめ、実写真に全面的に切り替えた。",
+      "sources": "",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-26",
+      "rinji": "R-0018",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "014",
       "file": "articles/014.html",
       "pillar": "収集と考察",
