@@ -192,6 +192,28 @@
       "approved_by": "SKYSOCIAL-Shohei",
       "approved_at": "2026-08-25 09:06",
       "article": "articles/014.html"
+    },
+    {
+      "no": "R-0018",
+      "subject": "記事 No.015 を公開する",
+      "detail": "「見出し画像を実写真に切り替えた日 ― 抽象アートをやめた理由」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-26",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/015.html"
+    },
+    {
+      "no": "R-0019",
+      "subject": "記事 No.016 を公開する",
+      "detail": "「AI活用の「選び方」が問われる局面へ―知財ルールとコスト構造の変化」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-26",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/016.html"
     }
   ]
 }
