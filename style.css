@@ -121,7 +121,9 @@ article{padding:34px 0 0}
 /* 見出し画像。写真は使わず、記事のテーマを象徴する抽象アート
    （tools/og_image.py で生成、OGP画像と同じもの）。
    タイトルや決裁の状態は画像に焼き込まない。純粋にビジュアルのみ */
-img.hband{display:block;width:100%;height:auto;border-radius:20px;margin-bottom:22px}
+img.hband{display:block;width:100%;height:auto;border-radius:20px;margin-bottom:8px;object-fit:cover}
+.photo-credit{font-size:11px;color:var(--ink-3);text-align:right;margin-bottom:14px}
+.photo-credit a{color:var(--ink-3);border-bottom:1px dotted var(--rule-2)}
 .a-head .erow{margin-top:2px}
 .a-head h1{margin-top:12px}
 .a-head .lead{margin-top:16px;color:var(--ink-2);font-size:15px;line-height:1.9}

@@ -17,7 +17,7 @@ work/drafts.json を読み、記事HTMLを作り、
 """
 import json, os, sys, re, html
 from datetime import datetime, timezone, timedelta
-import og_image
+import photo_image
 
 JST = timezone(timedelta(hours=9))
 WORK = "work/drafts.json"
@@ -43,7 +43,7 @@ TPL = """<!DOCTYPE html>
 <meta property="og:site_name" content="SKY SOCIAL LAB">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="{site}/articles/og/{no}.png?v={ver}">
+<meta property="og:image" content="{site}/articles/og/{no}.jpg?v={ver}">
 <meta property="og:url" content="{site}/articles/{no}.html">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../style.css">
@@ -58,7 +58,8 @@ TPL = """<!DOCTYPE html>
 <div class="wrap">
 <article>
   <div class="a-head">
-    <img class="hband" src="og/{no}.png?v={ver}" alt="" width="1200" height="630">
+    <img class="hband" src="og/{no}.jpg?v={ver}" alt="" width="1200" height="630">
+    <p class="photo-credit">Photo: <a href="{credit_url}">{credit_name}</a> / <a href="https://www.pexels.com">Pexels</a></p>
     <div class="erow">
       <span class="eno">No.{no}</span>
       <span class="pillar">{pillar}</span>
@@ -90,7 +91,7 @@ TPL = """<!DOCTYPE html>
 """
 
 LEAD = """  <a class="entry p-build lead-art" href="{file}">
-    <img class="card-thumb" src="articles/og/{no}.png?v={ver}" alt="" width="1200" height="630">
+    <img class="card-thumb" src="articles/og/{no}.jpg?v={ver}" alt="" width="1200" height="630">
     <div class="ebody">
       <div class="erow"><span class="eno">No.{no}</span><span class="pillar">構築記録</span></div>
       <div class="etitle">{title}</div>
@@ -101,7 +102,7 @@ LEAD = """  <a class="entry p-build lead-art" href="{file}">
 """
 
 SUB = """    <a class="entry p-build" href="{file}">
-      <img class="card-thumb" src="articles/og/{no}.png?v={ver}" alt="" width="1200" height="630">
+      <img class="card-thumb" src="articles/og/{no}.jpg?v={ver}" alt="" width="1200" height="630">
       <div class="ebody">
         <div class="erow"><span class="eno">No.{no}</span></div>
         <div class="etitle">{title}</div>
@@ -111,7 +112,7 @@ SUB = """    <a class="entry p-build" href="{file}">
 """
 
 DIG = """  <a class="dig" href="{file}">
-    <img class="card-thumb" src="articles/og/{no}.png?v={ver}" alt="" width="1200" height="630">
+    <img class="card-thumb" src="articles/og/{no}.jpg?v={ver}" alt="" width="1200" height="630">
     <div class="dbody">
       <span class="d">{date}</span>
       <div class="t">{title}</div>
@@ -235,8 +236,8 @@ def build_index(arts) -> None:
         return e(a.get("published_at") or a.get("drafted_at") or "")
 
     def og_ver(no):
-        og_path = f"articles/og/{no}.png"
-        return og_image.file_hash(og_path) if os.path.exists(og_path) else "0"
+        og_path = f"articles/og/{no}.jpg"
+        return photo_image.file_hash(og_path) if os.path.exists(og_path) else "0"
 
     builds = [a for a in rows if a.get("pillar") == BUILD]
     news = [a for a in rows if a.get("pillar") == NEWS]
@@ -295,12 +296,16 @@ def main() -> int:
         rno = next_rinji(rin["rinji"])
         title, pillar = d["title"], d["pillar"]
 
-        og_path = og_image.make(no, title, pillar, rno)
-        ver = og_image.file_hash(og_path)
+        photo = photo_image.make(no, title, d["lead"], pillar, rno)
+        if photo is None:
+            raise RuntimeError(f"No.{no}: Pexelsで写真が見つかりませんでした")
+        og_path, credit_name, credit_url = photo
+        ver = photo_image.file_hash(og_path)
 
         page = TPL.format(
             title=html.escape(title), desc=html.escape(d["lead"]),
             no=no, pillar=html.escape(pillar), site=SITE, ver=ver,
+            credit_name=html.escape(credit_name), credit_url=html.escape(credit_url),
             pcls=PILLAR_CLASS.get(pillar, ""), nav=nav("../", ""),
             lead=html.escape(d["lead"]), body=d["body"], rinji=rno)
 
