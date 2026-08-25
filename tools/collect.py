@@ -10,6 +10,7 @@ feeds.json に記載された公式RSSのみを取得する。
 import json, os, sys, re, urllib.request, urllib.error
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone, timedelta
+from html.parser import HTMLParser
 
 JST = timezone(timedelta(hours=9))
 CONFIG = "feeds.json"
@@ -19,6 +20,8 @@ SEEN = "ledger/seen.json"
 
 UA = "sky-lab/1.0 (+https://lab.sky-social.com)"
 TIMEOUT = 20
+BODY_MAX_CHARS = 6000
+BODY_MIN_CHARS = 200
 
 
 def fetch(url: str) -> str | None:
@@ -39,6 +42,49 @@ def fetch(url: str) -> str | None:
 
 def strip_ns(tag: str) -> str:
     return tag.split("}")[-1] if "}" in tag else tag
+
+
+class _TextExtractor(HTMLParser):
+    """HTMLから本文らしきテキストだけを拾う簡易版。外部ライブラリは使わない。"""
+
+    SKIP_TAGS = {"script", "style", "nav", "header", "footer", "aside", "form", "noscript"}
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.chunks: list[str] = []
+        self.skip_depth = 0
+
+    def handle_starttag(self, tag, attrs):
+        if tag in self.SKIP_TAGS:
+            self.skip_depth += 1
+
+    def handle_endtag(self, tag):
+        if tag in self.SKIP_TAGS and self.skip_depth > 0:
+            self.skip_depth -= 1
+
+    def handle_data(self, data):
+        if self.skip_depth == 0:
+            text = data.strip()
+            if text:
+                self.chunks.append(text)
+
+
+def fetch_article_body(url: str) -> str | None:
+    """記事ページ本文を取得する。取れない・短すぎる場合は None（見出しのみ扱いにする）。"""
+    if not url:
+        return None
+    html = fetch(url)
+    if not html:
+        return None
+    parser = _TextExtractor()
+    try:
+        parser.feed(html)
+    except Exception:
+        return None
+    text = re.sub(r"\n{2,}", "\n", "\n".join(parser.chunks)).strip()
+    if len(text) < BODY_MIN_CHARS:
+        return None
+    return text[:BODY_MAX_CHARS]
 
 
 def parse(xml_text: str) -> list[dict]:
@@ -129,6 +175,17 @@ def main() -> int:
                 seen.add(it["link"])
 
     picked = picked[:limit]
+
+    print(f"\n  本文を取得中（{len(picked)}件）")
+    got_body = 0
+    for it in picked:
+        body = fetch_article_body(it["link"])
+        it["body"] = body
+        if body:
+            got_body += 1
+        else:
+            print(f"    本文なしで進めます（見出しのみ扱い）: {it['title'][:48]}")
+    print(f"  本文を取得できた記事: {got_body}/{len(picked)}件")
 
     os.makedirs(OUT_DIR, exist_ok=True)
     json.dump({
