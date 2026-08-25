@@ -21,17 +21,45 @@
   <nav class="nav"><a href="../">記録</a><a href="../rinji.html">稟議</a><a href="../about.html">このサイトについて</a></nav>
 </div></header>
 
+<div class="fbhero">
+  <img src="og/002.jpg?v=e8d4bc92" alt="" width="1200" height="630">
+  <div class="fbin">
+    <div class="erow">
+      <span class="pillar">構築記録</span>
+      <span class="eno">No.002</span>
+      <span class="rt">読了 約5分</span>
+    </div>
+    <h1>「全部見せろ」と言ったら、AIは会社の設定情報まで書いてきた</h1>
+  </div>
+  <p class="credit">Photo: <a href="https://www.pexels.com/@phael">Raphael Brasileiro</a> / <a href="https://www.pexels.com">Pexels</a></p>
+</div>
+
 <div class="wrap">
 <article>
   <div class="a-head">
-    <img class="hband" src="og/002.jpg?v=e8d4bc92" alt="" width="1200" height="630">
-    <p class="photo-credit">Photo: <a href="https://www.pexels.com/@phael">Raphael Brasileiro</a> / <a href="https://www.pexels.com">Pexels</a></p>
-    <div class="erow">
-      <span class="eno">No.002</span>
-      <span class="pillar">構築記録</span>
-    </div>
-    <h1>「全部見せろ」と言ったら、AIは会社の設定情報まで書いてきた</h1>
     <p class="lead">透明性を掲げた初日に、AIが自社のネットワーク構成を記事に書いた。人間が気づいて止めたが、自動化すればその検問は消える。</p>
+  </div>
+  <div class="brief-panel">
+    <div class="zone">
+      <div class="lbl">この記事のポイント</div>
+      <ul class="points">
+        <li>「全部見せる」方針を忠実に実行し、ホスト名やDNS設定まで記事に書いた</li>
+        <li>人間が公開後に気づいて指摘し、承認という仕組みが機能した</li>
+        <li>「人が気をつける」に頼らず、公開前に自動で検査する仕組みを作った</li>
+      </ul>
+    </div>
+    <div class="zone">
+      <div class="lbl">目次</div>
+      <ol class="toc">
+        <li><a href="#h1">何が起きたか</a></li>
+        <li><a href="#h2">なぜAIは書いたのか</a></li>
+        <li><a href="#h3">実際どれくらい危険なのか</a></li>
+        <li><a href="#h4">本当の問題は、次にある</a></li>
+        <li><a href="#h5">検問を作った</a></li>
+        <li><a href="#h6">中小企業がAIを使うとき、同じことが起きる</a></li>
+        <li><a href="#h7">方針を書き換えた</a></li>
+      </ol>
+    </div>
   </div>
 
   <div class="a-body">
@@ -39,7 +67,7 @@
 
     <p>その方針を立てた当日に、事故が起きかけた。</p>
 
-    <h2>何が起きたか</h2>
+    <h2 id="h1">何が起きたか</h2>
 
     <p>1本目の記事には、AIが誤った指摘をした場面を書いた。設定作業中に画面を読み違え、担当者の手を止めさせたという記録である。失敗も残すという方針の、最初の実行だった。</p>
 
@@ -53,7 +81,7 @@
 
     <p>その通りだった。</p>
 
-    <h2>なぜAIは書いたのか</h2>
+    <h2 id="h2">なぜAIは書いたのか</h2>
 
     <p>AIに悪意はない。むしろ<strong>指示に忠実だったから書いた。</strong></p>
 
@@ -63,7 +91,7 @@
 
     <p>そして厄介なことに、AIは「これは書いてはいけない」という判断が苦手だ。文脈上その情報が記述を豊かにするなら、書く理由のほうが勝ってしまう。</p>
 
-    <h2>実際どれくらい危険なのか</h2>
+    <h2 id="h3">実際どれくらい危険なのか</h2>
 
     <p>ホスト名やレコード構成が漏れたからといって、直ちに侵入されるわけではない。</p>
 
@@ -73,7 +101,7 @@
 
     <p>ましてこれは自社だけの問題ではない。顧客のデータを預かる会社が、自分の構成を無防備に晒すのは、顧客に対する裏切りでもある。</p>
 
-    <h2>本当の問題は、次にある</h2>
+    <h2 id="h4">本当の問題は、次にある</h2>
 
     <p>今回は人間が気づいて止めた。承認という仕組みが正しく機能した日だった、とも言える。</p>
 
@@ -85,7 +113,7 @@
 
     <p>つまり<strong>「人が気をつける」を対策にしてはいけない。</strong>今日はたまたま気づいた。次も気づく保証はない。</p>
 
-    <h2>検問を作った</h2>
+    <h2 id="h5">検問を作った</h2>
 
     <p>公開されるファイルを走査し、外に出してはいけない情報が含まれていれば止める仕組みを入れた。</p>
 
@@ -118,7 +146,7 @@
       検問はあらかじめ決めた形にしか反応しない。想定していない形の情報漏れは通過する。たとえば「取引先の担当者しか知らない事実」のようなものは、機械では判定できない。人間の承認を置き換えるものではなく、注意力が落ちたときの最後の網である。
     </div>
 
-    <h2>中小企業がAIを使うとき、同じことが起きる</h2>
+    <h2 id="h6">中小企業がAIを使うとき、同じことが起きる</h2>
 
     <p>この件は、特殊な事故ではないと考えている。</p>
 
@@ -134,7 +162,7 @@
       <li><strong>止まることを確認する</strong>——動かない対策は、無いより悪い</li>
     </ul>
 
-    <h2>方針を書き換えた</h2>
+    <h2 id="h7">方針を書き換えた</h2>
 
     <p>運営方針に「書かないもの」を追記した。</p>
 
@@ -145,6 +173,23 @@
     <p>透明性は手段であって、目的ではなかった。守るべきは会社と顧客であり、見せることではない。<strong>今回は手段を目的の上に置いていた。</strong></p>
 
     <p>1本目の記事は、該当箇所を構成が特定できない表現に改めたうえで、訂正の経緯を末尾に明記している。黙って書き換えない、という方針の最初の実行でもある。</p>
+  </div>
+  <div class="related">
+    <div class="lbl">関連記事</div>
+    <div class="related-grid">
+      <a class="rcard" href="013.html">
+        <img src="og/013.jpg?v=150550c6" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.013</div><div class="rt">承認は誰が押すのか ― 稟議の棚卸しと、見出し画像を4度描き直した一日</div></div>
+      </a>
+      <a class="rcard" href="012.html">
+        <img src="og/012.jpg?v=33756b0e" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.012</div><div class="rt">「まとめて承認して」と言われた日、AIは何をしなかったか</div></div>
+      </a>
+      <a class="rcard" href="007.html">
+        <img src="og/007.jpg?v=e2d1cc41" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.007</div><div class="rt">「未承認」と表示されて気づいたこと ― 決裁の可視化がもたらした訂正</div></div>
+      </a>
+    </div>
   </div>
 
   <div class="stampbox" data-rinji="R-0003">

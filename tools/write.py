@@ -54,12 +54,17 @@ RULES = """
   「中小企業にとって何を意味しうるか」という自分の考察に置く。
 """
 
-# 出力形式。3つのタグを必ず閉じさせる。
+# 出力形式。4つのタグを必ず閉じさせる。
 FORMAT = """次の形式で出力してください。前置きも、あとがきも書かないでください。
 
 <title>記事タイトル</title>
 <lead>1〜2文のリード</lead>
+<points><li>要点1</li><li>要点2</li><li>要点3</li></points>
 <body>本文のHTML</body>
+
+<points> は本文を読む前に要点だけ掴めるように、必ず3個の<li>で書いてください。
+リードの言い換えではなく、本文の中身（何が起きて、何を判断したか）を短く示すこと。
+1個あたり40字程度。
 
 <body> は必ず </body> で閉じてください。閉じられていないものは使えません。
 文字数が足りなくなりそうなときは、本文を短くしてでも必ず閉じてください。"""
@@ -114,9 +119,9 @@ def parse_out(text: str, label: str) -> dict | None:
         m = re.search(rf"<{tag}>(.*)", text, re.S)
         return m.group(1).strip() if m else ""
 
-    t, l, b = grab("title"), grab("lead"), grab("body")
+    t, l, p, b = grab("title"), grab("lead"), grab("points"), grab("body")
 
-    missing = [n for n, v in (("title", t), ("lead", l), ("body", b)) if not v]
+    missing = [n for n, v in (("title", t), ("lead", l), ("points", p), ("body", b)) if not v]
     if missing:
         dump(label, text)
         print(f"    取り出せませんでした（欠けている: {', '.join(missing)}）")
@@ -128,7 +133,7 @@ def parse_out(text: str, label: str) -> dict | None:
         print(f"    本文が短すぎます（{len(b)}字）。採用しません。")
         return None
 
-    return {"title": t, "lead": l, "body": b}
+    return {"title": t, "lead": l, "points": p, "body": b}
 
 
 def dump(label: str, text: str) -> None:

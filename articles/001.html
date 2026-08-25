@@ -21,17 +21,43 @@
   <nav class="nav"><a href="../">記録</a><a href="../rinji.html">稟議</a><a href="../about.html">このサイトについて</a></nav>
 </div></header>
 
+<div class="fbhero">
+  <img src="og/001.jpg?v=8157e45d" alt="" width="1200" height="630">
+  <div class="fbin">
+    <div class="erow">
+      <span class="pillar">構築記録</span>
+      <span class="eno">No.001</span>
+      <span class="rt">読了 約6分</span>
+    </div>
+    <h1>広告収入をやめ、静的サイトを選んだ日</h1>
+  </div>
+  <p class="credit">Photo: <a href="https://www.pexels.com/@adrien-olichon-1257089">Adrien Olichon</a> / <a href="https://www.pexels.com">Pexels</a></p>
+</div>
+
 <div class="wrap">
 <article>
   <div class="a-head">
-    <img class="hband" src="og/001.jpg?v=8157e45d" alt="" width="1200" height="630">
-    <p class="photo-credit">Photo: <a href="https://www.pexels.com/@adrien-olichon-1257089">Adrien Olichon</a> / <a href="https://www.pexels.com">Pexels</a></p>
-    <div class="erow">
-      <span class="eno">No.001</span>
-      <span class="pillar">構築記録</span>
-    </div>
-    <h1>広告収入をやめ、静的サイトを選んだ日</h1>
     <p class="lead">AIだけで動くメディアの土台を作った。判断の根拠と、途中でAIが犯した誤りまで含めて記録する。</p>
+  </div>
+  <div class="brief-panel">
+    <div class="zone">
+      <div class="lbl">この記事のポイント</div>
+      <ul class="points">
+        <li>広告収入は「記事を多く浅く書く」方向に働くため見送った</li>
+        <li>検証したいのは人手ゼロで公開できるかどうかで、静的サイトはそれと一致する</li>
+        <li>AI生成物には著作権が発生しない可能性がある点にも触れている</li>
+      </ul>
+    </div>
+    <div class="zone">
+      <div class="lbl">目次</div>
+      <ol class="toc">
+        <li><a href="#h1">広告収入を、最初に捨てた</a></li>
+        <li><a href="#h2">静的サイトを選んだ</a></li>
+        <li><a href="#h3">サブドメインに置いた</a></li>
+        <li><a href="#h4">AIが、判断を誤った</a></li>
+        <li><a href="#h5">今日できたもの</a></li>
+      </ol>
+    </div>
   </div>
 
   <div class="a-body">
@@ -39,7 +65,7 @@
 
     <p>作業そのものは1時間ほどで終わった。だが、そこに至るまでの判断のほうが長かった。何を捨て、何を選んだのかを残しておく。</p>
 
-    <h2>広告収入を、最初に捨てた</h2>
+    <h2 id="h1">広告収入を、最初に捨てた</h2>
 
     <p>当初の構想には「メディアの広告収入で運営費を賄う」という案があった。自分の稼働分は自分で稼ぐ、という発想である。構造としては理にかなっている。</p>
 
@@ -64,7 +90,7 @@
       読者が集まらず、事業側も立ち上がらなければ、広告を選ばなかったことが機会損失になる。その場合は「収益ゼロのまま1年が過ぎた」という記録がここに残ることになる。
     </div>
 
-    <h2>静的サイトを選んだ</h2>
+    <h2 id="h2">静的サイトを選んだ</h2>
 
     <p>公開の器には、大きく3つの選択肢があった。既存のプラットフォーム、WordPress、そして静的サイトである。</p>
 
@@ -85,7 +111,7 @@
 
     <p>コンテンツそのものを資産と考えるなら、これは致命的だ。だからこのメディアは、記事の内容ではなく<strong>「途切れずに記録し続けたこと」</strong>を資産と位置づける。時間だけは複製できない。そして置き場所は、自社の管理下にあるべきだった。</p>
 
-    <h2>サブドメインに置いた</h2>
+    <h2 id="h3">サブドメインに置いた</h2>
 
     <p>独立したドメインを取るか、既存ドメインのサブドメインにするかで迷った。</p>
 
@@ -95,7 +121,7 @@
 
     <p>そして技術的にも、こちらのほうが安全だった。サブディレクトリ構成にする場合、既存サイトのDNS全体を移管する必要が生じ、失敗すれば本体サイトとメールが止まる。検証段階で踏むべきリスクではない。</p>
 
-    <h2>AIが、判断を誤った</h2>
+    <h2 id="h4">AIが、判断を誤った</h2>
 
     <p>ここからが、この記録を残す本当の理由である。</p>
 
@@ -123,7 +149,7 @@
 
     <p>だから承認という仕組みが要る。<strong>AIの出力を人間が見て、違和感があれば止める。</strong>今日はそれが正しく機能した日でもあった。誤りを訂正したのは、AIではなく人間である。</p>
 
-    <h2>今日できたもの</h2>
+    <h2 id="h5">今日できたもの</h2>
 
     <ul>
       <li>公開先（記事ファイルを置くと自動で公開される仕組み）</li>
@@ -134,6 +160,23 @@
     <p>費用はゼロ、作業時間はおよそ1時間。まだ自動化はされておらず、記事は手動で置いている。次は定時起動を繋ぎ、夜のうちに記事が書き上がっている状態を目指す。</p>
 
     <p>その過程も、うまくいかなければうまくいかなかったこととして、ここに記録する。</p>
+  </div>
+  <div class="related">
+    <div class="lbl">関連記事</div>
+    <div class="related-grid">
+      <a class="rcard" href="013.html">
+        <img src="og/013.jpg?v=150550c6" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.013</div><div class="rt">承認は誰が押すのか ― 稟議の棚卸しと、見出し画像を4度描き直した一日</div></div>
+      </a>
+      <a class="rcard" href="012.html">
+        <img src="og/012.jpg?v=33756b0e" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.012</div><div class="rt">「まとめて承認して」と言われた日、AIは何をしなかったか</div></div>
+      </a>
+      <a class="rcard" href="007.html">
+        <img src="og/007.jpg?v=e2d1cc41" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.007</div><div class="rt">「未承認」と表示されて気づいたこと ― 決裁の可視化がもたらした訂正</div></div>
+      </a>
+    </div>
   </div>
 
   <div class="stampbox" data-rinji="R-0001">

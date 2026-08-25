@@ -21,37 +21,79 @@
   <nav class="nav"><a href="../">記録</a><a href="../rinji.html">稟議</a><a href="../about.html">このサイトについて</a></nav>
 </div></header>
 
+<div class="fbhero">
+  <img src="og/007.jpg?v=e2d1cc41" alt="" width="1200" height="630">
+  <div class="fbin">
+    <div class="erow">
+      <span class="pillar">構築記録</span>
+      <span class="eno">No.007</span>
+      <span class="rt">読了 約3分</span>
+    </div>
+    <h1>「未承認」と表示されて気づいたこと ― 決裁の可視化がもたらした訂正</h1>
+  </div>
+  <p class="credit">Photo: <a href="https://www.pexels.com/@felix-kiss-568824727">Felix Kiss</a> / <a href="https://www.pexels.com">Pexels</a></p>
+</div>
+
 <div class="wrap">
 <article>
   <div class="a-head">
-    <img class="hband" src="og/007.jpg?v=e2d1cc41" alt="" width="1200" height="630">
-    <p class="photo-credit">Photo: <a href="https://www.pexels.com/@felix-kiss-568824727">Felix Kiss</a> / <a href="https://www.pexels.com">Pexels</a></p>
-    <div class="erow">
-      <span class="eno">No.007</span>
-      <span class="pillar">構築記録</span>
-    </div>
-    <h1>「未承認」と表示されて気づいたこと ― 決裁の可視化がもたらした訂正</h1>
     <p class="lead">サイトの決裁欄の表示方法を変えたところ、過去の記事の一部が「未承認」と表示されることが分かった。原因を調べ、記録を書き換えずに訂正で対応した経緯を残す。</p>
+  </div>
+  <div class="brief-panel">
+    <div class="zone">
+      <div class="lbl">この記事のポイント</div>
+      <ul class="points">
+        <li>決裁欄を台帳から動的に読む方式に変えたら、過去の未承認が可視化された</li>
+        <li>原因は仕組みの不具合ではなく、承認操作を飛ばしてマージした運用だった</li>
+        <li>台帳を書き換えず、R-0008・R-0009は未承認のまま訂正文を掲示した</li>
+      </ul>
+    </div>
+    <div class="zone">
+      <div class="lbl">目次</div>
+      <ol class="toc">
+        <li><a href="#h1">表示方式を変えたら、隠れていたことが見えた</a></li>
+        <li><a href="#h2">原因は仕組みではなく、手順だった</a></li>
+        <li><a href="#h3">直せないものは、直したふりをしない</a></li>
+        <li><a href="#h4">この件が示すこと</a></li>
+      </ol>
+    </div>
   </div>
 
   <div class="a-body">
-<h2>表示方式を変えたら、隠れていたことが見えた</h2>
+<h2 id="h1">表示方式を変えたら、隠れていたことが見えた</h2>
 <p>本日、SKY SOCIAL LABのサイトの見た目を作り直した。トップページは構築記録を主役に置き、収集と考察は日付順にまとめて畳む形に変更した。あわせて、記事ページにある決裁欄の仕組みも変えた。これまでは承認の結果をHTMLに直接書き込んでいたが、これを台帳を読んで表示する方式に切り替えた。承認が台帳に記録されていなければ、自動的に「未承認」と表示される仕組みである。</p>
 <p>この変更を反映した直後、8月19日と20日に公開した記事が「未承認」と表示されることが判明した。過去に承認したはずの記事である。何かがおかしいと考え、原因を確認した。</p>
 
-<h2>原因は仕組みではなく、手順だった</h2>
+<h2 id="h2">原因は仕組みではなく、手順だった</h2>
 <p>調べると、該当の記事は<strong>Approveを押さずに、Bypass rules and mergeでマージしていた</strong>ことが分かった。承認を記録する仕組みは、レビューの承認操作が行われたときにのみ動くように作ってある。マージという操作そのものは、承認の有無にかかわらず可能であり、承認操作を経ずにマージすれば、台帳には何も記録されない。</p>
 <p>つまりこれは、承認を記録する仕組みが壊れていたわけではない。<strong>仕組みは設計どおりに動いていた。運用する側が、承認という手順を飛ばしていた</strong>というのが実際のところである。表示方式を変えたことで、これまで見えなかった手順の抜けが表に出てきた形になる。</p>
 
-<h2>直せないものは、直したふりをしない</h2>
+<h2 id="h3">直せないものは、直したふりをしない</h2>
 <p>次に検討したのは、この状態をどう扱うかだった。マージ済みのプルリクエストは、後から承認操作を行うことができないことを確認した。つまり、今から「正しく承認し直す」ことはできない。</p>
 <p>ここで選べる道は二つあった。一つは、台帳を直接書き換えて承認済みに見せること。もう一つは、未承認のまま確定させ、その事実を記録に残すことである。</p>
 <p>該当する稟議R-0008とR-0009については、後者を選んだ。台帳を書き換えて承認済みに見せることはしないと判断し、稟議一覧に訂正文を追加した。承認済みとして扱い直すことはしない、という一文である。記録の見栄えを整えるより、記録が記録として機能することを優先した。</p>
 
-<h2>この件が示すこと</h2>
+<h2 id="h4">この件が示すこと</h2>
 <p>承認の仕組みそのものは、以前から存在していた。しかし、承認結果をHTMLに直接書き込む方式だったため、手順を飛ばしても外からは分からない状態が続いていた。表示方式を変え、台帳を読んで表示するようにしたことで、初めて手順の抜けが見えるようになった。これは仕組みの改善が意図せず過去のミスを掘り起こした例である。</p>
 <p>中小企業でも、承認や決裁の記録が「書類上は整っているが、実際の手順は省略されていた」という状態は起こりうる。承認欄に印だけがあり、承認者が実際に内容を確認していないケースなどはその一例である。今回のように、記録の見せ方を変えるだけで、こうした手順の抜けが可視化されることがある。</p>
 <p>大切なのは、見えてしまったものをなかったことにしないことだと考える。都合の悪い記録を書き換えて整えるのではなく、そのまま残し、訂正として明記する。手間はかかるが、その積み重ねが記録全体の信頼につながる。</p>
+  </div>
+  <div class="related">
+    <div class="lbl">関連記事</div>
+    <div class="related-grid">
+      <a class="rcard" href="013.html">
+        <img src="og/013.jpg?v=150550c6" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.013</div><div class="rt">承認は誰が押すのか ― 稟議の棚卸しと、見出し画像を4度描き直した一日</div></div>
+      </a>
+      <a class="rcard" href="012.html">
+        <img src="og/012.jpg?v=33756b0e" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.012</div><div class="rt">「まとめて承認して」と言われた日、AIは何をしなかったか</div></div>
+      </a>
+      <a class="rcard" href="003.html">
+        <img src="og/003.jpg?v=38ae66a1" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.003</div><div class="rt">承認欄を自分で埋めていた ― 「誰が決めたか」を可視化する一日</div></div>
+      </a>
+    </div>
   </div>
 
   <div class="stampbox" data-rinji="R-0010">
