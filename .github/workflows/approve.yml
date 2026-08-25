@@ -13,9 +13,18 @@ jobs:
     if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
+      - name: 実際のマージ状況を確認（レビュー後にマージが完了している場合があるため）
+        id: status
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          MERGED=$(gh pr view "$PR_NUMBER" --repo "${{ github.repository }}" --json merged --jq .merged)
+          echo "merged=$MERGED" >> "$GITHUB_OUTPUT"
+
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.merged && 'main' || github.event.pull_request.head.ref }}
+          ref: ${{ steps.status.outputs.merged == 'true' && 'main' || github.event.pull_request.head.ref }}
 
       - uses: actions/setup-python@v5
         with:
@@ -30,7 +39,7 @@ jobs:
         run: python3 tools/approve.py
 
       - name: 台帳の更新をPRのブランチへ反映（未マージの場合）
-        if: github.event.pull_request.merged == false
+        if: steps.status.outputs.merged == 'false'
         run: |
           if git diff --quiet ledger/; then
             echo "台帳に変更はありません"
@@ -43,7 +52,7 @@ jobs:
           git push
 
       - name: 台帳の更新を新しいPRとしてmainへ反映（マージ済みの場合）
-        if: github.event.pull_request.merged == true
+        if: steps.status.outputs.merged == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SOURCE_PR: ${{ github.event.pull_request.number }}
