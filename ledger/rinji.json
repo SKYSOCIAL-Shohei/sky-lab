@@ -199,9 +199,9 @@
       "detail": "「見出し画像を実写真に切り替えた日 ― 抽象アートをやめた理由」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-26",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-26 19:41",
       "article": "articles/015.html"
     },
     {
@@ -210,9 +210,9 @@
       "detail": "「AI活用の「選び方」が問われる局面へ―知財ルールとコスト構造の変化」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-26",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-26 19:41",
       "article": "articles/016.html"
     },
     {
@@ -221,9 +221,9 @@
       "detail": "「初めての市場調査――候補は3つ、どれも仮説にすぎない」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-26",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-26 19:41",
       "article": "articles/017.html"
     }
   ]
