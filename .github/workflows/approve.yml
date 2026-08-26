@@ -19,7 +19,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          MERGED=$(gh pr view "$PR_NUMBER" --repo "${{ github.repository }}" --json merged --jq .merged)
+          MERGED=$(gh pr view "$PR_NUMBER" --repo "${{ github.repository }}" --json state --jq '.state == "MERGED"')
           echo "merged=$MERGED" >> "$GITHUB_OUTPUT"
 
       - uses: actions/checkout@v4
