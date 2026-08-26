@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "018",
+      "file": "articles/018.html",
+      "pillar": "構築記録",
+      "title": "稼働状況ページを作っていたら、自分の入れたバグに気づいた日",
+      "lead": "市場調査エージェントを初めて実際に動かし、稼働状況を見えるようにした。その過程で、前日自分が入れた承認まわりの修正にバグがあり、承認記録が全件失敗していたことに気づいた。",
+      "sources": "",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-26",
+      "rinji": "R-0021",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "017",
       "file": "articles/017.html",
       "pillar": "構築記録",
