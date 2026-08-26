@@ -1,0 +1,173 @@
+/* 稼働状況ページ専用のスタイル。ブログ（style.css）とは意図的に別の世界観にしている。
+   ここは「読む」ページではなく「見る」ページなので、紙・明朝のトーンではなく、
+   常時稼働する管制室のような、暗い・光るトーンにしている。 */
+:root{
+  --bg:#0A0C11;
+  --panel:#12151E;
+  --panel-2:#171B26;
+  --line:#242938;
+  --ink:#E7E9F0;
+  --ink-2:#9AA2B8;
+  --ink-3:#5B6478;
+  --ok:#3ED98B;
+  --ok-glow:rgba(62,217,139,.4);
+  --bad:#FF5E70;
+  --bad-glow:rgba(255,94,112,.4);
+  --wait:#F2B84C;
+  --accent:#5B8CFF;
+  --accent-2:#B98CFF;
+  --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --gothic:"Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,"Noto Sans JP",system-ui,sans-serif;
+  --mincho:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--gothic);
+  min-height:100vh;line-height:1.7;
+  background-image:
+    radial-gradient(circle at 12% -10%, rgba(91,140,255,.10), transparent 42%),
+    radial-gradient(circle at 88% 110%, rgba(185,140,255,.08), transparent 42%);
+}
+a{color:var(--accent)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px 60px}
+
+header{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5;
+  background:rgba(10,12,17,.86);backdrop-filter:blur(6px)}
+.hd{max-width:1080px;margin:0 auto;padding:16px 22px;display:flex;align-items:center;
+  gap:16px;flex-wrap:wrap}
+.logo{font-family:var(--mincho);font-size:16px;letter-spacing:.1em;color:var(--ink);
+  text-decoration:none}
+.back{font-size:12.5px;color:var(--ink-2);text-decoration:none;border:1px solid var(--line);
+  padding:5px 12px;border-radius:100px}
+.back:hover{color:var(--ink);border-color:var(--ink-3)}
+.pulse-wrap{margin-left:auto;display:flex;align-items:center;gap:8px;font-family:var(--mono);
+  font-size:11.5px;color:var(--ink-2);letter-spacing:.04em}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--ink-3);flex-shrink:0}
+.pulse.on{background:var(--ok);box-shadow:0 0 0 0 var(--ok-glow);
+  animation:pulsering 2.2s ease-out infinite}
+@keyframes pulsering{
+  0%{box-shadow:0 0 0 0 var(--ok-glow)}
+  70%{box-shadow:0 0 0 8px rgba(62,217,139,0)}
+  100%{box-shadow:0 0 0 0 rgba(62,217,139,0)}
+}
+.clock{font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+
+.hero{padding:44px 0 8px}
+.hero h1{font-family:var(--mincho);font-size:26px;font-weight:500;letter-spacing:.04em}
+.hero p{margin-top:12px;color:var(--ink-2);font-size:14px;max-width:62ch;line-height:1.9}
+.refresh{margin-top:16px;display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);
+  font-size:11.5px;color:var(--ink-2);background:none;border:1px solid var(--line);
+  border-radius:100px;padding:7px 14px;cursor:pointer}
+.refresh:hover{border-color:var(--ink-3);color:var(--ink)}
+.refresh:active{transform:scale(.97)}
+
+.sect{padding:38px 0 0}
+.sect h2{font-family:var(--mincho);font-size:16px;font-weight:500;letter-spacing:.06em;
+  padding-bottom:10px;border-bottom:1px solid var(--line)}
+.sect .sub{font-size:12px;color:var(--ink-3);margin-top:8px}
+
+/* ── デスク（エージェント）カード ── */
+.desks{margin-top:18px;display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));
+  gap:14px}
+.desk{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:16px 16px 15px;overflow:hidden}
+.desk::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
+  transition:opacity .4s}
+.desk.working::before{opacity:1;background:radial-gradient(circle at 50% 0%,
+  rgba(91,140,255,.14), transparent 70%)}
+.char{width:100%;height:84px;display:block}
+.char .desktop{fill:#1D2230}
+.char .leg{fill:#161A24}
+.char .monitor{fill:#0B0D13}
+.char .screen{fill:#050609;transition:fill .5s}
+.char .line{fill:var(--ink-3);opacity:.25;transition:opacity .3s}
+.char .stand{fill:#1D2230}
+.char .head{fill:var(--ink-3);transition:fill .5s}
+.char .body{fill:var(--ink-3);transition:fill .5s}
+.char .ring{stroke:var(--accent);stroke-width:1.6;opacity:0;fill:none;
+  stroke-dasharray:5 9;transform-origin:60px 46px}
+
+@keyframes bobslow{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5px)}}
+@keyframes bobfast{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes typeflicker{0%,100%{opacity:.2}50%{opacity:.95}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}
+  40%{transform:translateX(5px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+@keyframes popin{0%{transform:scale(.5);opacity:0}65%{transform:scale(1.12);opacity:1}
+  100%{transform:scale(1);opacity:1}}
+
+.desk.idle .char{animation:bobslow 4.2s ease-in-out infinite}
+.desk.idle .head,.desk.idle .body{fill:var(--ink-3)}
+
+.desk.working .char{animation:bobfast 1s ease-in-out infinite}
+.desk.working .head,.desk.working .body{fill:var(--accent)}
+.desk.working .screen{fill:#0A1522}
+.desk.working .line{animation:typeflicker .9s ease-in-out infinite}
+.desk.working .line.l2{animation-delay:.12s}
+.desk.working .line.l3{animation-delay:.24s}
+.desk.working .line.l4{animation-delay:.36s}
+.desk.working .ring{opacity:1;animation:spin 2.6s linear infinite}
+
+.desk.success .head,.desk.success .body{fill:var(--ok)}
+.desk.success .screen{fill:#08160F}
+.desk.success .line{opacity:.4}
+
+.desk.fail{animation:shake .5s ease 1}
+.desk.fail .head,.desk.fail .body{fill:var(--bad)}
+.desk.fail .screen{fill:#1A0B0D}
+.desk.fail .line{opacity:.4}
+
+.desk.never .char{opacity:.35}
+
+.desk.just{box-shadow:0 0 0 1px var(--accent) inset,0 0 22px rgba(91,140,255,.25)}
+
+.desk-name{font-size:14.5px;font-weight:600;margin-top:8px;letter-spacing:.01em}
+.desk-role{font-size:11.5px;color:var(--ink-2);margin-top:5px;line-height:1.7}
+.desk-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px}
+.pill{font-family:var(--mono);font-size:10px;letter-spacing:.04em;padding:3px 9px;
+  border-radius:100px;border:1px solid var(--line);color:var(--ink-2);
+  display:inline-flex;align-items:center;gap:5px;animation:popin .3s ease}
+.pill::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--ink-3)}
+.pill.ok{color:var(--ok);border-color:rgba(62,217,139,.3)}
+.pill.ok::before{background:var(--ok);box-shadow:0 0 6px var(--ok-glow)}
+.pill.bad{color:var(--bad);border-color:rgba(255,94,112,.3)}
+.pill.bad::before{background:var(--bad);box-shadow:0 0 6px var(--bad-glow)}
+.pill.wait{color:var(--wait);border-color:rgba(242,184,76,.3)}
+.pill.wait::before{background:var(--wait)}
+.desk-when{font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
+.desk-log{font-size:11px;text-decoration:none;color:var(--ink-3);white-space:nowrap}
+.desk-log:hover{color:var(--accent)}
+
+/* ── ローカル専用エージェントの注記 ── */
+.localnote{margin-top:16px;background:var(--panel);border:1px solid var(--line);
+  border-left:3px solid var(--accent-2);border-radius:0 12px 12px 0;padding:15px 18px;
+  font-size:13px;color:var(--ink-2);line-height:1.85}
+.localnote code{font-family:var(--mono);font-size:11.5px;background:var(--panel-2);
+  padding:1px 5px;border-radius:3px;color:var(--ink)}
+
+/* ── 直近の記録（活動ログ） ── */
+.log{margin-top:16px;display:flex;flex-direction:column;gap:0}
+.log-row{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);
+  font-size:13px}
+.log-who{font-family:var(--mono);font-size:11px;color:var(--accent-2);flex-shrink:0;
+  width:120px}
+.log-what{color:var(--ink-2);line-height:1.7}
+.log-when{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);flex-shrink:0;
+  margin-left:auto;white-space:nowrap;padding-left:12px}
+
+.empty{padding:20px 0;color:var(--ink-3);font-size:13px}
+
+footer{border-top:1px solid var(--line);margin-top:60px;padding:24px 0 40px}
+.ft{max-width:1080px;margin:0 auto;padding:0 22px;font-size:11.5px;color:var(--ink-3);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.ft a{color:var(--ink-3)}
+
+@media(max-width:560px){
+  .hero h1{font-size:22px}
+  .desks{grid-template-columns:1fr 1fr}
+  .log-row{flex-wrap:wrap}
+  .log-who{width:auto}
+  .log-when{margin-left:0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
