@@ -232,9 +232,9 @@
       "detail": "「稼働状況ページを作っていたら、自分の入れたバグに気づいた日」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-26",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-26 22:15",
       "article": "articles/018.html"
     }
   ]
