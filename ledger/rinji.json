@@ -214,6 +214,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/016.html"
+    },
+    {
+      "no": "R-0020",
+      "subject": "記事 No.017 を公開する",
+      "detail": "「初めての市場調査――候補は3つ、どれも仮説にすぎない」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-26",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/017.html"
     }
   ]
 }
