@@ -5,42 +5,48 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>稼働状況 — SKY SOCIAL LAB</title>
 <meta name="robots" content="noindex">
-<meta name="description" content="sky-labの自動化（GitHub Actions）が実際に動いているかどうかを、GitHub APIから読んだ実行履歴そのままで確認するページ。数字は作っていません。">
-<link rel="stylesheet" href="style.css">
+<meta name="description" content="sky-labの自動化（GitHub Actions）が実際に動いているかどうかを、GitHub APIから読んだ実行履歴そのままで確認するページ。集計・演出はしていません。">
+<link rel="stylesheet" href="ops.css">
 </head>
 <body>
 
 <header><div class="hd">
   <a href="./" class="logo">SKY SOCIAL LAB</a>
-  <nav class="nav"><a href="./">記録</a><a href="rinji.html">稟議</a><a href="about.html">このサイトについて</a></nav>
+  <a href="./" class="back">← ブログへ戻る</a>
+  <div class="pulse-wrap">
+    <span class="pulse" id="pulse"></span>
+    <span id="pulse-label">確認中…</span>
+    <span class="clock" id="clock"></span>
+  </div>
 </div></header>
 
 <div class="wrap">
 
 <section class="hero">
   <h1>稼働状況</h1>
-  <p>ここに出ているのは、実際にGitHub Actionsで動いている自動化の実行履歴そのものです。集計や演出はしていません。GitHub APIから読んだ実際の記録だけを表示します。記事の一覧ではないため、トップページの導線には含めていません。</p>
+  <p>ここに並んでいる机は、実在する自動化（GitHub Actions）です。動きは演出ではなく、GitHub APIから読んだ実際の実行状態（実行中／成功／失敗／未実行）をそのまま反映しています。約90秒ごとに自動で更新します。</p>
+  <button class="refresh" id="refresh-btn">⟳ 今すぐ更新</button>
 </section>
 
-<div class="zhead">
+<div class="sect">
   <h2>エージェント一覧</h2>
-  <span class="z">それぞれの直近の実行</span>
+  <div class="sub">それぞれの直近の実行。動いている机は、実際にいま動いています。</div>
+  <div class="desks" id="agents"></div>
 </div>
-<div id="agents" class="opslist"><p class="empty">読み込み中…</p></div>
 
-<div class="zhead">
+<div class="sect">
   <h2>市場調査エージェント</h2>
-  <span class="z">社外秘資料を扱うため、意図的にローカル専用</span>
-</div>
-<div class="opsnote">
-  <p><code>tools/research.py</code> は株主の会社概要（社外秘）を材料にするため、GitHub Actions上では実行できない設計にしています。ここには表示されません。実行するとき、私（Claude）が手元で動かし、結果は他のエージェントと同じく<code>publish_draft.yml</code>経由で通常の稟議として提案します。</p>
+  <div class="sub">社外秘資料を扱うため、意図的にローカル専用</div>
+  <div class="localnote">
+    <p><code>tools/research.py</code> は株主の会社概要（社外秘）を材料にするため、GitHub Actions上では実行できない設計にしています。ここには机がありません。実行するときは私（Claude）が手元で動かし、結果は他のエージェントと同じく<code>publish_draft.yml</code>経由で通常の稟議として提案します。</p>
+  </div>
 </div>
 
-<div class="zhead">
+<div class="sect">
   <h2>直近の記録</h2>
-  <span class="z">日報より</span>
+  <div class="sub">日報より</div>
+  <div class="log" id="nippou"></div>
 </div>
-<div id="nippou" class="opslist"><p class="empty">読み込み中…</p></div>
 
 </div>
 
