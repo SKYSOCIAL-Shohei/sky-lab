@@ -1,0 +1,100 @@
+name: 下書きから記事を作成（手動投入）
+
+# daily.ymlはtools/write.pyがAPIで起案したものを記事にする。
+# こちらは、何らかの理由でwrite.pyを経由できない下書き（例：社外秘の資料を
+# 材料にしたためGitHub Actions上では生成できないもの）を、人間が確認した
+# テキストとして直接投入し、そこから先は daily.yml と全く同じ経路
+# （guard.py・approved_only.py・PRレビュー）に乗せるためのもの。
+#
+# このworkflow自体は判断をしない。中身の生成も行わない。稟議は必ず
+# 未承認（pending）で起票され、承認点は増えない。
+
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: "記事タイトル"
+        required: true
+      lead:
+        description: "リード文（1〜2文）"
+        required: true
+      points:
+        description: "この記事のポイント（<li>...</li>を3つ）"
+        required: true
+      body:
+        description: "本文HTML（h2, p, strong, ul, li のみ）"
+        required: true
+      pillar:
+        description: "構築記録 または 収集と考察"
+        required: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 下書きを準備
+        env:
+          D_TITLE: ${{ github.event.inputs.title }}
+          D_LEAD: ${{ github.event.inputs.lead }}
+          D_POINTS: ${{ github.event.inputs.points }}
+          D_BODY: ${{ github.event.inputs.body }}
+          D_PILLAR: ${{ github.event.inputs.pillar }}
+        run: |
+          python3 - <<'PYEOF'
+          import json, os
+          d = {
+              "title": os.environ["D_TITLE"],
+              "lead": os.environ["D_LEAD"],
+              "points": os.environ["D_POINTS"],
+              "body": os.environ["D_BODY"],
+              "pillar": os.environ["D_PILLAR"],
+          }
+          os.makedirs("work", exist_ok=True)
+          json.dump({"drafts": [d]}, open("work/drafts.json", "w", encoding="utf-8"),
+                     ensure_ascii=False, indent=2)
+          PYEOF
+
+      - name: 記事ページと台帳を作成
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: python3 tools/publish.py
+
+      - name: 情報漏れの検査
+        run: python3 tools/guard.py
+
+      - name: 未承認公開の検査
+        run: python3 tools/approved_only.py
+
+      - name: 作業ファイルを片づける
+        run: rm -rf work
+
+      - name: 申請の文面を作成
+        id: pr
+        run: python3 tools/pr_body.py
+
+      - name: プルリクエストを作成
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_TITLE: ${{ steps.pr.outputs.title }}
+          PR_BODY: ${{ steps.pr.outputs.body }}
+        run: |
+          DATE=$(TZ=Asia/Tokyo date +%Y-%m-%d)
+          BRANCH="draft-manual/${DATE}-${GITHUB_RUN_ID}"
+          git config user.name "sky-lab"
+          git config user.email "sky-lab@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add -A
+          git commit -m "${DATE} の起案（手動投入）"
+          git push -u origin "$BRANCH"
+          gh pr create --title "$PR_TITLE" --body "$PR_BODY" --base main --head "$BRANCH"
