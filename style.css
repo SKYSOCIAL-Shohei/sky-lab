@@ -214,6 +214,16 @@ details.gsect[open]>summary::after{content:"− 隠す"}
 .rwarn{font-size:13px;color:#8C2F27;font-weight:600;margin-top:10px}
 .empty{padding:22px 0;color:var(--ink-3);font-size:14px}
 
+/* ── 稼働状況ページ ── */
+.opslist{margin-top:6px}
+.opsrow{padding:16px 0;border-bottom:1px solid var(--rule)}
+.opsrow-hd{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.opsname{font-family:var(--mincho);font-size:16px}
+.opsrole{font-size:13px;color:var(--ink-2);margin-top:5px;line-height:1.7}
+.opsmeta{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:7px;letter-spacing:.03em}
+.opsnote{background:var(--paper-2);border:1px solid var(--rule);border-left:3px solid var(--rule-2);padding:16px 18px;margin:14px 0 0;font-size:13.5px;color:var(--ink-2);line-height:1.85}
+.opsnote code{font-family:var(--mono);font-size:12px;background:var(--paper);padding:1px 5px;border-radius:2px}
+
 /* ── 記事末尾の関連記事 ── */
 .related{margin:58px 0 0;padding-top:30px;border-top:1px solid var(--rule-2)}
 .related .lbl{font-family:var(--mincho);font-size:16px;letter-spacing:.08em;color:var(--ink)}
