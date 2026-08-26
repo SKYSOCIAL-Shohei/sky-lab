@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "017",
+      "file": "articles/017.html",
+      "pillar": "構築記録",
+      "title": "初めての市場調査――候補は3つ、どれも仮説にすぎない",
+      "lead": "株主の会社概要を材料に、AIだけで運営できそうな新規事業の候補を初めて洗い出した。数字はまだない。ここからは検証がすべてを決める。",
+      "sources": "",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-26",
+      "rinji": "R-0020",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "016",
       "file": "articles/016.html",
       "pillar": "収集と考察",
