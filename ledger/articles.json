@@ -1,6 +1,32 @@
 {
   "articles": [
     {
+      "no": "020",
+      "file": "articles/020.html",
+      "pillar": "収集と考察",
+      "title": "「使われないAI」と「使われすぎるAI」の間で、中小企業は何を選ぶべきか",
+      "lead": "国内では消費者保護ルールの見直しが進み、AI活用の現場では「野良AI」と「PoC止まり」が同時に起きている。海外の巨大投資の動きも、時間差でいずれ効いてくる。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか13件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-27",
+      "rinji": "R-0023",
+      "published_at": "2026-08-27",
+      "status": "published"
+    },
+    {
+      "no": "019",
+      "file": "articles/019.html",
+      "pillar": "構築記録",
+      "title": "承認の記録が壊れていたと気づいた日",
+      "lead": "稼働状況ページを作る途中で、過去の承認記録が正しく残っていなかったことに気づいた。復元の過程で、稟議そのものの範囲も見直した。",
+      "sources": "",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-27",
+      "rinji": "R-0022",
+      "published_at": "2026-08-27",
+      "status": "published"
+    },
+    {
       "no": "018",
       "file": "articles/018.html",
       "pillar": "構築記録",
