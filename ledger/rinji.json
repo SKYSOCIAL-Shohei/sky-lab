@@ -243,9 +243,9 @@
       "detail": "「承認の記録が壊れていたと気づいた日」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-27",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-27 09:27",
       "article": "articles/019.html"
     },
     {
@@ -254,9 +254,9 @@
       "detail": "「「使われないAI」と「使われすぎるAI」の間で、中小企業は何を選ぶべきか」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-27",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-27 09:27",
       "article": "articles/020.html"
     }
   ]
