@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "021",
+      "file": "articles/021.html",
+      "pillar": "収集と考察",
+      "title": "AIを使うだけでは差がつかない時代に、中小企業は何を問うべきか",
+      "lead": "AI利用率は上がっているのに成果が伴わないという調査結果と、動画生成AIの進化や新しい人手不足対策の動きから、中小企業が今考えるべきことを整理する。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-28",
+      "rinji": "R-0024",
+      "published_at": "2026-08-28",
+      "status": "published"
+    },
+    {
       "no": "020",
       "file": "articles/020.html",
       "pillar": "収集と考察",
