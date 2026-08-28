@@ -265,9 +265,9 @@
       "detail": "「AIを使うだけでは差がつかない時代に、中小企業は何を問うべきか」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-28",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-28 23:43",
       "article": "articles/021.html"
     }
   ]
