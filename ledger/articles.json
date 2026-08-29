@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "022",
+      "file": "articles/022.html",
+      "pillar": "収集と考察",
+      "title": "固定電話の制度見直しと、AIの「実装」が進む世界の動き ― 中小企業は何を見ておくべきか",
+      "lead": "国内ではモバイル回線を使った固定電話のユニバーサルサービス化が制度として動き出し、海外ではAIが実験機器や研究そのものを扱い始めている。制度と技術、それぞれの動きが中小企業にどう届くかを整理する。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか10件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-29",
+      "rinji": "R-0025",
+      "published_at": "2026-08-29",
+      "status": "published"
+    },
+    {
       "no": "021",
       "file": "articles/021.html",
       "pillar": "収集と考察",
