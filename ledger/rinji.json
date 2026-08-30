@@ -287,9 +287,9 @@
       "detail": "「AI投資の「使われているか」から「何を生んだか」へ ― 評価指標の転換点」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-30",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-30 17:55",
       "article": "articles/023.html"
     }
   ]
