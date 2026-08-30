@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "024",
+      "file": "articles/024.html",
+      "pillar": "収集と考察",
+      "title": "AXという言葉と、AI導入の「体制」「継続性」「運用」を考える一日",
+      "lead": "総務省の重点施策から国内の方向性を、海外企業のAI体制づくりと契約リスクから実務の教訓を拾う。派手なニュースより、体制・継続性・運用という地味な論点が今日は目立った。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか6件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-31",
+      "rinji": "R-0027",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "023",
       "file": "articles/023.html",
       "pillar": "収集と考察",

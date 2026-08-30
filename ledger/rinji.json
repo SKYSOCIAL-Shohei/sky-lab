@@ -291,6 +291,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/023.html"
+    },
+    {
+      "no": "R-0027",
+      "subject": "記事 No.024 を公開する",
+      "detail": "「AXという言葉と、AI導入の「体制」「継続性」「運用」を考える一日」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-31",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/024.html"
     }
   ]
 }
