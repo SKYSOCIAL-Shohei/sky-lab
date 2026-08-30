@@ -280,6 +280,17 @@
       "approved_by": "SKYSOCIAL-Shohei",
       "approved_at": "2026-08-29 11:41",
       "article": "articles/022.html"
+    },
+    {
+      "no": "R-0026",
+      "subject": "記事 No.023 を公開する",
+      "detail": "「AI投資の「使われているか」から「何を生んだか」へ ― 評価指標の転換点」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-08-30",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/023.html"
     }
   ]
 }

@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "023",
+      "file": "articles/023.html",
+      "pillar": "収集と考察",
+      "title": "AI投資の「使われているか」から「何を生んだか」へ ― 評価指標の転換点",
+      "lead": "AI活用の指標や安全性をめぐる議論が国内外で同時に進んでいる。中小企業にとっては、導入の是非よりも「何を見て判断するか」が問われ始めている段階にある。",
+      "sources": "この日見た情報源　ITmedia AI＋・TechCrunch ほか8件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-08-30",
+      "rinji": "R-0026",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "022",
       "file": "articles/022.html",
       "pillar": "収集と考察",
