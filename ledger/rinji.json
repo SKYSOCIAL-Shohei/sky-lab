@@ -302,6 +302,17 @@
       "approved_by": "SKYSOCIAL-Shohei",
       "approved_at": "2026-08-31 09:07",
       "article": "articles/024.html"
+    },
+    {
+      "no": "R-0028",
+      "subject": "記事 No.025 を公開する",
+      "detail": "「AIの「使い方」と「守り方」、中小企業が今のうちに押さえておきたい変化」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-09-01",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/025.html"
     }
   ]
 }

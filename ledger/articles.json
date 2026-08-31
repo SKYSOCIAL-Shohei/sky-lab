@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "025",
+      "file": "articles/025.html",
+      "pillar": "収集と考察",
+      "title": "AIの「使い方」と「守り方」、中小企業が今のうちに押さえておきたい変化",
+      "lead": "AI活用の料金設計、大企業の組織論、SNS上の開示ルール、そして取引先を巻き込むデータ侵害――規模の異なる4つの動きから、中小企業が今考えておくべきことを拾う。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか12件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-01",
+      "rinji": "R-0028",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "024",
       "file": "articles/024.html",
       "pillar": "収集と考察",
