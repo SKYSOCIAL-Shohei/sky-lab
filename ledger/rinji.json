@@ -298,9 +298,9 @@
       "detail": "「AXという言葉と、AI導入の「体制」「継続性」「運用」を考える一日」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-08-31",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-08-31 09:07",
       "article": "articles/024.html"
     }
   ]
