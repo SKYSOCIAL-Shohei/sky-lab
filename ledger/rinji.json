@@ -313,6 +313,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/025.html"
+    },
+    {
+      "no": "R-0029",
+      "subject": "記事 No.026 を公開する",
+      "detail": "「AI推進の司令塔化と、広告・デザイン・防御の三方から迫るAI実装圧力」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-09-02",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/026.html"
     }
   ]
 }

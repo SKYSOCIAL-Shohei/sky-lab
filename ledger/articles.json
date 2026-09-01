@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "026",
+      "file": "articles/026.html",
+      "pillar": "収集と考察",
+      "title": "AI推進の司令塔化と、広告・デザイン・防御の三方から迫るAI実装圧力",
+      "lead": "総務省がAI推進の専門組織を新設する一方、消費者保護ルールの見直しも進む。海外では広告・デザイン・サイバーセキュリティの各分野でAIが実装レベルに達しつつあり、時間差はあっても中小企業の現場に届く動きが重なっている。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか12件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-02",
+      "rinji": "R-0029",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "025",
       "file": "articles/025.html",
       "pillar": "収集と考察",
