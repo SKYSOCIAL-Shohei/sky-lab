@@ -309,9 +309,9 @@
       "detail": "「AIの「使い方」と「守り方」、中小企業が今のうちに押さえておきたい変化」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-09-01",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-09-01 10:32",
       "article": "articles/025.html"
     }
   ]
