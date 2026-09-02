@@ -320,9 +320,9 @@
       "detail": "「AI推進の司令塔化と、広告・デザイン・防御の三方から迫るAI実装圧力」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-09-02",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-09-02 18:37",
       "article": "articles/026.html"
     }
   ]
