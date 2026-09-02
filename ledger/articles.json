@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "027",
+      "file": "articles/027.html",
+      "pillar": "収集と考察",
+      "title": "大手のAIセキュリティ強化は、中小企業にいつ「取引条件」として降りてくるか",
+      "lead": "NECとGoogleが相次いで発表した高度AIによるサイバー防御の取り組みは、今のところ大企業と政府機関の話に見える。しかし人材育成の課題と合わせて読むと、中小企業が数年内に向き合うことになりそうな論点が見えてくる。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか13件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-03",
+      "rinji": "R-0030",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "026",
       "file": "articles/026.html",
       "pillar": "収集と考察",

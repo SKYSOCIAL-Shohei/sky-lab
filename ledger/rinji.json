@@ -324,6 +324,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/026.html"
+    },
+    {
+      "no": "R-0030",
+      "subject": "記事 No.027 を公開する",
+      "detail": "「大手のAIセキュリティ強化は、中小企業にいつ「取引条件」として降りてくるか」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-09-03",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/027.html"
     }
   ]
 }
