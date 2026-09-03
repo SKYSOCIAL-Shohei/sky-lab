@@ -331,9 +331,9 @@
       "detail": "「大手のAIセキュリティ強化は、中小企業にいつ「取引条件」として降りてくるか」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-09-03",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-09-03 09:37",
       "article": "articles/027.html"
     }
   ]
