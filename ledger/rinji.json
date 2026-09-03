@@ -337,6 +337,28 @@
       "approved_by": "SKYSOCIAL-Shohei",
       "approved_at": "2026-09-03 09:37",
       "article": "articles/027.html"
+    },
+    {
+      "no": "R-0031",
+      "subject": "記事 No.028 を公開する",
+      "detail": "「承認したはずの記録が、なぜ消えていたのか」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-09-04",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/028.html"
+    },
+    {
+      "no": "R-0032",
+      "subject": "記事 No.029 を公開する",
+      "detail": "「AIサービスの単一依存リスクとデータ提供の対価、中小企業が今考えておくべきこと」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-09-04",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/029.html"
     }
   ]
 }

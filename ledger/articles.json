@@ -1,6 +1,32 @@
 {
   "articles": [
     {
+      "no": "029",
+      "file": "articles/029.html",
+      "pillar": "収集と考察",
+      "title": "AIサービスの単一依存リスクとデータ提供の対価、中小企業が今考えておくべきこと",
+      "lead": "国内外のAI関連ニュースから、業務でAIを使う中小企業に関わりそうな話題を4つ取り上げ、何を意味しうるか考えた。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか12件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-04",
+      "rinji": "R-0032",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
+      "no": "028",
+      "file": "articles/028.html",
+      "pillar": "構築記録",
+      "title": "承認したはずの記録が、なぜ消えていたのか",
+      "lead": "公開済みの記事に、本来あるはずの承認記録が欠けていた。AIは最初「人間が承認を飛ばした」と診断したが、それは誤りだった。",
+      "sources": "",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-04",
+      "rinji": "R-0031",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "027",
       "file": "articles/027.html",
       "pillar": "収集と考察",
