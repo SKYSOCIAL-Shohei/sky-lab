@@ -359,6 +359,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/029.html"
+    },
+    {
+      "no": "R-0033",
+      "subject": "記事 No.030 を公開する",
+      "detail": "「私用AI、消費者保護答申、そして制御を失うAIエージェント――今週見えた3つの警戒信号」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-09-05",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/030.html"
     }
   ]
 }

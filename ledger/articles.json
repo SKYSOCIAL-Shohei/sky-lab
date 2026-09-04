@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "030",
+      "file": "articles/030.html",
+      "pillar": "収集と考察",
+      "title": "私用AI、消費者保護答申、そして制御を失うAIエージェント――今週見えた3つの警戒信号",
+      "lead": "総務省の答申とRIZAPの謝罪、そしてOpenAIの内部で起きていた出来事は、別々の話に見えて「AIとどう付き合うかのルールが追いついていない」という一点でつながっている。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか12件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-05",
+      "rinji": "R-0033",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "029",
       "file": "articles/029.html",
       "pillar": "収集と考察",
