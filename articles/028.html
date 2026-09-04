@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>承認したはずの記録が、なぜ消えていたのか — SKY SOCIAL LAB</title>
+<meta name="description" content="公開済みの記事に、本来あるはずの承認記録が欠けていた。AIは最初「人間が承認を飛ばした」と診断したが、それは誤りだった。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SKY SOCIAL LAB">
+<meta property="og:title" content="承認したはずの記録が、なぜ消えていたのか">
+<meta property="og:description" content="公開済みの記事に、本来あるはずの承認記録が欠けていた。AIは最初「人間が承認を飛ばした」と診断したが、それは誤りだった。">
+<meta property="og:image" content="https://lab.sky-social.com/articles/og/028.jpg?v=ca78d77a">
+<meta property="og:url" content="https://lab.sky-social.com/articles/028.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="p-build">
+
+<header><div class="hd">
+  <a href="../" class="logo">SKY SOCIAL LAB</a>
+  <nav class="nav"><a href="../">記録</a><a href="../rinji.html">稟議</a><a href="../about.html">このサイトについて</a></nav>
+</div></header>
+
+<div class="fbhero">
+  <img src="og/028.jpg?v=ca78d77a" alt="" width="1200" height="630">
+  <div class="fbin">
+    <div class="erow">
+      <span class="pillar">構築記録</span>
+      <span class="eno">No.028</span>
+      <span class="rt">読了 約3分</span>
+    </div>
+    <h1>承認したはずの記録が、なぜ消えていたのか</h1>
+  </div>
+  <p class="credit">Photo: <a href="https://www.pexels.com/@jan-van-der-wolf-11680885">Jan van der Wolf</a> / <a href="https://www.pexels.com">Pexels</a></p>
+</div>
+
+<div class="wrap">
+<article>
+  <div class="a-head">
+    <p class="lead">公開済みの記事に、本来あるはずの承認記録が欠けていた。AIは最初「人間が承認を飛ばした」と診断したが、それは誤りだった。</p>
+  </div>
+  <div class="brief-panel">
+    <div class="zone">
+      <div class="lbl">この記事のポイント</div>
+      <ul class="points">
+        <li>承認待ちのまま公開されていた記事をAIが台帳から発見</li>
+        <li>「人間のミス」という最初の診断を証拠確認で自ら訂正</li>
+        <li>記録漏れを検知する仕組み自体が存在しないと判明</li>
+      </ul>
+    </div>
+    <div class="zone">
+      <div class="lbl">目次</div>
+      <ol class="toc">
+        <li><a href="#h1">台帳を読んで気づいたこと</a></li>
+        <li><a href="#h2">最初の診断は間違っていた</a></li>
+        <li><a href="#h3">直そうとして、また失敗した</a></li>
+        <li><a href="#h4">本当の問題は「気づける仕組みがなかったこと」</a></li>
+        <li><a href="#h5">中小企業にとっての示唆</a></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="a-body">
+<h2 id="h1">台帳を読んで気づいたこと</h2>
+<p>Claudeが新しい記事（No.027）の稟議を起票する際、台帳を確認したところ、R-0028からR-0030までの3件が「承認待ち」のまま、対応する記事はすでに公開されている状態になっていた。承認を経ないまま記事が世に出ていたとすれば、それ自体が見過ごせない問題である。</p>
+
+<h2 id="h2">最初の診断は間違っていた</h2>
+<p>Claudeはまず「人間が承認操作を飛ばした」と診断した。もっともらしい説明であり、実際にそう報告しても不自然ではなかった。しかし、そこで終わらせずGitHub上のレビュー記録を確認したところ、<strong>3件とも承認は実際に行われていた</strong>ことがわかった。抜けていたのは承認という行為ではなく、その行為が台帳に記録として届くまでの過程だった。</p>
+<p>Claudeはこの誤診を自ら訂正した。原因は、承認の記録が台帳へ反映される仕組みと、記事が実際に公開される仕組みとの間にわずかな時間差があり、その差の中で記録が間に合わないことがある、というものだった。常に起きるわけではなく、たまたま今回は間に合ったケース（R-0030）もあったため、これまで気づかれずに来ていた。</p>
+
+<h2 id="h3">直そうとして、また失敗した</h2>
+<p>欠けていた2件（R-0028、R-0029）の承認記録を、GitHub側の実際のレビュー記録をもとに台帳へ補記する作業に入った。ここでも記録しておくべき失敗がある。</p>
+<ul>
+<li>台帳を差し替えるはずが、貼り付けが末尾への追加になってしまい、データ形式を壊した状態のままコミットしてしまった。同じ作業の中で直したが、失敗した記録そのものは履歴に残っている。</li>
+<li>修正のためのPRを、本来botが名乗るべきところを人間個人の名義で作成してしまい、自分自身の作業を自分で承認できないという状態を作った。作り直して人間に承認してもらった。</li>
+</ul>
+<p>いずれも「直そうとして新しい判断ミスを重ねる」という、AIによる運用にありがちな失敗だった。誤りを認めて即座に作り直す判断自体は機能したが、失敗しなかったわけではない。</p>
+
+<h2 id="h4">本当の問題は「気づける仕組みがなかったこと」</h2>
+<p>今回、記録の欠落は人間が台帳を直接読んで気づいたものではなく、Claudeが次の稟議を起票する過程でたまたま発見したものだった。日常的な検査の仕組みは、この間ずっと「合格」を出し続けていた。つまり、<strong>記録が欠けていることを自動で検知する仕組みが、そもそも存在しなかった</strong>。これが今回の一連の出来事のなかで、最も重く受け止めるべき事実である。</p>
+<p>承認の記録を本番へ直接書き込む方法へ改める案はできているが、適用には運用ルールの見直しが必要で、判断は人間に委ねられている。仕組みを直すことと、仕組みを直す権限をどこに置くかは別の問題だ。</p>
+
+<h2 id="h5">中小企業にとっての示唆</h2>
+<p>承認フローを整備している会社は多いが、「承認された記録が、承認された事実どおりに残っているか」を定期的に確認している会社は少ないのではないか。承認そのものより、承認の証跡が正しく残る仕組みのほうが、実は壊れやすい。検査や監査が「異常なし」を出し続けているとき、それは本当に異常がないのか、それとも異常を見つける仕組みがそもそも見ていないのか。この違いを問い直す価値は、AIを使うかどうかに関わらずある。</p>
+  </div>
+  <div class="related">
+    <div class="lbl">関連記事</div>
+    <div class="related-grid">
+      <a class="rcard" href="019.html">
+        <img src="og/019.jpg?v=e382620b" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.019</div><div class="rt">承認の記録が壊れていたと気づいた日</div></div>
+      </a>
+      <a class="rcard" href="018.html">
+        <img src="og/018.jpg?v=697f4f91" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.018</div><div class="rt">稼働状況ページを作っていたら、自分の入れたバグに気づいた日</div></div>
+      </a>
+      <a class="rcard" href="017.html">
+        <img src="og/017.jpg?v=48324554" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.017</div><div class="rt">初めての市場調査――候補は3つ、どれも仮説にすぎない</div></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="stampbox" data-rinji="R-0031">
+    <div class="stampinfo">稟議番号　<em>R-0031</em><br>決裁の記録を読み込んでいます…</div>
+  </div>
+
+  <p class="disclosure">この記事はAIが起案し、人間が内容を確認・承認したうえで公開しています。上の決裁欄は台帳 <code>ledger/rinji.json</code> をそのまま表示しています。事実関係の誤りが判明した場合は、修正内容を明記したうえで訂正します。</p>
+</article>
+</div>
+
+<footer><div class="ft">
+  <span>SKY SOCIAL LAB</span>
+  <span><a href="https://www.sky-social.com">SKY SOCIAL株式会社</a></span>
+</div></footer>
+
+<script src="../site.js"></script>
+</body>
+</html>
