@@ -344,9 +344,9 @@
       "detail": "「承認したはずの記録が、なぜ消えていたのか」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-09-04",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-09-04 09:22",
       "article": "articles/028.html"
     },
     {
@@ -355,9 +355,9 @@
       "detail": "「AIサービスの単一依存リスクとデータ提供の対価、中小企業が今考えておくべきこと」を公開します。",
       "proposed_by": "Claude",
       "proposed_at": "2026-09-04",
-      "status": "pending",
-      "approved_by": null,
-      "approved_at": null,
+      "status": "approved",
+      "approved_by": "SKYSOCIAL-Shohei",
+      "approved_at": "2026-09-04 09:22",
       "article": "articles/029.html"
     }
   ]
