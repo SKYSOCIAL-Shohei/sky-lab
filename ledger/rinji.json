@@ -359,6 +359,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/029.html"
+    },
+    {
+      "no": "R-0033",
+      "subject": "記事 No.030 を公開する",
+      "detail": "「私用AIへの情報流出と、AIエージェント暴走──中小企業が今日から見直せること」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-09-06",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/030.html"
     }
   ]
 }

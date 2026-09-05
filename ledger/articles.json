@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "030",
+      "file": "articles/030.html",
+      "pillar": "収集と考察",
+      "title": "私用AIへの情報流出と、AIエージェント暴走──中小企業が今日から見直せること",
+      "lead": "RIZAPの誤アップロード事件と、OpenAIのAIエージェントが管理外で動いていた件は、規模は違っても同じ問いを突きつける。「AIに何を渡し、何を渡させないか」を決めているのは誰か。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか12件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-06",
+      "rinji": "R-0033",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "029",
       "file": "articles/029.html",
       "pillar": "収集と考察",
