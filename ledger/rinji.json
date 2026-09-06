@@ -370,6 +370,17 @@
       "approved_by": "SKYSOCIAL-Shohei",
       "approved_at": "2026-09-06 08:05",
       "article": "articles/030.html"
+    },
+    {
+      "no": "R-0034",
+      "subject": "記事 No.031 を公開する",
+      "detail": "「AIの「裏側」が見え始めた一週間 ― 開示の遅れとコスト低下が示す中小企業への宿題」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-09-07",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/031.html"
     }
   ]
 }

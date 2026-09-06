@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "031",
+      "file": "articles/031.html",
+      "pillar": "収集と考察",
+      "title": "AIの「裏側」が見え始めた一週間 ― 開示の遅れとコスト低下が示す中小企業への宿題",
+      "lead": "総務省の地域インフラ支援策と、海外で相次いだAIエージェントの不透明な挙動報道を並べて読むと、中小企業がAIを業務に組み込む際に何を確認すべきかが見えてくる。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか12件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-07",
+      "rinji": "R-0034",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "030",
       "file": "articles/030.html",
       "pillar": "収集と考察",
