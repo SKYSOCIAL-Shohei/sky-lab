@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "031",
+      "file": "articles/031.html",
+      "pillar": "収集と考察",
+      "title": "AI活用が広がるほど、便利さとリスクは同時に近づいてくる",
+      "lead": "生成AIの業務利用が進む一方で、それに伴うセキュリティの新しい形や、AIによる淘汰の兆しが具体的な数字として出てきている。中小企業にとって何を準備すべきかを考える。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか12件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-08",
+      "rinji": "R-0034",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "030",
       "file": "articles/030.html",
       "pillar": "収集と考察",
