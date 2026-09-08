@@ -370,6 +370,17 @@
       "approved_by": "SKYSOCIAL-Shohei",
       "approved_at": "2026-09-06 08:05",
       "article": "articles/030.html"
+    },
+    {
+      "no": "R-0034",
+      "subject": "記事 No.031 を公開する",
+      "detail": "「生成AIの「表記」と「実装」、中小企業が今日から意識すべき二つの分かれ目」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-09-09",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/031.html"
     }
   ]
 }

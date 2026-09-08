@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "031",
+      "file": "articles/031.html",
+      "pillar": "収集と考察",
+      "title": "生成AIの「表記」と「実装」、中小企業が今日から意識すべき二つの分かれ目",
+      "lead": "マラソン大会ポスターのAI疑惑騒動と、OpenAIの新モデル発表という異質な二つの出来事は、実は同じ問いを中小企業に突きつけている。AIを使ったことをどう説明し、どう業務に組み込むか。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか12件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-09",
+      "rinji": "R-0034",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "030",
       "file": "articles/030.html",
       "pillar": "収集と考察",
