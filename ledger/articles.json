@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "031",
+      "file": "articles/031.html",
+      "pillar": "収集と考察",
+      "title": "下請法違反への行政指導とAI統治の課題、中小企業が今週見ておくべき動き",
+      "lead": "総務省による放送コンテンツ取引の行政指導と、国内外で進むAI活用の広がりから、中小企業が意識しておきたい論点を整理する。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか12件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-10",
+      "rinji": "R-0034",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "030",
       "file": "articles/030.html",
       "pillar": "収集と考察",

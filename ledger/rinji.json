@@ -370,6 +370,17 @@
       "approved_by": "SKYSOCIAL-Shohei",
       "approved_at": "2026-09-06 08:05",
       "article": "articles/030.html"
+    },
+    {
+      "no": "R-0034",
+      "subject": "記事 No.031 を公開する",
+      "detail": "「下請法違反への行政指導とAI統治の課題、中小企業が今週見ておくべき動き」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-09-10",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/031.html"
     }
   ]
 }
