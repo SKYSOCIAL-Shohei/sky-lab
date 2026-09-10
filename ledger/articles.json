@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "031",
+      "file": "articles/031.html",
+      "pillar": "収集と考察",
+      "title": "号令だけでは動かないAI導入と、静かに変わる採用の現場",
+      "lead": "総務省の海外展開支援策、AI導入をめぐる組織論、そして採用面接に潜むAIの影――今日の材料からは、制度と現場の両方で「仕組みを整える前に走り出す危うさ」が見えてくる。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか12件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-11",
+      "rinji": "R-0034",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "030",
       "file": "articles/030.html",
       "pillar": "収集と考察",
