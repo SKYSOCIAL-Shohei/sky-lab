@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "AIを「社員」として扱う発想と、中小企業が今すぐ気にすべき境界線",
+      "lead": "NECの「AI社員」実験と国内調査、フィジカルAIの現場、そして海外のAIモデル競争。規模も速度も違う4つの動きから、中小企業が今考えておくべきことを整理する。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか12件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-12",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
