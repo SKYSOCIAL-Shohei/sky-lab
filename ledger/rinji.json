@@ -381,6 +381,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/031.html"
+    },
+    {
+      "no": "R-0035",
+      "subject": "記事 No.032 を公開する",
+      "detail": "「AIを「社員」として扱う発想と、中小企業が今すぐ気にすべき境界線」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-09-12",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/032.html"
     }
   ]
 }
