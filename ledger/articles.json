@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "AIに何を任せるか、境界線をどう引くかが問われ始めている",
+      "lead": "国内調査が示した「AIに任せてよい業務」の世代差と、Anthropic CEOが表明した開発ペース減速方針。中小企業にとっての意味を考える。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか12件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-13",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
