@@ -381,6 +381,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/031.html"
+    },
+    {
+      "no": "R-0035",
+      "subject": "記事 No.032 を公開する",
+      "detail": "「AIに何を任せるか、境界線をどう引くかが問われ始めている」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-09-13",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/032.html"
     }
   ]
 }
