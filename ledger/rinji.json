@@ -381,6 +381,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/031.html"
+    },
+    {
+      "no": "R-0035",
+      "subject": "記事 No.032 を公開する",
+      "detail": "「AIコスト管理と海外展開支援、そして「ペース調整」論――中小企業が今見ておくべき4つの動き」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-09-14",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/032.html"
     }
   ]
 }
