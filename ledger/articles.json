@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "AIコスト管理と海外展開支援、そして「ペース調整」論――中小企業が今見ておくべき4つの動き",
+      "lead": "国内の海外展開支援策と、AI活用をめぐる世界的な議論が同時に動いている。中小企業にとっての意味を、事実と考察を分けて整理する。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか12件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-14",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
