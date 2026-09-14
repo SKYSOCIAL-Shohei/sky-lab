@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "AIエージェントの認証情報漏えいと、制度活用の好機――中小企業が今見ておくべき二つの動き",
+      "lead": "AIエージェント活用が広がる裏側で、認証情報の管理が新たなリスクとして浮上している。一方、国内では中小企業向けの制度的な後押しも動いている。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか13件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-15",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
