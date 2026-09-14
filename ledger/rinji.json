@@ -381,6 +381,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/031.html"
+    },
+    {
+      "no": "R-0035",
+      "subject": "記事 No.032 を公開する",
+      "detail": "「AIエージェントの認証情報漏えいと、制度活用の好機――中小企業が今見ておくべき二つの動き」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-09-15",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/032.html"
     }
   ]
 }
