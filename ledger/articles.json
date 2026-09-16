@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "AIの「信頼」と「電力」、中小企業が今日から気にすべき二つの軸",
+      "lead": "AI安全性の第三者評価と、無料AIツールの裏側、そしてデータセンターを支える地域資源――規模は違っても、中小企業の判断材料になりそうな動きを追った。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-17",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
