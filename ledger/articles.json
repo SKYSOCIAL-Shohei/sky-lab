@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "AIの「見せ方」と「使い方」、中小企業が今から備えるべき3つの視点",
+      "lead": "生成AIの利用開示、サイトコンテンツの扱い、現場でのAI導入実例。今週の動きは、中小企業が近い将来に必ず向き合うことになるテーマばかりだった。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-18",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
