@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "AI導入の意欲とIT環境の現実、そして「安いAI」の足音",
+      "lead": "総務省の通信政策会合と、国内外のAI関連ニュースから、中小企業が今考えておくべき論点を整理する。派手な技術進歩の裏で、足元のIT環境整備が置き去りになっていないかという視点で見た。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-19",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
