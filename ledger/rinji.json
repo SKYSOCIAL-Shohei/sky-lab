@@ -381,6 +381,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/031.html"
+    },
+    {
+      "no": "R-0035",
+      "subject": "記事 No.032 を公開する",
+      "detail": "「「AIは入れた、でも変わらない」ー中小企業のAI活用に見える壁とこれから」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-09-20",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/032.html"
     }
   ]
 }
