@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "「使いこなす」段階に入った中小企業のAI活用、海外では自律AIの制御が課題に",
+      "lead": "国内では中小企業のAI定着を支援するサービスが相次いで登場し、海外では自律的に動くAIをどう制御するかが議論の的になっている。両者は無関係ではなく、いずれ同じ問いに行き着く可能性がある。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-21",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",

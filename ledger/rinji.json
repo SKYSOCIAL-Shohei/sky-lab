@@ -381,6 +381,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/031.html"
+    },
+    {
+      "no": "R-0035",
+      "subject": "記事 No.032 を公開する",
+      "detail": "「「使いこなす」段階に入った中小企業のAI活用、海外では自律AIの制御が課題に」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-09-21",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/032.html"
     }
   ]
 }
