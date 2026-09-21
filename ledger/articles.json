@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "属人化した経験知をAIに渡す動きと、エージェントが直面する「使わせてもらえない」現実",
+      "lead": "国内では中小企業の暗黙知をAIに継承させる取り組みが具体化し始めた一方、海外ではAIエージェントが実社会の商取引の壁に直面している。両者の時間差から、自社に何が先に来るかを考える。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-22",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
