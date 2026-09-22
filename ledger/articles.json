@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "電気通信の競争点検とAIエージェント争い、中小企業が見ておくべき距離感",
+      "lead": "総務省の市場検証委員会と、AmazonによるMeta「Muse」ブロック、そしてAIモデルの値下げ競争。制度と技術、両方の動きから中小企業への影響を考える。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-23",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
