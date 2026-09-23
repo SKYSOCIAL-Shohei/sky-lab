@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "AIの値下げと「データを動かさない」設計思想は、中小企業にどう届くか",
+      "lead": "OpenAIのモデル値下げ、AWSとSalesforceのデータ連携、Google Beamの日本展開という海外発の動きは、中小企業の現場に届くまでに時間差がある。国内では通信料の制度議論も静かに進んでいる。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-24",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",

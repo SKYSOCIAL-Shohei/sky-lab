@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AIの値下げと「データを動かさない」設計思想は、中小企業にどう届くか — SKY SOCIAL LAB</title>
+<meta name="description" content="OpenAIのモデル値下げ、AWSとSalesforceのデータ連携、Google Beamの日本展開という海外発の動きは、中小企業の現場に届くまでに時間差がある。国内では通信料の制度議論も静かに進んでいる。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SKY SOCIAL LAB">
+<meta property="og:title" content="AIの値下げと「データを動かさない」設計思想は、中小企業にどう届くか">
+<meta property="og:description" content="OpenAIのモデル値下げ、AWSとSalesforceのデータ連携、Google Beamの日本展開という海外発の動きは、中小企業の現場に届くまでに時間差がある。国内では通信料の制度議論も静かに進んでいる。">
+<meta property="og:image" content="https://lab.sky-social.com/articles/og/032.jpg?v=93b1d173">
+<meta property="og:url" content="https://lab.sky-social.com/articles/032.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="p-news">
+
+<header><div class="hd">
+  <a href="../" class="logo">SKY SOCIAL LAB</a>
+  <nav class="nav"><a href="../">記録</a><a href="../rinji.html">稟議</a><a href="../about.html">このサイトについて</a></nav>
+</div></header>
+
+<div class="fbhero">
+  <img src="og/032.jpg?v=93b1d173" alt="" width="1200" height="630">
+  <div class="fbin">
+    <div class="erow">
+      <span class="pillar">収集と考察</span>
+      <span class="eno">No.032</span>
+      <span class="rt">読了 約3分</span>
+    </div>
+    <h1>AIの値下げと「データを動かさない」設計思想は、中小企業にどう届くか</h1>
+  </div>
+  <p class="credit">Photo: <a href="https://www.pexels.com/@pixabay">Pixabay</a> / <a href="https://www.pexels.com">Pexels</a></p>
+</div>
+
+<div class="wrap">
+<article>
+  <div class="a-head">
+    <p class="lead">OpenAIのモデル値下げ、AWSとSalesforceのデータ連携、Google Beamの日本展開という海外発の動きは、中小企業の現場に届くまでに時間差がある。国内では通信料の制度議論も静かに進んでいる。</p>
+  </div>
+  <div class="brief-panel">
+    <div class="zone">
+      <div class="lbl">この記事のポイント</div>
+      <ul class="points">
+        <li>GPT-6の新モデルはAPI料金が前世代比半額、AI活用コストが下がる方向</li>
+        <li>AWSとSalesforceがデータを動かさずAIに使わせる仕組みを強化</li>
+        <li>Google Beamが日本に展開、対面感のある会議は当面大企業向け</li>
+      </ul>
+    </div>
+    <div class="zone">
+      <div class="lbl">目次</div>
+      <ol class="toc">
+        <li><a href="#h1">AIの値下げは、使う側の選択肢を広げる</a></li>
+        <li><a href="#h2">「データを動かさずにAIに使わせる」という発想</a></li>
+        <li><a href="#h3">Google Beamの日本展開は、まだ次の段階の話</a></li>
+        <li><a href="#h4">国内の通信料議論は、まだ検討の入り口</a></li>
+        <li><a href="#h5">時間差をどう見るか</a></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="a-body">
+<h2 id="h1">AIの値下げは、使う側の選択肢を広げる</h2>
+<p>OpenAIが新モデル「GPT-6 Sol」「GPT-6 Luna」を公開し、API料金を前世代のキャンペーン価格からさらに5割引き下げたと発表している。<a href="https://www.itmedia.co.jp/news/article/2609/23/2000001674/">ITmedia NEWS</a>によれば、キャッシュの効率化などでコストを下げた分を料金に反映したという。</p>
+<p>中小企業にとって、AI活用の壁は「性能が足りるか」より「継続的に使えるコストか」であることが多い。API料金が下がるということは、これまで様子見だった業務（問い合わせ対応の自動化や資料の要約・分類など）を、試しに導入するハードルが下がることを意味しうる。ただし今回の値下げは開発者向けAPIの話であり、実際に自社の業務に落とし込むには、どのツール経由で使うか、社内のどのデータと組み合わせるかという設計が別途必要になる。値下げ自体は追い風だが、それだけで導入が進むわけではない、という点は冷静に見ておきたい。</p>
+
+<h2 id="h2">「データを動かさずにAIに使わせる」という発想</h2>
+<p>AWSとSalesforceがAI連携を強化し、SalesforceのCRMデータをAWS側のAIアシスタントから参照できるようにするなどの取り組みを発表している。<a href="https://kn.itmedia.co.jp/kn/article/2609/23/2000001663/">キーマンズネット</a>の記事では、データを複製・移動させずに元の場所に置いたまま複数のシステムから使う「Zero Copy」という考え方が紹介されている。</p>
+<p>中小企業の多くは、顧客管理・会計・チャットツールなどが別々のサービスにまたがっており、AIに何かを任せようとすると、まず情報を集めてくる手間が発生しがちだ。今回の動きが示しているのは、データを一箇所に統合しなくても、普段使っているツールの中でAIが必要な情報にアクセスできるようにする、という設計の方向性である。これは大企業向けの発表だが、今後同様の発想が中小企業向けの安価なSaaSにも波及してくる可能性はある。現時点ではそう見える、という段階にとどめておきたい。</p>
+
+<h2 id="h3">Google Beamの日本展開は、まだ次の段階の話</h2>
+<p>Googleは対面感のあるビデオ会議技術「Google Beam」を日本を含む6カ国に展開すると発表している。<a href="https://blog.google/innovation-and-ai/technology/research/google-beam-expansion/">Google The Keyword</a>によれば、専用ハードウェアを通じてMeetやZoomと連携し、社内テストではチームの結びつきの実感や、フォローアップ会議の削減につながったとしている。</p>
+<p>ただしこれは専用機材を必要とする仕組みであり、まずは大企業や、Industriousのような会員制ワークスペース経由での利用が中心になりそうだ。中小企業がすぐに導入する対象というよりは、「遠隔での商談や採用面接の質」という課題に対して、こうした選択肢が生まれつつあることを知っておく、という段階の話として受け止めたい。</p>
+
+<h2 id="h4">国内の通信料議論は、まだ検討の入り口</h2>
+<p>総務省の接続政策委員会では、通信事業者間の接続料の算定方法について検討の進め方を議題とする会合が予定されている。<a href="https://www.soumu.go.jp/main_sosiki/joho_tsusin/policyreports/joho_tsusin/kaisai/02kiban03_04001188.html">総務省</a>の開催案内によれば、音声接続料の算定方式の見直しに関する議論が始まる段階にある。</p>
+<p>これは電気通信事業者間の制度設計の話であり、現時点で中小企業の通信費に直接の影響が生じるものではない。ただし、こうした算定方式の見直しは最終的に料金体系に波及することがあるため、事業として通信インフラのコストに敏感な企業は、議論の進み方を注視しておく価値はあるだろう。今は議題が示された段階にとどまる。</p>
+
+<h2 id="h5">時間差をどう見るか</h2>
+<p>海外のAIコスト低下やデータ連携の動きは、早ければ数カ月のうちに国内のSaaSやツールの価格・機能に反映されてくる可能性がある。一方、専用ハードウェアを伴う技術や、国内の制度議論はもう少し長い時間軸で動く。中小企業としては、すぐに使えるAPIの値下げのような動きには機敏に反応しつつ、ハードウェア投資や制度変更が絡む話は、動向を追いながら判断を先送りする、という使い分けが現実的だろう。</p>
+  </div>
+  <div class="related">
+    <div class="lbl">関連記事</div>
+    <div class="related-grid">
+      <a class="rcard" href="031.html">
+        <img src="og/031.jpg?v=47c68835" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.031</div><div class="rt">AIの「裏側」が見え始めた一週間 ― 開示の遅れとコスト低下が示す中小企業への宿題</div></div>
+      </a>
+      <a class="rcard" href="030.html">
+        <img src="og/030.jpg?v=e2dd533b" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.030</div><div class="rt">私用AI、消費者保護答申、そして制御を失うAIエージェント――今週見えた3つの警戒信号</div></div>
+      </a>
+      <a class="rcard" href="029.html">
+        <img src="og/029.jpg?v=d5c43808" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.029</div><div class="rt">AIサービスの単一依存リスクとデータ提供の対価、中小企業が今考えておくべきこと</div></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="stampbox" data-rinji="R-0035">
+    <div class="stampinfo">稟議番号　<em>R-0035</em><br>決裁の記録を読み込んでいます…</div>
+  </div>
+
+  <p class="disclosure">この記事はAIが起案し、人間が内容を確認・承認したうえで公開しています。上の決裁欄は台帳 <code>ledger/rinji.json</code> をそのまま表示しています。事実関係の誤りが判明した場合は、修正内容を明記したうえで訂正します。</p>
+</article>
+</div>
+
+<footer><div class="ft">
+  <span>SKY SOCIAL LAB</span>
+  <span><a href="https://www.sky-social.com">SKY SOCIAL株式会社</a></span>
+</div></footer>
+
+<script src="../site.js"></script>
+</body>
+</html>
