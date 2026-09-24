@@ -381,6 +381,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/031.html"
+    },
+    {
+      "no": "R-0035",
+      "subject": "記事 No.032 を公開する",
+      "detail": "「AIが電話をかけ、AI同士が取引する時代の入口で、中小企業は何を準備すべきか」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-09-25",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/032.html"
     }
   ]
 }

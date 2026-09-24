@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "AIが電話をかけ、AI同士が取引する時代の入口で、中小企業は何を準備すべきか",
+      "lead": "製造現場のAI活用と、AIエージェント同士の取引・通話という新しい動きが同じ日に並んだ。今すぐの変化ではないが、数年単位で効いてくる論点を整理する。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-25",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
