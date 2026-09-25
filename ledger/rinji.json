@@ -381,6 +381,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/031.html"
+    },
+    {
+      "no": "R-0035",
+      "subject": "記事 No.032 を公開する",
+      "detail": "「生成AIの現場活用とリスクの両面から、中小企業が今考えておくべきこと」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-09-26",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/032.html"
     }
   ]
 }
