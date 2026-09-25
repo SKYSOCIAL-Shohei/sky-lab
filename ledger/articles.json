@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "生成AIの現場活用とリスクの両面から、中小企業が今考えておくべきこと",
+      "lead": "地方銀行が経理DXに乗り出す事例と、生成AI活用を組織の仕組みに変えた事例、そして海外で表面化したAIエージェントのリスク。国内外の動きから、中小企業にとっての示唆を考える。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-26",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
