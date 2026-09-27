@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "郵便局の役割拡大、AIによる離職防止、そして「予防型セキュリティ」—中小企業が今読むべき変化",
+      "lead": "総務省の審議会資料と国内外のAI関連記事から、中小企業の経営に関わりそうな動きを4件取り上げ、それぞれが何を意味しうるか考察する。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-28",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
