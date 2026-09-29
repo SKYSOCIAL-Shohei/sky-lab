@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "AIエージェント時代の「信頼設計」と、足元で動く通信市場",
+      "lead": "OpenAIのAIエージェントを巡るトラブルとアプリストア化の動き、総務省のモバイル市場検証、そして国内企業のAI活用事例から、中小企業が今考えておくべきことを整理する。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-09-30",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
