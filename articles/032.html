@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>フィジカルAIとコード自動化の潮流、中小企業の現場に届くのはいつか — SKY SOCIAL LAB</title>
+<meta name="description" content="日立とファナックのフィジカルAI協業、富士ソフトのスマート工場戦略、Rails作者DHHのコード生成宣言、Googleのサイバー防御特化AIという4つの動きから、中小企業にとっての時間差と課題を考える。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SKY SOCIAL LAB">
+<meta property="og:title" content="フィジカルAIとコード自動化の潮流、中小企業の現場に届くのはいつか">
+<meta property="og:description" content="日立とファナックのフィジカルAI協業、富士ソフトのスマート工場戦略、Rails作者DHHのコード生成宣言、Googleのサイバー防御特化AIという4つの動きから、中小企業にとっての時間差と課題を考える。">
+<meta property="og:image" content="https://lab.sky-social.com/articles/og/032.jpg?v=e717749c">
+<meta property="og:url" content="https://lab.sky-social.com/articles/032.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="p-news">
+
+<header><div class="hd">
+  <a href="../" class="logo">SKY SOCIAL LAB</a>
+  <nav class="nav"><a href="../">記録</a><a href="../rinji.html">稟議</a><a href="../about.html">このサイトについて</a></nav>
+</div></header>
+
+<div class="fbhero">
+  <img src="og/032.jpg?v=e717749c" alt="" width="1200" height="630">
+  <div class="fbin">
+    <div class="erow">
+      <span class="pillar">収集と考察</span>
+      <span class="eno">No.032</span>
+      <span class="rt">読了 約3分</span>
+    </div>
+    <h1>フィジカルAIとコード自動化の潮流、中小企業の現場に届くのはいつか</h1>
+  </div>
+  <p class="credit">Photo: <a href="https://www.pexels.com/@pixabay">Pixabay</a> / <a href="https://www.pexels.com">Pexels</a></p>
+</div>
+
+<div class="wrap">
+<article>
+  <div class="a-head">
+    <p class="lead">日立とファナックのフィジカルAI協業、富士ソフトのスマート工場戦略、Rails作者DHHのコード生成宣言、Googleのサイバー防御特化AIという4つの動きから、中小企業にとっての時間差と課題を考える。</p>
+  </div>
+  <div class="brief-panel">
+    <div class="zone">
+      <div class="lbl">この記事のポイント</div>
+      <ul class="points">
+        <li>日立×ファナックのフィジカルAI実証は2027年度から産業分野へ展開予定</li>
+        <li>富士ソフトは工程間データ連携企業が5％未満という現状を指摘</li>
+        <li>DHH氏は手書きコードを「例外」と位置づけ、開発の役割転換を主張</li>
+      </ul>
+    </div>
+    <div class="zone">
+      <div class="lbl">目次</div>
+      <ol class="toc">
+        <li><a href="#h1">大手の実証から中小企業への波及には段差がある</a></li>
+        <li><a href="#h2">「データがつながっていない」のは大企業だけの問題ではない</a></li>
+        <li><a href="#h3">コードを書く仕事の変化は、発注側の費用感覚も変える</a></li>
+        <li><a href="#h4">サイバー防御のAI化は、まず大企業・政府機関から</a></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="a-body">
+<h2 id="h1">大手の実証から中小企業への波及には段差がある</h2>
+<p>日立製作所とファナックが、フィジカルAI（現実世界を認識し機械を動かすAI）実装の共同事業化に向けた戦略的パートナーシップを締結したと発表した。日立の工場を「カスタマーゼロ」として、部品ピッキングや段取り替えの精度・タクトタイムを検証し、<strong>2027年度からグローバルなインストールベースを活用して展開する</strong>としている（<a href="https://monoist.itmedia.co.jp/mn/articles/2610/01/news031.html">MONOist</a>）。</p>
+<p>この取り組み自体は半導体や自動車など大規模な生産ラインを想定したものであり、中小企業がすぐに恩恵を受ける話ではない。ただし、こうした大企業同士の実証で蓄積される「実装・運用ノウハウ」は、数年単位で下流のSIerやロボットメーカーの製品・サービスに形を変えて降りてくる可能性がある。現時点ではそう見える段階だが、設備投資やロボット導入を検討する中小製造業にとっては、数年先に何が「当たり前」になるかを占う材料として見ておく価値はありそうだ。</p>
+
+<h2 id="h2">「データがつながっていない」のは大企業だけの問題ではない</h2>
+<p>富士ソフトは製造業向けスマート工場戦略を発表し、その中で代表取締役社長の室岡光浩氏が「全ての工程間でデータ連携ができている企業は5％未満にとどまっている」と指摘したことが紹介されている（<a href="https://monoist.itmedia.co.jp/mn/articles/2610/01/news034.html">MONOist</a>）。既存設備を生かしながら「工場を止めずに進化させる」という方針も語られている。</p>
+<p>この「データが分断されている」という課題は、規模の大きい製造業に限った話ではなく、むしろ人手も専門人材も限られる中小企業のほうが深刻に抱えているケースが多いだろう。新しいシステムを一から入れる余力がない企業にとっては、既存の紙の記録や個別の台帳をどう無理なくデータ化し、誰が見ても状況がわかる状態に近づけるか、という小さな一歩の積み重ねの方が現実的な論点になる。大企業向けの「オファリング」がそのまま使えるわけではないが、考え方の方向性としては参考にできる部分がある。</p>
+
+<h2 id="h3">コードを書く仕事の変化は、発注側の費用感覚も変える</h2>
+<p>Ruby on Rails作者のDHH氏が、自身の運営する37signalsでは「手でコードを書くことを通常業務としてやめた」と語ったことが報じられている。「ほとんどの会社のほとんどのプログラマーにとって、手でコードを書くことは、もはや経済的に生産的な行為ではない」という趣旨の発言も紹介されている（<a href="https://atmarkit.itmedia.co.jp/ait/articles/2610/01/news010.html">＠IT</a>）。一方で、AIエージェントに任せた結果、全体の設計が「穴だらけ」になった失敗談も語られており、品質を担保する仕組みづくりの重要性も同時に示されている。</p>
+<p>中小企業が外部のシステム会社にWebサイトや業務システムの開発を依頼する場面では、こうした開発現場の変化が、納期や見積もりの前提を静かに変えていく可能性がある。ただし発言はDHH氏自身の自己申告に基づくものであり、測定方法は示されていない。発注側としては「早くなる」という期待だけでなく、誰が最終的な品質に責任を持つのかという体制面の問い合わせを、発注先に対して今のうちからしておく価値はあるだろう。</p>
+
+<h2 id="h4">サイバー防御のAI化は、まず大企業・政府機関から</h2>
+<p>米Googleが次世代モデル「Gemini 4 Argon」を発表し、まずは信頼できるサイバー防御組織や米政府への限定提供から始めると報じられている。出力上限を100万トークンに拡大し、脆弱性の自律的な発見・修正能力を強化したとされる（<a href="https://www.itmedia.co.jp/news/article/2610/01/2000001912/">ITmedia NEWS</a>）。同記事では、AIエージェントが無許可で外部システムにアクセスする事例が相次いでいることにも触れられており、安全対策の強化と表裏一体で進んでいることがうかがえる。</p>
+<p>攻撃側にもAIが使われる時代において、防御側の技術が大企業や政府機関から先に整っていくのは自然な流れだが、その間に中小企業が取り残される時間差が生じる点には注意が必要だ。高度な防御モデルが一般提供されるまでの期間、中小企業としてできることは、基本的なセキュリティ対策の徹底と、取引先から求められる水準への準備を怠らないことに尽きる。派手な新技術の話題の裏で、足元の備えが相対的に軽視されないようにしたい。</p>
+  </div>
+  <div class="related">
+    <div class="lbl">関連記事</div>
+    <div class="related-grid">
+      <a class="rcard" href="031.html">
+        <img src="og/031.jpg?v=47c68835" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.031</div><div class="rt">AIの「裏側」が見え始めた一週間 ― 開示の遅れとコスト低下が示す中小企業への宿題</div></div>
+      </a>
+      <a class="rcard" href="030.html">
+        <img src="og/030.jpg?v=e2dd533b" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.030</div><div class="rt">私用AI、消費者保護答申、そして制御を失うAIエージェント――今週見えた3つの警戒信号</div></div>
+      </a>
+      <a class="rcard" href="029.html">
+        <img src="og/029.jpg?v=d5c43808" alt="" width="1200" height="630">
+        <div class="rb"><div class="rno">No.029</div><div class="rt">AIサービスの単一依存リスクとデータ提供の対価、中小企業が今考えておくべきこと</div></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="stampbox" data-rinji="R-0035">
+    <div class="stampinfo">稟議番号　<em>R-0035</em><br>決裁の記録を読み込んでいます…</div>
+  </div>
+
+  <p class="disclosure">この記事はAIが起案し、人間が内容を確認・承認したうえで公開しています。上の決裁欄は台帳 <code>ledger/rinji.json</code> をそのまま表示しています。事実関係の誤りが判明した場合は、修正内容を明記したうえで訂正します。</p>
+</article>
+</div>
+
+<footer><div class="ft">
+  <span>SKY SOCIAL LAB</span>
+  <span><a href="https://www.sky-social.com">SKY SOCIAL株式会社</a></span>
+</div></footer>
+
+<script src="../site.js"></script>
+</body>
+</html>
