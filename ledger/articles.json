@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "フィジカルAIとコード自動化の潮流、中小企業の現場に届くのはいつか",
+      "lead": "日立とファナックのフィジカルAI協業、富士ソフトのスマート工場戦略、Rails作者DHHのコード生成宣言、Googleのサイバー防御特化AIという4つの動きから、中小企業にとっての時間差と課題を考える。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-10-01",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
