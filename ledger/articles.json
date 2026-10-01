@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "地域の担い手支援とAI実務化の波、中小企業が今見ておくべき4つの動き",
+      "lead": "地域人材を支える国の交付金と、AIが接客や業務の現場に入り込み始めた動き、そして電力インフラを巻き込む巨大投資計画を併せて見ると、中小企業が向き合うべき時間軸の違いが見えてくる。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-10-02",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
