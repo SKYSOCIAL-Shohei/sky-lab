@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "国産AIが無料で手に入る一方、AIエージェントの「権限」が問われ始めた",
+      "lead": "国内では商用利用可能な高性能AIモデルが無料公開される一方、海外ではAIエージェントに与える権限の見直しが始まっている。中小企業がAI導入を考えるとき、両方の動きを同時に見ておく必要がある。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-10-03",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
