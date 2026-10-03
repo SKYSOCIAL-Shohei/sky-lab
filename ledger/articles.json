@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "AIエージェントの権限管理と国産AIの選択肢拡大、そして「開示請求の重さ」という古い課題",
+      "lead": "海外ではAIエージェントの自律性とデータアクセスを巡る緊張が表面化し、国内では国産AIモデルの無料公開と発信者情報開示の合理化論議が進んでいる。中小企業が今すぐ気にすべきことと、少し先で効いてくることを分けて考える。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-10-04",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",

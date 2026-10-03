@@ -381,6 +381,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/031.html"
+    },
+    {
+      "no": "R-0035",
+      "subject": "記事 No.032 を公開する",
+      "detail": "「AIエージェントの権限管理と国産AIの選択肢拡大、そして「開示請求の重さ」という古い課題」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-10-04",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/032.html"
     }
   ]
 }
