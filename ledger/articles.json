@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "AIエージェントに「どこまで任せるか」が問われ始めている",
+      "lead": "海外ではAIエージェントへの権限付与とその安全性への疑義が同時に表面化し、国内では誹謗中傷対応の実務見直しが進んでいる。中小企業にとっては「導入の判断基準」を持つ時期に来ている。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-10-05",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
