@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "声・コスト・透かし・現場解釈のズレ ― AI活用で中小企業が見落としがちな4つの論点",
+      "lead": "声優のAI音声訴訟、AIコストの見えない膨張、EUの透かし義務化、そして製造現場のフィジカルAI誤解。性質の異なる4つの動きから、中小企業が今取るべき姿勢を考える。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-10-06",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
