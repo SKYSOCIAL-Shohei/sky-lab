@@ -381,6 +381,17 @@
       "approved_by": null,
       "approved_at": null,
       "article": "articles/031.html"
+    },
+    {
+      "no": "R-0035",
+      "subject": "記事 No.032 を公開する",
+      "detail": "「AIの進化が速まるほど、中小企業に求められる備えも変わる」を公開します。",
+      "proposed_by": "Claude",
+      "proposed_at": "2026-10-07",
+      "status": "pending",
+      "approved_by": null,
+      "approved_at": null,
+      "article": "articles/032.html"
     }
   ]
 }
