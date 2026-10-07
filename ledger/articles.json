@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "no": "032",
+      "file": "articles/032.html",
+      "pillar": "収集と考察",
+      "title": "AIのコストが下がるほど、運用の設計力が問われる",
+      "lead": "Anthropicの新モデルでAPI料金がさらに下がり、国内では60体超のAIエージェントを動かす企業の実例も出てきた。安く使えることと、うまく使えることは別問題だという視点で今日の動きを見る。",
+      "sources": "この日見た情報源　総務省 新着情報・ITmedia AI＋・TechCrunch ほか14件",
+      "drafted_by": "Claude",
+      "drafted_at": "2026-10-08",
+      "rinji": "R-0035",
+      "published_at": null,
+      "status": "pending"
+    },
+    {
       "no": "031",
       "file": "articles/031.html",
       "pillar": "収集と考察",
